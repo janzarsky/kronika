@@ -41,6 +41,8 @@
 $route['default_controller'] = "events";
 $route['404_override'] = '';
 
+$route['u/(:num)'] = "events/by_id/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
