@@ -66,4 +66,68 @@ class Events_model extends CI_Model {
 			->order_by('date', 'desc')
 			->get()->result_array();
 	}
+	
+	public function add_headers($events) {
+		$events_per_year = 0;
+		
+		foreach ($events as $key => $event) {
+			if ($key == 0
+					|| $this->get_year($events[$key-1]['date']) != $this->get_year($events[$key]['date'])
+					|| $key == count($events)-1) {
+				if ($key == 0 || $this->get_year($events[$key-1]['date']) != $this->get_year($events[$key]['date']))
+					$events[$key]['year_header'] = $this->get_year($event['date']);
+				
+				if ($events_per_year >= 3) {
+					for ($i = $first_event_in_year; $i < $key; $i++) {
+						if ($i == $first_event_in_year || $this->get_month($events[$i-1]['date']) != $this->get_month($events[$i]['date']))
+							$events[$i]['month_header'] = $this->get_month_name($this->get_month($events[$i]['date']));
+					}
+				}
+				
+				$events_per_year = 1;
+				$first_event_in_year = $key;
+			}
+			else
+				$events_per_year++;
+		}
+		
+		return $events;
+	}
+	
+	private function get_year($date) {
+		return substr($date, 0, 4);
+	}
+	
+	private function get_month($date) {
+		return substr($date, 5, 2);
+	}
+	
+	private function get_month_name($month) {
+		switch ($month) {
+			case 1:
+				return "January";
+			case 2:
+				return "February";
+			case 3:
+				return "March";
+			case 4:
+				return "April";
+			case 5:
+				return "May";
+			case 6:
+				return "June";
+			case 7:
+				return "July";
+			case 8:
+				return "August";
+			case 9:
+				return "September";
+			case 10:
+				return "October";
+			case 11:
+				return "November";
+			case 12:
+				return "December";
+		}
+	}
 }

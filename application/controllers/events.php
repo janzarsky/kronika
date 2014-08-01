@@ -10,7 +10,8 @@ class Events extends CI_Controller {
 
 	public function index()
 	{
-		$content_data['events'] = $this->events_model->get_events(5);
+		$content_data['events'] = $this->events_model->get_events(10);
+		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		$this->load->view('templates/main', $data);
 	}
@@ -24,21 +25,24 @@ class Events extends CI_Controller {
 	
 	public function by_year($year)
 	{
-		$content_data['events'] = $this->events_model->get_events_by_year($year, 5);
+		$content_data['events'] = $this->events_model->get_events_by_year($year, 10);
+		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		$this->load->view('templates/main', $data);
 	}
 	
 	public function by_month($year, $month)
 	{
-		$content_data['events'] = $this->events_model->get_events_by_month($year, $month, 5);
+		$content_data['events'] = $this->events_model->get_events_by_month($year, $month, 10);
+		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		$this->load->view('templates/main', $data);
 	}
 	
 	public function by_day($year, $month, $day)
 	{
-		$content_data['events'] = $this->events_model->get_events_by_day($year, $month, $day, 5);
+		$content_data['events'] = $this->events_model->get_events_by_day($year, $month, $day, 10);
+		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		$this->load->view('templates/main', $data);
 	}
