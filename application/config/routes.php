@@ -43,6 +43,10 @@ $route['404_override'] = '';
 
 $route['u/(:num)'] = "events/by_id/$1";
 
+$route['((19|20|21)[0-9][0-9])'] = "events/by_year/$1";
+$route['((19|20|21)[0-9][0-9])/([1-9]|0[1-9]|1[0-2])'] = "events/by_month/$1/$3";
+$route['((19|20|21)[0-9][0-9])/([1-9]|0[1-9]|1[0-2])/([1-9]|0[1-9]|[1-2][0-9]|3[0-1])'] = "events/by_day/$1/$3/$4";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
