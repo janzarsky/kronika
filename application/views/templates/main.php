@@ -6,8 +6,18 @@
 	<?php	echo meta(array('name' => 'description', 'content' => 'Website for keeping important events from history')); ?>
 </head>
 <body>
-	<?php if (isset($header)) echo $header; ?>
-	<?php if (isset($nav))  echo $nav; ?>
+	<?php
+		if (isset($header))
+			echo $header;
+		else
+			$this->load->view('templates/header');
+	?>
+	<?php
+		if (isset($nav))
+			echo $nav;
+		else
+			$this->load->view('templates/nav');
+	?>
 	<?php echo $content; ?>
 </body>
 </html>
