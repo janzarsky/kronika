@@ -20,7 +20,7 @@ class Events_model extends CI_Model {
 			->select('*')
 			->from('events')
 			->where('id', $id)
-			->get()->result_array();
+			->get()->row_array();
 	}
 	
 	public function get_events_by_year($year, $limit) {

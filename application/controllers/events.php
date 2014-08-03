@@ -18,8 +18,8 @@ class Events extends CI_Controller {
 	
 	public function by_id($id)
 	{
-		$content_data['events'] = $this->events_model->get_event($id);
-		$data['content'] = $this->load->view('events/index', $content_data, true);
+		$content_data['event'] = $this->events_model->get_event($id);
+		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		$this->load->view('templates/main', $data);
 	}
 	
