@@ -1,26 +1,39 @@
 <?php foreach ($events as $event) : ?>
 	<?php if (isset($event['year_header'])): ?>
-		<header class="dateHeader--year">
-			<?php echo $event['year_header']; ?>
-		</header>
-	<?php endif; ?>
-	<?php if (isset($event['month_header'])): ?>
-		<header class="dateHeader--month">
-			<?php echo $event['month_header']; ?>
-		</header>
+		<div class="row">
+			<div class="col-md-12">
+				<header class="dateHeader--year">
+					<?php echo $event['year_header']; ?>
+				</header>
+			</div>
+		</div>
 	<?php endif; ?>
 	
-	<section class="event">
-		<header class="event__title">
-			<?php echo $event['title']; ?>
-		</header>
-		
-		<p class="event__text">
-			<?php echo $event['text']; ?>
-		</p>
-		
-		<footer class="event__date">
-			<?php echo $event['date']; ?>
-		</footer>
-	</section>
+	<?php if (isset($event['month_header'])): ?>
+		<div class="row">
+			<div class="col-md-12">
+				<header class="dateHeader--month">
+					<?php echo $event['month_header']; ?>
+				</header>
+			</div>
+		</div>
+	<?php endif; ?>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<section class="event">
+				<header class="event__title">
+					<?php echo $event['title']; ?>
+				</header>
+				
+				<p class="event__text">
+					<?php echo $event['text']; ?>
+				</p>
+				
+				<footer class="event__date">
+					<?php echo $event['date']; ?>
+				</footer>
+			</section>
+		</div>
+	</div>
 <?php endforeach; ?>
