@@ -6,7 +6,7 @@
 	<meta name="description" content="Website for keeping important events from history" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<link href="public/stylesheets/bootstrap-custom.css" rel="stylesheet">
+	<link href="<?php echo stylesheet('bootstrap-custom.css'); ?>" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -25,7 +25,7 @@
 		<?php echo $content; ?>
 	</div>
 	
-	<script src="public/javascripts/jquery.min.js"></script>
-	<script src="public/javascripts/bootstrap.min.js"></script>
+	<script src="<?php echo javascript('jquery.min.js'); ?>"></script>
+	<script src="<?php echo javascript('bootstrap.min.js'); ?>"></script>
 </body>
 </html>
