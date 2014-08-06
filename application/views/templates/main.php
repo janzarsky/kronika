@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
 	<link href="<?php echo stylesheet('bootstrap-custom.css'); ?>" rel="stylesheet">
+	<link href="<?php echo stylesheet('screen.css'); ?>" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
