@@ -1,0 +1,16 @@
+.event {
+	background: $event_background;
+	padding: 16px;
+	margin-bottom: 16px;
+}
+.event__title {
+	font-size: large;
+	margin-bottom: 4px;
+}
+.event__text {
+	text-indent: 2em;
+}
+.event__date {
+	text-align: right;
+	font-size: small;
+}

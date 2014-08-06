@@ -4,7 +4,7 @@
 			<?php if (isset($event['year_header'])): ?>
 				<div class="row">
 					<div class="col-sm-12">
-						<header class="dateHeader--year">
+						<header class="dateHeader dateHeader--year">
 							<?php echo $event['year_header']; ?>
 						</header>
 					</div>
@@ -14,7 +14,7 @@
 			<?php if (isset($event['month_header'])): ?>
 				<div class="row">
 					<div class="col-sm-12">
-						<header class="dateHeader--month">
+						<header class="dateHeader dateHeader--month">
 							<?php echo $event['month_header']; ?>
 						</header>
 					</div>
