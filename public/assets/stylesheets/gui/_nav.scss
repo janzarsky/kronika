@@ -1,0 +1,10 @@
+.nav {
+
+}
+
+@media (min-width: $screen-md-min) {
+	.nav {
+		position: fixed;
+		top: 3em;
+	}
+}

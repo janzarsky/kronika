@@ -1,0 +1,9 @@
+.pageHeader {
+	font-size: 2em;
+}
+
+@media (min-width: $screen-md-min) {
+	.pageHeader {
+		position: fixed;
+	}
+}

@@ -1,3 +1,7 @@
+@import "bootstrap/_variables";
+
 @import "base/_variables";
-@import "gui/_event";
 @import "gui/_date-headers";
+@import "gui/_page-header";
+@import "gui/_nav";
+@import "gui/_event";
