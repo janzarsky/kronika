@@ -1,10 +1,18 @@
-.nav {
+.navbar {
 	margin: 8px 0;
 }
 
 @media (min-width: $screen-md-min) {
-	.nav-parent {
+	.navbar {
 		position: fixed;
 		top: 3em;
+		width: 132px;
+		padding: 0 15px;
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.navbar {
+		width: 165px;
 	}
 }
