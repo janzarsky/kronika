@@ -1,8 +1,16 @@
 .dateHeader {
-	background: $date_header_background;
-	text-align: right;
 	padding: 16px;
 }
 .dateHeader--year {
 	font-size: larger;
+	background: $year_header_background;
+}
+.dateHeader--month {
+	background: $month_header_background;
+}
+
+@media (min-width: $screen-sm-min) {
+	.dateHeader {
+		text-align: right;
+	}
 }
