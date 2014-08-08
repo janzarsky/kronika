@@ -20,8 +20,6 @@
 		<?php
 			if (isset($nav))
 				echo $nav;
-			else
-				$this->load->view('templates/nav');
 		?>
 		<?php echo $content; ?>
 	</div>

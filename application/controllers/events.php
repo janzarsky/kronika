@@ -13,6 +13,9 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->get_events(10);
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
+		
+		$nav_data['year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$data['header'] = $this->load->view('templates/nav', $nav_data, true);
 		$this->load->view('templates/main', $data);
 	}
 	
