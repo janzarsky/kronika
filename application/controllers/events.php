@@ -14,7 +14,7 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
-		$nav_data['active_year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
@@ -25,7 +25,7 @@ class Events extends CI_Controller {
 		$content_data['event'] = $this->events_model->get_event($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$nav_data['active_year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
@@ -37,7 +37,7 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
-		$nav_data['active_year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
@@ -49,7 +49,7 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
-		$nav_data['active_year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
@@ -61,9 +61,16 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
-		$nav_data['active_year'] = substr($content_data['events'][0]['date'], 0, 4);
+		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
+	}
+	
+	private function getYear($events, $selected_year) {
+		if (count($events) == 0)
+			return $selected_year;
+		else
+			return substr($events[0]['date'], 0, 4);
 	}
 }

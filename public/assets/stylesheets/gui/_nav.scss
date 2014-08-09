@@ -6,7 +6,7 @@
 }
 .navbar__panelHeading {
 	padding: 8px 16px;
-	background: $year_header_background;
+	background: $decade_header_background;
 }
 .navbar__itemGroup {
 	list-style: none;
@@ -14,7 +14,10 @@
 }
 .navbar__item {
 	padding: 8px 16px;
-	background: $month_header_background;
+	background: $year_header_background;
+}
+.navbar__item--active {
+	background: $year_header_background_selected;
 }
 .navbar__panelCollapse {
 	
