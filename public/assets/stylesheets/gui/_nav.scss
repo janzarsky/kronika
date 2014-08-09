@@ -1,13 +1,33 @@
 .navbar {
 	margin: 8px 0;
 }
+.navbar__panel {
+
+}
+.navbar__panelHeading {
+	padding: 8px 16px;
+	background: $year_header_background;
+}
+.navbar__itemGroup {
+	list-style: none;
+	padding: 0 8px;
+}
+.navbar__item {
+	padding: 8px 16px;
+	background: $month_header_background;
+}
+.navbar__panelCollapse {
+	
+}
+.navbar__panelCollapse--collapsed {
+	display: none;
+}
 
 @media (min-width: $screen-md-min) {
 	.navbar {
 		position: fixed;
 		top: 3em;
 		width: 132px;
-		padding: 0 15px;
 	}
 }
 
