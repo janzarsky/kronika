@@ -23,6 +23,14 @@ class Events_model extends CI_Model {
 			->get()->row_array();
 	}
 	
+	public function get_event_by_url($url) {
+		return $this->db
+			->select('*')
+			->from('events')
+			->where('url', $url)
+			->get()->row_array();
+	}
+	
 	public function get_events_by_year($year, $limit) {
 		if (checkdate(1, 1, $year))
 			return $this->get_events_by_date($year . '-12-31', $limit);
