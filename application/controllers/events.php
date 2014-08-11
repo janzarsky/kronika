@@ -25,7 +25,7 @@ class Events extends CI_Controller {
 		$content_data['event'] = $this->events_model->get_event($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
+		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
 		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
