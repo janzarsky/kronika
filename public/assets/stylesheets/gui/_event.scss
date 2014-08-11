@@ -4,6 +4,7 @@
 	margin-bottom: 16px;
 }
 .event__title {
+	color: $event_title;
 	font-size: large;
 	margin-bottom: 4px;
 }
@@ -11,6 +12,7 @@
 	text-indent: 2em;
 }
 .event__date {
+	color: $event_date;
 	text-align: right;
 	font-size: small;
 }

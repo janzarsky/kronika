@@ -3,9 +3,11 @@
 }
 .dateHeader--year {
 	font-size: larger;
+	color: $year_header_text;
 	background: $year_header_background;
 }
 .dateHeader--month {
+	color: $month_header_text;
 	background: $month_header_background;
 }
 
