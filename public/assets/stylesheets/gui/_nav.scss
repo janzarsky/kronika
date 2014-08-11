@@ -1,5 +1,6 @@
 .navbar {
 	margin: 8px 0;
+	background: $decade_header_background;
 	
 	@include clearfix();
 }
@@ -38,6 +39,7 @@
 		position: fixed;
 		top: 3em;
 		width: 132px;
+		background: none;
 	}
 	.navbar__panelHeading {
 		float: none;
