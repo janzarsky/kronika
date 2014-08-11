@@ -102,6 +102,23 @@ class Events_model extends CI_Model {
 		return $events;
 	}
 	
+	public function get_images($event_id) {
+		return $this->db
+			->select('images.*')
+			->from('images')
+			->join('events_images', 'events_images.image_id = images.id')
+			->where('events_images.event_id', $event_id)
+			->get()->result_array();
+	}
+	
+	public function add_images($events) {
+		foreach ($events as $key => $event) {
+			$events[$key]['images'] = $this->get_images($event['id']);
+		}
+		
+		return $events;
+	}
+	
 	private function get_year($date) {
 		return substr($date, 0, 4);
 	}

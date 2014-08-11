@@ -12,6 +12,7 @@ class Events extends CI_Controller {
 	{
 		$content_data['events'] = $this->events_model->get_events(10);
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
+		$content_data['events'] = $this->events_model->add_images($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
@@ -23,6 +24,7 @@ class Events extends CI_Controller {
 	public function by_id($id)
 	{
 		$content_data['event'] = $this->events_model->get_event($id);
+		$content_data['images'] = $this->events_model->get_images($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
@@ -34,6 +36,7 @@ class Events extends CI_Controller {
 	public function by_url($url)
 	{
 		$content_data['event'] = $this->events_model->get_event_by_url($url);
+		$content_data['images'] = $this->events_model->get_images($content_data['event']['id']);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
@@ -46,6 +49,7 @@ class Events extends CI_Controller {
 	{
 		$content_data['events'] = $this->events_model->get_events_by_year($year, 10);
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
+		$content_data['events'] = $this->events_model->add_images($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
@@ -58,6 +62,7 @@ class Events extends CI_Controller {
 	{
 		$content_data['events'] = $this->events_model->get_events_by_month($year, $month, 10);
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
+		$content_data['events'] = $this->events_model->add_images($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
@@ -70,6 +75,7 @@ class Events extends CI_Controller {
 	{
 		$content_data['events'] = $this->events_model->get_events_by_day($year, $month, $day, 10);
 		$content_data['events'] = $this->events_model->add_headers($content_data['events']);
+		$content_data['events'] = $this->events_model->add_images($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);

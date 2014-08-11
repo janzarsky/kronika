@@ -5,6 +5,14 @@
 				<?php echo $event['title']; ?>
 			</header>
 			
+			<div class="event__media">
+					<?php foreach ($images as $image): ?>
+						<div class="image">
+							<img src="<?php echo media_image($image['id']); ?>" />
+						</div>
+					<?php endforeach; ?>
+				</div>
+			
 			<p class="event__text">
 				<?php echo $event['text']; ?>
 			</p>
