@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-8 col-md-6 col-sm-offset-3 col-md-offset-4">
 		<section class="event">
 			<header class="event__title">
 				<?php echo $event['title']; ?>
