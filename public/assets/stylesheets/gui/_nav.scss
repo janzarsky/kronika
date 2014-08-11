@@ -1,18 +1,25 @@
 .navbar {
 	margin: 8px 0;
-}
-.navbar__panel {
-
+	
+	@include clearfix();
 }
 .navbar__panelHeading {
+	float: left;
 	padding: 8px 16px;
 	background: $decade_header_background;
 }
+.navbar__panelHeading--active {
+	background: $decade_header_background_selected;
+	clear: right;
+}
 .navbar__itemGroup {
 	list-style: none;
-	padding: 0 8px;
+	margin: 0;
+	padding: 0;
+	background: $year_header_background;
 }
 .navbar__item {
+	float: left;
 	padding: 8px 16px;
 	background: $year_header_background;
 }
@@ -31,6 +38,16 @@
 		position: fixed;
 		top: 3em;
 		width: 132px;
+	}
+	.navbar__panelHeading {
+		float: none;
+	}
+	.navbar__itemGroup {
+		margin: 0 8px;
+		@include clearfix();
+	}
+	.navbar__item {
+		float: none;
 	}
 }
 
