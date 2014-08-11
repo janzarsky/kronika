@@ -41,7 +41,7 @@
 $route['default_controller'] = "events";
 $route['404_override'] = '';
 
-$route['detail/(:num)'] = "events/by_id/$1";
+$route['d/(:num)'] = "events/by_id/$1";
 $route['detail/(:any)'] = "events/by_url/$1";
 
 $route['((19|20|21)[0-9][0-9])'] = "events/by_year/$1";
