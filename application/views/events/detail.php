@@ -1,25 +1,5 @@
 <div class="row">
 	<div class="col-sm-8 col-md-6 col-sm-offset-3 col-md-offset-4">
-		<section class="event">
-			<header class="event__title">
-				<?php echo $event['title']; ?>
-			</header>
-			
-			<div class="event__media">
-					<?php foreach ($images as $image): ?>
-						<div class="image">
-							<img src="<?php echo media_image($image['id']); ?>" />
-						</div>
-					<?php endforeach; ?>
-				</div>
-			
-			<p class="event__text">
-				<?php echo $event['text']; ?>
-			</p>
-			
-			<footer class="event__date">
-				<?php echo $event['date']; ?>
-			</footer>
-		</section>
+		<?php $this->load->view('templates/event', array('event' => $event)); ?>
 	</div>
 </div>
