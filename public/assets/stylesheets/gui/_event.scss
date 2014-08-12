@@ -8,8 +8,12 @@
 	font-size: large;
 	margin-bottom: 4px;
 }
+.event__media {
+	position: relative;
+}
 .event__text {
 	text-indent: 2em;
+	margin-top: 8px;
 }
 .event__date {
 	color: $event_date;

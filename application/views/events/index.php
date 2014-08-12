@@ -29,11 +29,11 @@
 				</header>
 				
 				<div class="event__media">
-					<?php foreach ($event['images'] as $image): ?>
-						<div class="image">
-							<img src="<?php echo media_image($image['id']); ?>" />
-						</div>
-					<?php endforeach; ?>
+					<ul class="rslides">
+						<?php foreach ($event['images'] as $image): ?>
+							<li><img src="<?php echo media_image($image['id']); ?>" alt="" /></li>
+						<?php endforeach; ?>
+					</ul>
 				</div>
 				
 				<p class="event__text">
