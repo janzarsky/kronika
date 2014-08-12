@@ -24,7 +24,7 @@ class Events extends CI_Controller {
 	public function by_id($id)
 	{
 		$content_data['event'] = $this->events_model->get_event($id);
-		$content_data['images'] = $this->events_model->get_images($id);
+		$content_data['event']['images'] = $this->events_model->get_images($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
@@ -36,7 +36,7 @@ class Events extends CI_Controller {
 	public function by_url($url)
 	{
 		$content_data['event'] = $this->events_model->get_event_by_url($url);
-		$content_data['images'] = $this->events_model->get_images($content_data['event']['id']);
+		$content_data['event']['images'] = $this->events_model->get_images($content_data['event']['id']);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
