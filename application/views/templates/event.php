@@ -1,6 +1,8 @@
 <section class="event">
 	<header class="event__title">
-		<?php echo $event['title']; ?>
+		<a href="<?php echo base_url('detail/' . $event['url']); ?>">
+			<?php echo $event['title']; ?>
+		</a>
 	</header>
 	
 	<div class="event__media">
