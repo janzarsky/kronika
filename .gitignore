@@ -5,4 +5,5 @@
 */cache/!index.html
 */cache/!.htaccess
 application/config/password.php
-public/media
+public/media/
+deploy.sh
