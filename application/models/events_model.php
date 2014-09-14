@@ -104,10 +104,10 @@ class Events_model extends CI_Model {
 	
 	public function get_images($event_id) {
 		return $this->db
-			->select('images.*')
-			->from('images')
-			->join('events_images', 'events_images.image_id = images.id')
-			->where('events_images.event_id', $event_id)
+			->select('*')
+			->from('media')
+			->where('event_id', $event_id)
+			->where('type', '0')
 			->get()->result_array();
 	}
 	
