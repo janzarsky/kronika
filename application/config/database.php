@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'kronika';
-$db['default']['database'] = 'kronika';
+$db['default']['hostname'] = 'wm35.wedos.net';
+$db['default']['username'] = 'w45399_kronika';
+$db['default']['database'] = 'd45399_kronika';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
