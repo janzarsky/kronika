@@ -6,11 +6,11 @@ class Events_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function get_events($limit) {
+	public function get_events() {
 		return $this->db
 			->select('*')
 			->from('events')
-			->limit($limit)
+			->limit(10)
 			->order_by('date', 'desc')
 			->get()->result_array();
 	}
@@ -31,16 +31,16 @@ class Events_model extends CI_Model {
 			->get()->row_array();
 	}
 	
-	public function get_events_by_year($year, $limit) {
+	public function get_events_by_year($year) {
 		if (checkdate(1, 1, $year))
-			return $this->get_events_by_date($year . '-12-31', $limit);
+			return $this->get_events_by_date($year . '-12-31', 10);
 		else
 			throw new Exception('Not a valid date');
 	}
 	
-	public function get_events_by_month($year, $month, $limit) {
+	public function get_events_by_month($year, $month) {
 		if (checkdate($month, 1, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), $limit);
+			return $this->get_events_by_date($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), 10);
 		else
 			throw new Exception('Not a valid date');
 	}
@@ -58,9 +58,9 @@ class Events_model extends CI_Model {
 			return 0;
 	}
 	
-	public function get_events_by_day($year, $month, $day, $limit) {
+	public function get_events_by_day($year, $month, $day) {
 		if (checkdate($month, $day, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $day, $limit);
+			return $this->get_events_by_date($year . '-' . $month . '-' . $day, 10);
 		else
 			throw new Exception('Not a valid date');
 	}
@@ -111,9 +111,19 @@ class Events_model extends CI_Model {
 			->get()->result_array();
 	}
 	
-	public function add_images($events) {
+	public function get_main_image($event_id) {
+		return $this->db
+			->select('*')
+			->from('media')
+			->where('event_id', $event_id)
+			->where('main', '1')
+			->where('type', '0')
+			->get()->row_array();
+	}
+	
+	public function add_main_images($events) {
 		foreach ($events as $key => $event) {
-			$events[$key]['images'] = $this->get_images($event['id']);
+			$events[$key]['main_image'] = $this->get_main_image($event['id']);
 		}
 		
 		return $events;

@@ -5,13 +5,11 @@
 		</a>
 	</header>
 	
-	<div class="event__media">
-		<ul class="rslides">
-			<?php foreach ($event['images'] as $image): ?>
-				<li><img src="<?php echo media_image($image['id']); ?>" alt="" /></li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
+	<?php if(isset($event['main_image']) && $event['main_image'] != null): ?>
+		<div class="event__main-image">
+			<img src="<?php echo media_image($event['main_image']['id']); ?>" alt="" />
+		</div>
+	<?php endif; ?>
 	
 	<p class="event__text">
 		<?php echo $event['text']; ?>
