@@ -31,16 +31,27 @@ class Events_model extends CI_Model {
 			->get()->row_array();
 	}
 	
+	public function get_events_by_date($year, $month, $day) {
+		if ($day == 0 && $month == 0)
+			return $this->get_events_by_year($year);
+		else if ($day == 0)
+			return $this->get_events_by_month($year, $month);
+		else if (checkdate($month, $day, $year))
+			return $this->get_events_by_day($year . '-' . $month . '-' . $day, 10);
+		else
+			throw new Exception('Not a valid date');
+	}
+	
 	public function get_events_by_year($year) {
 		if (checkdate(1, 1, $year))
-			return $this->get_events_by_date($year . '-12-31', 10);
+			return $this->get_events_by_day($year . '-12-31', 10);
 		else
 			throw new Exception('Not a valid date');
 	}
 	
 	public function get_events_by_month($year, $month) {
 		if (checkdate($month, 1, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), 10);
+			return $this->get_events_by_day($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), 10);
 		else
 			throw new Exception('Not a valid date');
 	}
@@ -58,14 +69,7 @@ class Events_model extends CI_Model {
 			return 0;
 	}
 	
-	public function get_events_by_day($year, $month, $day) {
-		if (checkdate($month, $day, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $day, 10);
-		else
-			throw new Exception('Not a valid date');
-	}
-	
-	private function get_events_by_date($date, $limit) {
+	private function get_events_by_day($date, $limit) {
 		return $this->db
 			->select('*')
 			->from('events')

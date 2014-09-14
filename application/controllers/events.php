@@ -43,31 +43,9 @@ class Events extends CI_Controller {
 		$this->load->view('templates/main', $data);
 	}
 	
-	public function by_year($year)
+	public function by_date($year, $month, $day)
 	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_year($year));
-		$data['content'] = $this->load->view('events/index', $content_data, true);
-		
-		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
-		
-		$this->load->view('templates/main', $data);
-	}
-	
-	public function by_month($year, $month)
-	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_month($year, $month));
-		$data['content'] = $this->load->view('events/index', $content_data, true);
-		
-		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
-		
-		$this->load->view('templates/main', $data);
-	}
-	
-	public function by_day($year, $month, $day)
-	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_day($year, $month, $day));
+		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_date($year, $month, $day));
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
