@@ -1,0 +1,23 @@
+.event {
+	background: $event_background;
+	padding: 16px;
+	margin-bottom: 16px;
+}
+.event__title {
+	color: $event_title;
+	font-size: large;
+	margin-bottom: 4px;
+}
+.event__main-image {
+	position: relative;
+	text-align: center;
+}
+.event__text {
+	text-indent: 2em;
+	margin-top: 8px;
+}
+.event__date {
+	color: $event_date;
+	text-align: right;
+	font-size: small;
+}

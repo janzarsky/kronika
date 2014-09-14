@@ -6,11 +6,11 @@ class Events_model extends CI_Model {
 		$this->load->database();
 	}
 
-	public function get_events($limit) {
+	public function get_events() {
 		return $this->db
 			->select('*')
 			->from('events')
-			->limit($limit)
+			->limit(10)
 			->order_by('date', 'desc')
 			->get()->result_array();
 	}
@@ -31,16 +31,27 @@ class Events_model extends CI_Model {
 			->get()->row_array();
 	}
 	
-	public function get_events_by_year($year, $limit) {
-		if (checkdate(1, 1, $year))
-			return $this->get_events_by_date($year . '-12-31', $limit);
+	public function get_events_by_date($year, $month, $day) {
+		if ($day == 0 && $month == 0)
+			return $this->get_events_by_year($year);
+		else if ($day == 0)
+			return $this->get_events_by_month($year, $month);
+		else if (checkdate($month, $day, $year))
+			return $this->get_events_by_day($year . '-' . $month . '-' . $day, 10);
 		else
 			throw new Exception('Not a valid date');
 	}
 	
-	public function get_events_by_month($year, $month, $limit) {
+	public function get_events_by_year($year) {
+		if (checkdate(1, 1, $year))
+			return $this->get_events_by_day($year . '-12-31', 10);
+		else
+			throw new Exception('Not a valid date');
+	}
+	
+	public function get_events_by_month($year, $month) {
 		if (checkdate($month, 1, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), $limit);
+			return $this->get_events_by_day($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), 10);
 		else
 			throw new Exception('Not a valid date');
 	}
@@ -58,14 +69,7 @@ class Events_model extends CI_Model {
 			return 0;
 	}
 	
-	public function get_events_by_day($year, $month, $day, $limit) {
-		if (checkdate($month, $day, $year))
-			return $this->get_events_by_date($year . '-' . $month . '-' . $day, $limit);
-		else
-			throw new Exception('Not a valid date');
-	}
-	
-	private function get_events_by_date($date, $limit) {
+	private function get_events_by_day($date, $limit) {
 		return $this->db
 			->select('*')
 			->from('events')
@@ -104,16 +108,26 @@ class Events_model extends CI_Model {
 	
 	public function get_images($event_id) {
 		return $this->db
-			->select('images.*')
-			->from('images')
-			->join('events_images', 'events_images.image_id = images.id')
-			->where('events_images.event_id', $event_id)
+			->select('*')
+			->from('media')
+			->where('event_id', $event_id)
+			->where('type', '0')
 			->get()->result_array();
 	}
 	
-	public function add_images($events) {
+	public function get_main_image($event_id) {
+		return $this->db
+			->select('*')
+			->from('media')
+			->where('event_id', $event_id)
+			->where('main', '1')
+			->where('type', '0')
+			->get()->row_array();
+	}
+	
+	public function add_main_images($events) {
 		foreach ($events as $key => $event) {
-			$events[$key]['images'] = $this->get_images($event['id']);
+			$events[$key]['main_image'] = $this->get_main_image($event['id']);
 		}
 		
 		return $events;
