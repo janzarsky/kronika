@@ -1,12 +1,12 @@
 .event {
-	line-height: 1.5em;
-	margin-bottom: 1.5em;
+	line-height: $line-for-normal;
+	margin-bottom: $line-for-normal*4;
 }
 .event__title {
 	color: black;
 	font-size: $font-large;
-	margin-bottom: 0.5em;
-	line-height: 1.2em;
+	line-height: $line-for-large;
+	margin-bottom: $line-for-large;
 	
 	a {
 		color: $text-color;
@@ -17,17 +17,13 @@
 	text-align: right;
 	
 	img {
-		width: 22em;
+		max-width: 22em;
 	}
 }
 
 .event__media {
 	position: relative;
-	margin-bottom: 1.5em;
-	
-	.rslides {
-		max-height: 400px;
-	}
+	margin-bottom: $line-for-normal;
 }
 .event__media--hidden {
 	display: none;
@@ -40,5 +36,5 @@
 .event__date {
 	color: $event_date;
 	font-size: $font-small;
-	font-weight: 300;
+	line-height: $line-for-small;
 }
