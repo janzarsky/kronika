@@ -10,7 +10,7 @@ class Events extends CI_Controller {
 
 	public function index()
 	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events());
+		$content_data['events'] = $this->addHeadersAndImagesAndMedia($this->events_model->get_events());
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
@@ -47,7 +47,7 @@ class Events extends CI_Controller {
 	
 	public function by_date($year, $month, $day)
 	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_date($year, $month, $day));
+		$content_data['events'] = $this->addHeadersAndImagesAndMedia($this->events_model->get_events_by_date($year, $month, $day));
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
@@ -59,6 +59,14 @@ class Events extends CI_Controller {
 	private function addHeadersAndImages($events) {
 		$events = $this->events_model->add_headers($events);
 		$events = $this->events_model->add_main_images($events);
+		
+		return $events;
+	}
+	
+	private function addHeadersAndImagesAndMedia($events) {
+		$events = $this->events_model->add_headers($events);
+		$events = $this->events_model->add_main_images($events);
+		$events = $this->events_model->add_media($events);
 		
 		return $events;
 	}

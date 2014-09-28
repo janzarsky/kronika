@@ -1,7 +1,6 @@
 .event {
-	padding: 1.5em 0;
-	margin-bottom: 1em;
 	line-height: 1.5em;
+	margin-bottom: 1.5em;
 }
 .event__title {
 	color: black;
@@ -15,18 +14,31 @@
 }
 .event__main-image {
 	position: relative;
-	text-align: center;
-	display: none;
+	text-align: right;
+	
+	img {
+		width: 22em;
+	}
 }
+
 .event__media {
 	position: relative;
+	margin-bottom: 1.5em;
+	
+	.rslides {
+		max-height: 400px;
+	}
 }
+.event__media--hidden {
+	display: none;
+}
+
 .event__text {
-	margin: 1em 0 0 0;
+	margin: 0;
+	width: 33em;
 }
 .event__date {
 	color: $event_date;
-	text-align: right;
 	font-size: $font-small;
 	font-weight: 300;
 }

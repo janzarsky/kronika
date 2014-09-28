@@ -141,6 +141,14 @@ class Events_model extends CI_Model {
 			->get()->result_array();
 	}
 	
+	public function add_media($events) {
+		foreach ($events as $key => $event) {
+			$events[$key]['media'] = $this->get_media($event['id']);
+		}
+		
+		return $events;
+	}
+	
 	private function get_year($date) {
 		return substr($date, 0, 4);
 	}

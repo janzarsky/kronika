@@ -1,4 +1,5 @@
 .navbar {
+	display: none;
 	margin: 8px 0;
 	background: $decade_background;
 	
@@ -40,9 +41,6 @@
 
 @media (min-width: $screen-md-min) {
 	.navbar {
-		position: fixed;
-		top: 3em;
-		width: 132px;
 		background: none;
 	}
 	.navbar__panelHeading {
