@@ -1,8 +1,8 @@
 .dateHeader {
-	padding: 16px;
+	padding: 1.5em 0;
+	line-height: 1.5em;
 }
 .dateHeader--year {
-	font-size: larger;
 	color: $year_header_text;
 	background: $year_header_background;
 }

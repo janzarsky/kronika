@@ -1,7 +1,11 @@
 .pageHeader {
-	font-size: 2em;
+	font-size: $font-larger;
 	margin: 8px 0;
 	color: $gray-dark;
+	
+	a {
+		color: $text-color;
+	}
 }
 
 @media (min-width: $screen-md-min) {

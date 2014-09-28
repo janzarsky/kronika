@@ -8,6 +8,8 @@
 	
 	<link href="<?php echo stylesheet('bootstrap-custom.css'); ?>" rel="stylesheet">
 	<link href="<?php echo stylesheet('screen.css'); ?>" rel="stylesheet">
+	
+	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div class="container">

@@ -1,26 +1,32 @@
 .event {
-	background: $event_background;
-	padding: 16px;
-	margin-bottom: 16px;
+	padding: 1.5em 0;
+	margin-bottom: 1em;
+	line-height: 1.5em;
 }
 .event__title {
-	color: $event_title;
-	font-size: large;
-	margin-bottom: 4px;
+	color: black;
+	font-size: $font-large;
+	margin-bottom: 0.5em;
+	line-height: 1.2em;
+	
+	a {
+		color: $text-color;
+	}
 }
 .event__main-image {
 	position: relative;
 	text-align: center;
+	display: none;
 }
 .event__media {
 	position: relative;
 }
 .event__text {
-	text-indent: 2em;
-	margin-top: 8px;
+	margin: 1em 0 0 0;
 }
 .event__date {
 	color: $event_date;
 	text-align: right;
-	font-size: small;
+	font-size: $font-small;
+	font-weight: 300;
 }
