@@ -79,28 +79,26 @@ class Events_model extends CI_Model {
 			->get()->result_array();
 	}
 	
-	public function add_headers($events) {
+	public function add_friendly_date($events) {
 		$events_per_year = 0;
 		
 		foreach ($events as $key => $event) {
-			if ($key == 0
-					|| $this->get_year($events[$key-1]['date']) != $this->get_year($events[$key]['date'])
-					|| $key == count($events)-1) {
-				if ($key == 0 || $this->get_year($events[$key-1]['date']) != $this->get_year($events[$key]['date']))
-					$events[$key]['year_header'] = $this->get_year($event['date']);
-				
-				if ($events_per_year >= 3) {
-					for ($i = $first_event_in_year; $i < $key; $i++) {
-						if ($i == $first_event_in_year || $this->get_month($events[$i-1]['date']) != $this->get_month($events[$i]['date']))
-							$events[$i]['month_header'] = $this->get_month_name($this->get_month($events[$i]['date']));
-					}
-				}
-				
-				$events_per_year = 1;
-				$first_event_in_year = $key;
-			}
-			else
-				$events_per_year++;
+			$date = '';
+			
+			if ($event['date_precision'] >= 3)
+				$date .= $this->get_day($event['date']) . '. ';
+			
+			if ($event['date_precision'] == 3)
+				$date .= $this->get_month_name_in_genitive($this->get_month($event['date'])) . ' ';
+			else if ($event['date_precision'] == 2)
+				$date .= $this->get_month_name_in_nominative($this->get_month($event['date'])) . ' ';
+			
+			if ($event['date_precision'] >= 2)
+				$date .= $this->get_year($event['date']);
+			else if ($event['date_precision'] == 1)
+				$date .= 'r. ' . $this->get_year($event['date']);
+			
+			$events[$key]['friendly_date'] = $date;
 		}
 		
 		return $events;
@@ -157,32 +155,65 @@ class Events_model extends CI_Model {
 		return substr($date, 5, 2);
 	}
 	
-	private function get_month_name($month) {
+	private function get_month_name_in_genitive($month) {
 		switch ($month) {
 			case 1:
-				return "January";
+				return "ledna";
 			case 2:
-				return "February";
+				return "února";
 			case 3:
-				return "March";
+				return "března";
 			case 4:
-				return "April";
+				return "dubna";
 			case 5:
-				return "May";
+				return "května";
 			case 6:
-				return "June";
+				return "června";
 			case 7:
-				return "July";
+				return "července";
 			case 8:
-				return "August";
+				return "srpna";
 			case 9:
-				return "September";
+				return "září";
 			case 10:
-				return "October";
+				return "října";
 			case 11:
-				return "November";
+				return "listopadu";
 			case 12:
-				return "December";
+				return "prosince";
 		}
+	}
+	
+	private function get_month_name_in_nominative($month) {
+		switch ($month) {
+			case 1:
+				return "leden";
+			case 2:
+				return "únor";
+			case 3:
+				return "březen";
+			case 4:
+				return "duben";
+			case 5:
+				return "květen";
+			case 6:
+				return "červen";
+			case 7:
+				return "červenec";
+			case 8:
+				return "srpen";
+			case 9:
+				return "září";
+			case 10:
+				return "říjen";
+			case 11:
+				return "listopad";
+			case 12:
+				return "prosinec";
+		}
+	}
+	
+	private function get_day($date) {
+		return substr($date, 8, 2);
 	}
 }

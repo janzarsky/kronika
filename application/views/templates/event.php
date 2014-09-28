@@ -1,6 +1,14 @@
 <section class="event">
 	<div class="row">
-		<div class="col-md-7 col-md-offset-5">
+		<div class="col-md-5">
+			<header class="event__date">
+				<?php if(isset($event['friendly_date']) && $event['friendly_date'] != null):
+					echo $event['friendly_date'];
+				endif; ?>
+			</header>
+		</div>
+		
+		<div class="col-md-7">
 			<header class="event__title">
 				<a href="<?php echo base_url('detail/' . $event['url']); ?>">
 					<?php echo $event['title']; ?>
@@ -32,10 +40,6 @@
 			<p class="event__text">
 				<?php echo $event['text']; ?>
 			</p>
-			
-			<footer class="event__date">
-				<?php echo $event['date']; ?>
-			</footer>
 		</div>
 	</div>
 </section>
