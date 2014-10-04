@@ -1,6 +1,7 @@
 .pageHeader {
 	font-size: $font-larger;
-	margin: 0.2em 0 0.3em 0;
+	margin: 0.2em auto 0.3em auto;
+	max-width: $width-for-larger;
 	padding: 0;
 	color: $gray-dark;
 	

@@ -6,18 +6,19 @@
 	color: black;
 	font-size: $font-large;
 	line-height: $line-for-large;
-	margin-bottom: $line-for-large;
+	margin: 0 auto;
+	max-width: $width-for-large;
 	
 	a {
 		color: $text-color;
 	}
 }
 .event__main-image {
-	position: relative;
-	text-align: right;
+	text-align: center;
+	margin: $line-for-normal 0;
 	
 	img {
-		max-width: 22em;
+		height: $line-for-normal*10;
 	}
 }
 
@@ -30,10 +31,34 @@
 }
 
 .event__text {
-	margin: 0;
-	width: 33em;
+	margin: 0 auto;
+	max-width: $width-for-normal;
 }
 .event__date {
 	color: $event_date;
-	text-align: right;
+	margin: 0 auto $line-for-normal auto;
+	max-width: $width-for-normal;
+}
+
+@media (min-width: $screen-md-min) {
+	.event__title {
+		margin: 0;
+		margin-bottom: $line-for-large;
+	}
+	.event__main-image {
+		position: relative;
+		text-align: right;
+		margin: 0;
+		
+		img {
+			max-width: 22em;
+		}
+	}
+	.event__text {
+		margin: 0;
+	}
+	.event__date {
+		text-align: right;
+		margin: 0;
+	}
 }
