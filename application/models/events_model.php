@@ -5,18 +5,6 @@ class Events_model extends CI_Model {
 	{
 		$this->load->database();
 	}
-
-	public function get_event($id) {
-		$events = $this->db
-			->select('*')
-			->from('events')
-			->where('events.id', $id)
-			->get()->result_array();
-		
-		$events = $this->add_friendly_date($events);
-		
-		return $event[0];
-	}
 	
 	public function get_event_with_main_image($id) {
 		$events = $this->db
@@ -24,18 +12,6 @@ class Events_model extends CI_Model {
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
 			->where('events.id', $id)
-			->get()->result_array();
-		
-		$events = $this->add_friendly_date($events);
-		
-		return $events[0];
-	}
-	
-	public function get_event_by_url($url) {
-		$events = $this->db
-			->select('*')
-			->from('events')
-			->where('events.url', $url)
 			->get()->result_array();
 		
 		$events = $this->add_friendly_date($events);
@@ -54,15 +30,6 @@ class Events_model extends CI_Model {
 		$events = $this->add_friendly_date($events);
 		
 		return $events[0];
-	}
-	
-	public function get_events() {
-		return $this->db
-			->select('*')
-			->from('events')
-			->limit(10)
-			->order_by('date', 'desc')
-			->get()->result_array();
 	}
 	
 	public function get_events_with_main_images() {
@@ -158,13 +125,26 @@ class Events_model extends CI_Model {
 		return $events;
 	}
 	
-	public function get_images($event_id) {
-		return $this->db
-			->select('*')
-			->from('media')
-			->where('event_id', $event_id)
-			->where('type', '0')
-			->get()->result_array();
+	private function get_year($date) {
+		return substr($date, 0, 4);
+	}
+	
+	private function get_month($date) {
+		return substr($date, 5, 2);
+	}
+	
+	private function get_day($date) {
+		return substr($date, 8, 2);
+	}
+	
+	private function get_month_name_in_genitive($month) {
+		return array(1 => 'ledna', "února", "března", "dubna", "května", "června",
+								 "července", "srpna", "září", "října", "listopadu", "prosince")[intval($month)];
+	}
+	
+	private function get_month_name_in_nominative($month) {
+		return array(1 => "leden", "únor", "březen", "duben", "květen", "červen",
+								 "červenec", "srpen", "září", "říjen", "listopad", "prosinec")[intval($month)];
 	}
 	
 	public function get_main_image($event_id) {
@@ -183,75 +163,5 @@ class Events_model extends CI_Model {
 			->from('media')
 			->where('event_id', $event_id)
 			->get()->result_array();
-	}
-	
-	private function get_year($date) {
-		return substr($date, 0, 4);
-	}
-	
-	private function get_month($date) {
-		return substr($date, 5, 2);
-	}
-	
-	private function get_month_name_in_genitive($month) {
-		switch ($month) {
-			case 1:
-				return "ledna";
-			case 2:
-				return "února";
-			case 3:
-				return "března";
-			case 4:
-				return "dubna";
-			case 5:
-				return "května";
-			case 6:
-				return "června";
-			case 7:
-				return "července";
-			case 8:
-				return "srpna";
-			case 9:
-				return "září";
-			case 10:
-				return "října";
-			case 11:
-				return "listopadu";
-			case 12:
-				return "prosince";
-		}
-	}
-	
-	private function get_month_name_in_nominative($month) {
-		switch ($month) {
-			case 1:
-				return "leden";
-			case 2:
-				return "únor";
-			case 3:
-				return "březen";
-			case 4:
-				return "duben";
-			case 5:
-				return "květen";
-			case 6:
-				return "červen";
-			case 7:
-				return "červenec";
-			case 8:
-				return "srpen";
-			case 9:
-				return "září";
-			case 10:
-				return "říjen";
-			case 11:
-				return "listopad";
-			case 12:
-				return "prosinec";
-		}
-	}
-	
-	private function get_day($date) {
-		return substr($date, 8, 2);
 	}
 }
