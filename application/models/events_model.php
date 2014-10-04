@@ -6,6 +6,56 @@ class Events_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function get_event($id) {
+		$events = $this->db
+			->select('*')
+			->from('events')
+			->where('events.id', $id)
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $event[0];
+	}
+	
+	public function get_event_with_main_image($id) {
+		$events = $this->db
+			->select('events.*, media.id as main_image_id')
+			->from('events')
+			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->where('events.id', $id)
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $events[0];
+	}
+	
+	public function get_event_by_url($url) {
+		$events = $this->db
+			->select('*')
+			->from('events')
+			->where('events.url', $url)
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $events[0];
+	}
+	
+	public function get_event_by_url_with_main_image($url) {
+		$events = $this->db
+			->select('events.*, media.id as main_image_id')
+			->from('events')
+			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->where('events.url', $url)
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $events[0];
+	}
+	
 	public function get_events() {
 		return $this->db
 			->select('*')
@@ -15,45 +65,59 @@ class Events_model extends CI_Model {
 			->get()->result_array();
 	}
 	
-	public function get_event($id) {
-		return $this->db
-			->select('*')
+	public function get_events_with_main_images() {
+		$events = $this->db
+			->select('events.*, media.id as main_image_id')
 			->from('events')
-			->where('id', $id)
-			->get()->row_array();
+			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->limit(10)
+			->order_by('events.date', 'desc')
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $events;
 	}
 	
-	public function get_event_by_url($url) {
-		return $this->db
-			->select('*')
+	public function get_events_by_date_with_main_images($year, $month, $day) {
+		$date = $this->get_date_string($year, $month, $day);
+		
+		$events = $this->db
+			->select('events.*, media.id as main_image_id')
 			->from('events')
-			->where('url', $url)
-			->get()->row_array();
+			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->where('date <=', $date)
+			->limit($limit)
+			->order_by('date', 'desc')
+			->get()->result_array();
+		
+		$events = $this->add_friendly_date($events);
+		
+		return $events;
 	}
 	
-	public function get_events_by_date($year, $month, $day) {
-		if ($day == 0 && $month == 0)
-			return $this->get_events_by_year($year);
-		else if ($day == 0)
-			return $this->get_events_by_month($year, $month);
-		else if (checkdate($month, $day, $year))
-			return $this->get_events_by_day($year . '-' . $month . '-' . $day, 10);
-		else
+	private function get_date_string($year, $month, $day) {
+		if ($day == 0 && $month == 0 && $year == 0) {
 			throw new Exception('Not a valid date');
-	}
-	
-	public function get_events_by_year($year) {
-		if (checkdate(1, 1, $year))
-			return $this->get_events_by_day($year . '-12-31', 10);
-		else
-			throw new Exception('Not a valid date');
-	}
-	
-	public function get_events_by_month($year, $month) {
-		if (checkdate($month, 1, $year))
-			return $this->get_events_by_day($year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month), 10);
-		else
-			throw new Exception('Not a valid date');
+		}
+		else if ($day == 0 && $month == 0) {
+			if (checkdate(1, 1, $year))
+				return $year . '-12-31';
+			else
+				throw new Exception('Not a valid date');
+		}
+		else if ($day == 0) {
+			if (checkdate($month, 1, $year))
+				return $year . '-' . $month . '-' . $this->get_last_day_in_month($year, $month);
+			else
+				throw new Exception('Not a valid date');
+		}
+		else {
+			if (checkdate($month, $day, $year))
+				return $year . '-' . $month . '-' . $day;
+			else
+				throw new Exception('Not a valid date');
+		}
 	}
 	
 	private function get_last_day_in_month($year, $month) {
@@ -67,16 +131,6 @@ class Events_model extends CI_Model {
 			return 28;
 		else
 			return 0;
-	}
-	
-	private function get_events_by_day($date, $limit) {
-		return $this->db
-			->select('*')
-			->from('events')
-			->where('date <=', $date)
-			->limit($limit)
-			->order_by('date', 'desc')
-			->get()->result_array();
 	}
 	
 	public function add_friendly_date($events) {
@@ -123,28 +177,12 @@ class Events_model extends CI_Model {
 			->get()->row_array();
 	}
 	
-	public function add_main_images($events) {
-		foreach ($events as $key => $event) {
-			$events[$key]['main_image'] = $this->get_main_image($event['id']);
-		}
-		
-		return $events;
-	}
-	
 	public function get_media($event_id) {
 		return $this->db
 			->select('*')
 			->from('media')
 			->where('event_id', $event_id)
 			->get()->result_array();
-	}
-	
-	public function add_media($events) {
-		foreach ($events as $key => $event) {
-			$events[$key]['media'] = $this->get_media($event['id']);
-		}
-		
-		return $events;
 	}
 	
 	private function get_year($date) {

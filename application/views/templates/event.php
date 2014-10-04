@@ -27,10 +27,10 @@
 	
 	<div class="row">
 		<div class="col-md-5">
-			<?php if($hidden_media === true && isset($event['main_image']) && $event['main_image'] != null): ?>
+			<?php if($hidden_media === true && isset($event['main_image_id']) && $event['main_image_id'] != null): ?>
 				<div class="event__main-image">
 					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-						<img src="<?php echo media_image($event['main_image']['id']); ?>" alt="" />
+						<img src="<?php echo media_image($event['main_image_id']); ?>" alt="" />
 					</a>
 				</div>
 			<?php endif; ?>

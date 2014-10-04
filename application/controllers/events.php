@@ -10,7 +10,7 @@ class Events extends CI_Controller {
 
 	public function index()
 	{
-		$content_data['events'] = $this->addDateAndImagesAndMedia($this->events_model->get_events());
+		$content_data['events'] = $this->events_model->get_events_with_main_images();
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
@@ -21,8 +21,7 @@ class Events extends CI_Controller {
 	
 	public function by_id($id)
 	{
-		$content_data['event'] = $this->events_model->get_event($id);
-		$content_data['event']['main_image'] = $this->events_model->get_main_image($id);
+		$content_data['event'] = $this->events_model->get_event_with_main_image($id);
 		$content_data['event']['media'] = $this->events_model->get_media($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
@@ -34,8 +33,7 @@ class Events extends CI_Controller {
 	
 	public function by_url($url)
 	{
-		$content_data['event'] = $this->events_model->get_event_by_url($url);
-		$content_data['event']['main_image'] = $this->events_model->get_main_image($content_data['event']['id']);
+		$content_data['event'] = $this->events_model->get_event_by_url_with_main_image($url);
 		$content_data['event']['media'] = $this->events_model->get_media($content_data['event']['id']);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
@@ -47,7 +45,7 @@ class Events extends CI_Controller {
 	
 	public function by_date($year, $month, $day)
 	{
-		$content_data['events'] = $this->addDateAndImagesAndMedia($this->events_model->get_events_by_date($year, $month, $day));
+		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
@@ -55,14 +53,7 @@ class Events extends CI_Controller {
 		
 		$this->load->view('templates/main', $data);
 	}
-	
-	private function addDateAndImagesAndMedia($events) {
-		$events = $this->events_model->add_friendly_date($events);
-		$events = $this->events_model->add_main_images($events);
-		$events = $this->events_model->add_media($events);
-		
-		return $events;
-	}
+
 	
 	private function getYear($events, $selected_year) {
 		if (count($events) == 0)
