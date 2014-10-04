@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-12">
 		<nav class="navbar">
 			<?php
 				$first_year = (isset($first_year)) ? $first_year : 1963;

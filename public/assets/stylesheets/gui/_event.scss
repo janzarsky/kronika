@@ -15,10 +15,10 @@
 }
 .event__main-image {
 	text-align: center;
-	margin: $line-for-normal 0;
+	margin: 0 0 $line-for-normal 0;
 	
 	img {
-		height: $line-for-normal*10;
+		max-height: $line-for-normal*10;
 	}
 }
 
@@ -40,7 +40,7 @@
 	max-width: $width-for-normal;
 }
 
-@media (min-width: $screen-md-min) {
+@media (min-width: $screen-sm-min) {
 	.event__title {
 		margin: 0;
 		margin-bottom: $line-for-large;
@@ -51,7 +51,7 @@
 		margin: 0;
 		
 		img {
-			max-width: 22em;
+			max-width: 100%;
 		}
 	}
 	.event__text {
