@@ -1,4 +1,4 @@
-<div class="event__media <?php echo ($hidden) ? 'event__media--hidden' : ''; ?>">
+<div class="event__media">
 	<ul class="rslides">
 		<?php foreach ($media as $m): ?>
 			<?php if ($m['type'] == 0): ?>

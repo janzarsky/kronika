@@ -1,1 +1,1 @@
-<?php $this->load->view('templates/event', array('event' => $event, 'hidden_media' => false)); ?>
+<?php $this->load->view('templates/event', array('event' => $event)); ?>

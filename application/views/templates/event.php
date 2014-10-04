@@ -17,17 +17,17 @@
 		</div>
 	</div>
 	
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<?php if(isset($event['media']) && $event['media'] != null): ?>
-				<?php $this->load->view('templates/event_media', array('media' => $event['media'], 'hidden' => $hidden_media)); ?>
-			<?php endif; ?>
+	<?php if(isset($event['media'])): ?>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<?php $this->load->view('templates/event_media', array('media' => $event['media'])); ?>
+			</div>
 		</div>
-	</div>
-	
+	<?php endif; ?>
+		
 	<div class="row">
 		<div class="col-md-5">
-			<?php if($hidden_media === true && isset($event['main_image_id']) && $event['main_image_id'] != null): ?>
+			<?php if(isset($event['main_image_id']) && isset($event['media']) == false): ?>
 				<div class="event__main-image">
 					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
 						<img src="<?php echo media_image($event['main_image_id']); ?>" alt="" />
