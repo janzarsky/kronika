@@ -1,6 +1,7 @@
 .pageHeader {
 	font-size: $font-larger;
-	margin: 0.2em auto 0.3em auto;
+	line-height: $line-for-larger;
+	margin: 0.5*$line-for-larger auto 0.25*$line-for-larger auto;
 	max-width: $width-for-larger;
 	padding: 0;
 	color: $gray-dark;
@@ -10,8 +11,35 @@
 	}
 }
 
+.pageNav {
+	font-size: $font-large;
+	line-height: $line-for-large;
+	margin: 0 auto 1em auto;
+	max-width: $width-for-large;
+	color: $nav-color;
+}
+.pageNav__year {
+	color: $nav-color;
+}
+.pageNav__year--active {
+	color: $gray-dark;
+}
+.pageNav__year--additional {
+	display: none;
+}
+
 @media (min-width: $screen-sm-min) {
 	.pageHeader {
 		margin: 0.2em 0 0.3em 0;
+		max-width: none;
+		text-align: right;
+	}
+	
+	.pageNav {
+		margin: $line-for-large 0 0.75*$line-for-large 0;
+		max-width: none;
+	}
+	.pageNav__year--additional {
+		display: inline;
 	}
 }

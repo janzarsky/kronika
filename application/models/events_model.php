@@ -54,7 +54,7 @@ class Events_model extends CI_Model {
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
 			->where('date <=', $date)
-			->limit($limit)
+			->limit(10)
 			->order_by('date', 'desc')
 			->get()->result_array();
 		

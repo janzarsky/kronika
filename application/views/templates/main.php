@@ -19,10 +19,6 @@
 			else
 				$this->load->view('templates/header');
 		?>
-		<?php
-			if (isset($nav))
-				echo $nav;
-		?>
 		<?php echo $content; ?>
 	</div>
 	
