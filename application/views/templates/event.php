@@ -17,13 +17,10 @@
 		</div>
 	</div>
 	
-	<?php if(isset($event['media'])): ?>
-		<div class="row">
-			<div class="col-sm-10 col-sm-offset-1">
-				<?php $this->load->view('templates/event_media', array('media' => $event['media'])); ?>
-			</div>
-		</div>
-	<?php endif; ?>
+	<?php
+		if(isset($event['media']))
+			$this->load->view('templates/event_media', array('media' => $event['media']));
+	?>
 		
 	<div class="row">
 		<div class="col-sm-5">
