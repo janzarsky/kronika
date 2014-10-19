@@ -41,7 +41,7 @@ class Events_model extends CI_Model {
 			->order_by('events.date', 'desc')
 			->get()->result_array();
 		
-		$events = array_merge($events, $this->get_events_with_same_date($events[count($events) - 1]));
+		$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
 		
 		$events = $this->add_friendly_date($events);
 		
@@ -60,7 +60,7 @@ class Events_model extends CI_Model {
 			->order_by('date', 'desc')
 			->get()->result_array();
 		
-		$events = array_merge($events, $this->get_events_with_same_date($events[count($events) - 1]));
+		$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
 		
 		$events = $this->add_friendly_date($events);
 		
@@ -151,7 +151,7 @@ class Events_model extends CI_Model {
 								 "červenec", "srpen", "září", "říjen", "listopad", "prosinec")[intval($month)];
 	}
 	
-	private function get_events_with_same_date($event) {
+	private function get_prev_events_with_same_date($event) {
 		return $this->db
 			->select('*')
 			->from('events')
@@ -175,6 +175,16 @@ class Events_model extends CI_Model {
 			->select('*')
 			->from('media')
 			->where('event_id', $event_id)
+			->get()->result_array();
+	}
+	
+	public function get_events_by_date_reverse($date) {
+		return $this->db
+			->select('id, date')
+			->from('events')
+			->where('date >', $date)
+			->order_by('date', 'asc')
+			->limit(10)
 			->get()->result_array();
 	}
 }

@@ -34,7 +34,10 @@
 	}
 }
 .loader--bottom {
-	margin-bottom: 1em;
+	margin-bottom: $line-for-normal;
+}
+.loader--top {
+	margin-bottom: $line-for-normal;
 }
 
 @media (min-width: $screen-sm-min) {
