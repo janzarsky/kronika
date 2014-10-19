@@ -11,6 +11,7 @@ class Events extends CI_Controller {
 	public function index()
 	{
 		$content_data['events'] = $this->events_model->get_events_with_main_images();
+		$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$this->load->view('templates/main', $data);
@@ -43,6 +44,7 @@ class Events extends CI_Controller {
 	public function by_date($year, $month, $day)
 	{
 		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
+		$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
 		
 		$header_data['active_year'] = $year;
@@ -57,5 +59,14 @@ class Events extends CI_Controller {
 			return $selected_year;
 		else
 			return substr($events[0]['date'], 0, 4);
+	}
+	
+	private function get_prev_url($events) {
+		$last_date = $events[count($events) - 1]['date'];
+		
+		$prev_date = new DateTime($last_date);
+		$prev_date->sub(new DateInterval('P1D'));
+		
+		return $prev_date->format('Y/m/d');
 	}
 }
