@@ -41,6 +41,8 @@ class Events_model extends CI_Model {
 			->order_by('events.date', 'desc')
 			->get()->result_array();
 		
+		$events = array_merge($events, $this->get_events_with_same_date($events[count($events) - 1]));
+		
 		$events = $this->add_friendly_date($events);
 		
 		return $events;
@@ -57,6 +59,8 @@ class Events_model extends CI_Model {
 			->limit(10)
 			->order_by('date', 'desc')
 			->get()->result_array();
+		
+		$events = array_merge($events, $this->get_events_with_same_date($events[count($events) - 1]));
 		
 		$events = $this->add_friendly_date($events);
 		
@@ -145,6 +149,15 @@ class Events_model extends CI_Model {
 	private function get_month_name_in_nominative($month) {
 		return array(1 => "leden", "únor", "březen", "duben", "květen", "červen",
 								 "červenec", "srpen", "září", "říjen", "listopad", "prosinec")[intval($month)];
+	}
+	
+	private function get_events_with_same_date($event) {
+		return $this->db
+			->select('*')
+			->from('events')
+			->where('date', $event['date'])
+			->where('id >', $event['id'])
+			->get()->result_array();
 	}
 	
 	public function get_main_image($event_id) {
