@@ -1,9 +1,9 @@
 .pageHeader {
 	font-size: $font-larger;
 	line-height: $line-for-larger;
-	margin: 0.5*$line-for-larger auto 0.25*$line-for-larger auto;
+	padding: 0.5*$line-for-larger 0 0.25*$line-for-larger 0;
+	margin: 0 auto;
 	max-width: $width-for-larger;
-	padding: 0;
 	color: $gray-dark;
 	
 	a {
@@ -14,7 +14,8 @@
 .pageNav {
 	font-size: $font-normal;
 	line-height: $line-for-normal;
-	margin: 0.75*$line-for-normal auto 0.75*$line-for-normal auto;
+	padding: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
+	margin: 0 auto;
 	max-width: $width-for-normal;
 	color: $nav-color;
 }
@@ -30,29 +31,33 @@
 }
 
 .loader {
+	font-size: $font-normal;
+	line-height: $line-for-normal;
+	max-width: $width-for-normal;
+	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
+	margin: 0 auto;
+	
 	a {
 		color: $text-color;
 	}
 }
-.loader--bottom {
-	margin-bottom: $line-for-normal;
-}
-.loader--top {
-	margin-bottom: $line-for-normal;
-}
 
 @media (min-width: $screen-sm-min) {
 	.pageHeader {
-		margin: 0.5*$line-for-larger 0 0.333*$line-for-larger 0;
+		margin: 0;
 		max-width: none;
 		text-align: right;
 	}
 	
 	.pageNav {
-		margin: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
+		margin: 0;
 		max-width: none;
 	}
 	.pageNav__year--additional {
 		display: inline;
+	}
+	
+	.loader {
+		margin: 0;
 	}
 }

@@ -6,6 +6,7 @@
 	color: black;
 	font-size: $font-large;
 	line-height: $line-for-large;
+	padding: 0.15*$line-for-large 0 0.85*$line-for-large 0;
 	margin: 0 auto;
 	max-width: $width-for-large;
 	
@@ -23,12 +24,14 @@
 }
 
 .event__text {
+	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
 	max-width: $width-for-normal;
 }
 .event__date {
 	color: $event_date;
-	margin: 0 auto $line-for-normal auto;
+	margin: 0 auto;
+	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	max-width: $width-for-normal;
 }
 .event__mediaItem {
@@ -40,7 +43,8 @@
 	}
 }
 .event__mediaTitle {
-	margin: 0 auto 2*$line-for-normal auto;
+	padding: 0 0 2*$line-for-normal 0;
+	margin: 0 auto;
 	max-width: $width-for-normal;
 }
 
@@ -55,7 +59,6 @@
 @media (min-width: $screen-sm-min) {
 	.event__title {
 		margin: 0;
-		margin-bottom: $line-for-large;
 		max-width: none;
 	}
 	.event__main-image {
@@ -79,6 +82,5 @@
 	.event__mediaTitle {
 		max-width: none;
 		margin: 0;
-		margin-bottom: 2*$line-for-normal;
 	}
 }
