@@ -60,9 +60,10 @@ class Events_model extends CI_Model {
 			->order_by('date', 'desc')
 			->get()->result_array();
 		
-		$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
-		
-		$events = $this->add_friendly_date($events);
+		if (count($events) > 0) {
+			$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
+			$events = $this->add_friendly_date($events);
+		}
 		
 		return $events;
 	}

@@ -44,12 +44,17 @@ class Events extends CI_Controller {
 	public function by_date($year, $month, $day)
 	{
 		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
-		$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 		
-		if ($this->is_event_the_first($content_data['events'][0]) == false)
-			$content_data['next_url'] = $this->get_next_url($content_data['events']);
+		if (count($content_data['events']) > 0) {
+			$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 			
-		$data['content'] = $this->load->view('events/index', $content_data, true);
+			if ($this->is_event_the_first($content_data['events'][0]) == false)
+				$content_data['next_url'] = $this->get_next_url($content_data['events']);
+			
+			$data['content'] = $this->load->view('events/index', $content_data, true);
+		}
+		else
+			$data['content'] = $this->load->view('events/no-events', null, true);
 		
 		$header_data['active_year'] = $year;
 		$data['header'] = $this->load->view('templates/header', $header_data, true);

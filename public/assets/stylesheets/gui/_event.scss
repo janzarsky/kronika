@@ -44,6 +44,14 @@
 	max-width: $width-for-normal;
 }
 
+.noEvents {
+	
+}
+.noEvents__smiley {
+	font-size: $font-larger;
+	margin: $line-for-larger 0;
+}
+
 @media (min-width: $screen-sm-min) {
 	.event__title {
 		margin: 0;
