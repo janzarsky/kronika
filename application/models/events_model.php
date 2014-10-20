@@ -143,13 +143,15 @@ class Events_model extends CI_Model {
 	}
 	
 	private function get_month_name_in_genitive($month) {
-		return array(1 => 'ledna', "února", "března", "dubna", "května", "června",
-								 "července", "srpna", "září", "října", "listopadu", "prosince")[intval($month)];
+		$arr = array(1 => 'ledna', "února", "března", "dubna", "května", "června",
+								 "července", "srpna", "září", "října", "listopadu", "prosince");
+		return $arr[intval($month)];
 	}
 	
 	private function get_month_name_in_nominative($month) {
-		return array(1 => "leden", "únor", "březen", "duben", "květen", "červen",
-								 "červenec", "srpen", "září", "říjen", "listopad", "prosinec")[intval($month)];
+		$arr = array(1 => "leden", "únor", "březen", "duben", "květen", "červen",
+								 "červenec", "srpen", "září", "říjen", "listopad", "prosinec");
+		return $arr[intval($month)];
 	}
 	
 	private function get_prev_events_with_same_date($event) {
