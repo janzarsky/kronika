@@ -1,0 +1,44 @@
+/*html {
+	background-image : -webkit-linear-gradient(top, #fff 0, #fff 95%, #f00 95%, #f00 100%) ;
+	background-image : -moz-linear-gradient(top, #fff 0, #fff 95%, #f00 95%, #f00 100%) ;
+	background-image : linear-gradient(top, #fff 0, #fff 95%, #f00 95%, #f00 100%) ;
+	background-repeat : repeat-y ;
+	background-size : 100% 21px ;
+	background-position: 0 10.5px;
+	text-decoration: underline;
+}*/
+
+$event_background: #ffffff;
+$event_title: #422A05;
+$event_date: #808073;
+$nav_color: #808073;
+$gallery_background: #222222;
+
+$navbar_links: #422A05;
+$decade_background: #FDFBCA;
+$decade_background_selected: #FCEF8D;
+$year_background: #FDFBCA;
+$year_background_selected: #FFDF3B;
+
+$year_header_text: #422A05;
+$year_header_background: none;
+$month_header_text: #422A05;
+$month_header_background: none;
+
+$font-larger: 2.25em;
+$font-large: 1.5em;
+$font-normal: 1em;
+$font-small: 0.6667em;
+$font-smaller: 0.4444em;
+
+$line-for-larger: 1.3333em;
+$line-for-large: 1em;
+$line-for-normal: 1.5em;
+$line-for-small: 2.25em;
+$line-for-smaller: 3.375em;
+
+$width-for-larger: 14.666em;
+$width-for-large: 22em;
+$width-for-normal: 33em;
+$width-for-small: 49.475em;
+$width-for-smaller: 74.324em;

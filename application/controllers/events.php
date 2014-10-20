@@ -10,61 +10,99 @@ class Events extends CI_Controller {
 
 	public function index()
 	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events());
+		$content_data['events'] = $this->events_model->get_events_with_main_images();
+		$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 		$data['content'] = $this->load->view('events/index', $content_data, true);
-		
-		$nav_data['active_year'] = $this->getYear($content_data['events'], date('Y'));
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
 		
 		$this->load->view('templates/main', $data);
 	}
 	
 	public function by_id($id)
 	{
-		$content_data['event'] = $this->events_model->get_event($id);
-		$content_data['event']['main_image'] = $this->events_model->get_main_image($id);
+		$content_data['event'] = $this->events_model->get_event_with_main_image($id);
+		$content_data['event']['media'] = $this->events_model->get_media($id);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
+		$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
+		$data['header'] = $this->load->view('templates/header', $header_data, true);
 		
 		$this->load->view('templates/main', $data);
 	}
 	
 	public function by_url($url)
 	{
-		$content_data['event'] = $this->events_model->get_event_by_url($url);
-		$content_data['event']['main_image'] = $this->events_model->get_main_image($content_data['event']['id']);
+		$content_data['event'] = $this->events_model->get_event_by_url_with_main_image($url);
+		$content_data['event']['media'] = $this->events_model->get_media($content_data['event']['id']);
 		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$nav_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
+		$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
+		$data['header'] = $this->load->view('templates/header', $header_data, true);
 		
 		$this->load->view('templates/main', $data);
 	}
 	
 	public function by_date($year, $month, $day)
 	{
-		$content_data['events'] = $this->addHeadersAndImages($this->events_model->get_events_by_date($year, $month, $day));
-		$data['content'] = $this->load->view('events/index', $content_data, true);
+		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
 		
-		$nav_data['active_year'] = $this->getYear($content_data['events'], $year);
-		$data['nav'] = $this->load->view('templates/nav', $nav_data, true);
+		if (count($content_data['events']) > 0) {
+			if ($this->is_event_the_last($content_data['events'][count($content_data['events']) - 1]) == false)
+				$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
+			
+			if ($this->is_event_the_first($content_data['events'][0]) == false)
+				$content_data['next_url'] = $this->get_next_url($content_data['events']);
+			
+			$data['content'] = $this->load->view('events/index', $content_data, true);
+		}
+		else
+			$data['content'] = $this->load->view('events/no-events', null, true);
+		
+		$header_data['active_year'] = $year;
+		$data['header'] = $this->load->view('templates/header', $header_data, true);
 		
 		$this->load->view('templates/main', $data);
 	}
-	
-	private function addHeadersAndImages($events) {
-		$events = $this->events_model->add_headers($events);
-		$events = $this->events_model->add_main_images($events);
-		
-		return $events;
-	}
+
 	
 	private function getYear($events, $selected_year) {
 		if (count($events) == 0)
 			return $selected_year;
 		else
 			return substr($events[0]['date'], 0, 4);
+	}
+	
+	private function is_event_the_first($event) {
+		return $this->db
+			->select('id')
+			->from('events')
+			->where('date >=', $event['date'])
+			->where('id <', $event['id'])
+			->get()->num_rows() == 0;
+	}
+	
+	private function is_event_the_last($event) {
+		return $this->db
+			->select('id')
+			->from('events')
+			->where('date <=', $event['date'])
+			->where('id >', $event['id'])
+			->get()->num_rows() == 0;
+	}
+	
+	private function get_prev_url($events) {
+		$last_date = $events[count($events) - 1]['date'];
+		
+		$prev_date = new DateTime($last_date);
+		$prev_date->sub(new DateInterval('P1D'));
+		
+		return $prev_date->format('Y/m/d');
+	}
+	
+	private function get_next_url($events) {
+		$next_events = $this->events_model->get_events_by_date_reverse($events[0]['date']);
+		
+		$next_date = new DateTime($next_events[count($next_events) - 1]['date']);
+		
+		return $next_date->format('Y/m/d');
 	}
 }

@@ -1,0 +1,18 @@
+.dateHeader {
+	padding: 1.5em 0;
+	line-height: 1.5em;
+}
+.dateHeader--year {
+	color: $year_header_text;
+	background: $year_header_background;
+}
+.dateHeader--month {
+	color: $month_header_text;
+	background: $month_header_background;
+}
+
+@media (min-width: $screen-sm-min) {
+	.dateHeader {
+		text-align: right;
+	}
+}

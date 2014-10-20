@@ -1,0 +1,63 @@
+.pageHeader {
+	font-size: $font-larger;
+	line-height: $line-for-larger;
+	padding: 0.5*$line-for-larger 0 0.25*$line-for-larger 0;
+	margin: 0 auto;
+	max-width: $width-for-larger;
+	color: $gray-dark;
+	
+	a {
+		color: $text-color;
+	}
+}
+
+.pageNav {
+	font-size: $font-normal;
+	line-height: $line-for-normal;
+	padding: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
+	margin: 0 auto;
+	max-width: $width-for-normal;
+	color: $nav-color;
+}
+.pageNav__year {
+	padding: 0.5em;
+	color: $nav-color;
+}
+.pageNav__year--active {
+	color: $gray-dark;
+}
+.pageNav__year--additional {
+	display: none;
+}
+
+.loader {
+	font-size: $font-normal;
+	line-height: $line-for-normal;
+	max-width: $width-for-normal;
+	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
+	margin: 0 auto;
+	
+	a {
+		color: $text-color;
+	}
+}
+
+@media (min-width: $screen-sm-min) {
+	.pageHeader {
+		margin: 0;
+		max-width: none;
+		text-align: right;
+	}
+	
+	.pageNav {
+		margin: 0;
+		max-width: none;
+	}
+	.pageNav__year--additional {
+		display: inline;
+	}
+	
+	.loader {
+		margin: 0;
+	}
+}
