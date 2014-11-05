@@ -41,6 +41,12 @@
 $route['default_controller'] = "events";
 $route['404_override'] = '';
 
+$route['admin'] = "edit";
+
+$route['admin/edit'] = "edit";
+$route['admin/edit/(:num)'] = "edit/edit/$1";
+$route['admin/edit/(:any)'] = "edit/$1";
+
 $route['d/(:num)'] = "events/by_id/$1";
 $route['detail/(:any)'] = "events/by_url/$1";
 
