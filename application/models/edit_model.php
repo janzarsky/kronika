@@ -5,4 +5,12 @@ class Edit_model extends CI_Model {
 	{
 		$this->load->database();
 	}
+	
+	public function get_event($event_id) {
+		return $this->db
+			->select('*')
+			->from('events')
+			->where('id', $event_id)
+			->get()->row_array();
+	}
 }

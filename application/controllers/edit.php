@@ -9,9 +9,13 @@ class Edit extends CI_Controller {
 		$this->load->model('user_model');
 	}
 
-	public function index()
+	public function index($event_id)
 	{
-		$data['content'] = '';
+		$this->user_model->check_login_with_redirect();
+		
+		$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
+		$content_data['event'] = $this->edit_model->get_event($event_id);
+		$data['content'] = $this->load->view('edit/edit', $content_data, true);
 		
 		$header_data['name'] = $this->user_model->get_name();
 		$header_data['permissions'] = $this->user_model->get_permissions();
