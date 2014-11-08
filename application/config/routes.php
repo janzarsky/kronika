@@ -41,6 +41,8 @@
 $route['default_controller'] = "events";
 $route['404_override'] = '';
 
+$route['logout'] = "login/logout";
+
 $route['admin'] = "edit";
 
 $route['admin/edit'] = "edit";

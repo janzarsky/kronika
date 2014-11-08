@@ -18,4 +18,12 @@ class Login_model extends CI_Model {
 		else
 			return ($password == $q->row_array()['password']);
 	}
+	
+	public function get_id_from_email($email) {
+		return $this->db
+			->select('id')
+			->from('users')
+			->where('email', $email)
+			->get()->row_array()['id'];
+	}
 }

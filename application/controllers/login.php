@@ -22,6 +22,7 @@ class Login extends CI_Controller {
 	public function submit() {
 		if ($this->login_model->is_password_right($this->input->post('password'), $this->input->post('email'))) {
 			$this->session->set_userdata('logged_in', '1');
+			$this->session->set_userdata('user_id', $this->login_model->get_id_from_email($this->input->post('email')));
 			
 			redirect('/admin/edit');
 		}
@@ -35,6 +36,7 @@ class Login extends CI_Controller {
 	
 	public function logout() {
 		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('user_id');
 		$this->session->sess_destroy();
 		redirect('/admin/edit');
 	}
