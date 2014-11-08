@@ -10,15 +10,16 @@ class Edit extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		$this->load->helper('form');
+		$this->load->helper('language');
 	}
 
 	public function index($event_id = 0)
 	{
 		$this->user_model->check_login_with_redirect();
 		
-		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean');
 		
 		if ($this->form_validation->run() == FALSE) {
@@ -33,7 +34,23 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			echo "success";
+			echo "success" . $this->input->post('url');
 		}
+	}
+	
+	function url($str) {
+    $str = strtolower(convert_to_ascii($str));
+    $str = preg_replace('/[^a-zA-Z0-9]+/u', '-', $str);
+    $str = str_replace('--', '-', $str);
+    $str = trim($str, '-');
+		
+		$str = strtolower($str);
+		
+		if (strlen($str) == 0) {
+			$this->form_validation->set_message('url', 'Pole %s nesmí být prázdné');
+			return false;
+		}
+		
+		return $str;
 	}
 }
