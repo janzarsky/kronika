@@ -17,6 +17,6 @@ class Edit extends CI_Controller {
 		$header_data['permissions'] = $this->user_model->get_permissions();
 		$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
 		
-		$this->load->view('templates/main', $data);
+		$this->load->view('templates/admin', $data);
 	}
 }
