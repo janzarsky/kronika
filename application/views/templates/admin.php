@@ -12,6 +12,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<?php
+		if (isset($header))
+			echo $header;
+	?>
+	
 	<div class="container-fluid">
 		<?php echo $content; ?>
 	</div>

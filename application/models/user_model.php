@@ -20,6 +20,14 @@ class User_model extends CI_Model {
 			->get()->row_array();
 	}
 	
+	public function get_name() {
+		return $this->db
+			->select('name')
+			->from('users')
+			->where('id', $this->session->userdata('user_id'))
+			->get()->row_array()['name'];
+	}
+	
 	public function check_login_with_redirect() {
 		if ($this->session->userdata('logged_in') == false)
 			redirect('/login');
