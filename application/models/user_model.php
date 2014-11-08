@@ -20,6 +20,10 @@ class User_model extends CI_Model {
 			->get()->row_array();
 	}
 	
+	public function get_id() {
+		return $this->session->userdata('user_id') == 1;
+	}
+	
 	public function get_name() {
 		return $this->db
 			->select('name')
