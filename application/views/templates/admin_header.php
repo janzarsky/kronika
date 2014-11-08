@@ -12,19 +12,19 @@
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="<?php echo base_url('admin/archive'); ?>">Události</a></li>
+				<li class="active"><a href="<?php echo base_url('archive'); ?>">Události</a></li>
 				
 				<?php if ($permissions['can_edit_users']): ?>
-					<li><a href="<?php echo base_url('admin/users'); ?>">Uživatelé</a></li>
+					<li><a href="<?php echo base_url('users'); ?>">Uživatelé</a></li>
 				<?php endif; ?>
 				
 				<?php if ($permissions['can_edit_settings']): ?>
-					<li><a href="<?php echo base_url('admin/settings'); ?>">Nastavení</a></li>
+					<li><a href="<?php echo base_url('settings'); ?>">Nastavení</a></li>
 				<?php endif; ?>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<?php echo base_url('admin/profile'); ?>"><?php echo $name; ?></a></li>
+				<li><a href="<?php echo base_url('profile'); ?>"><?php echo $name; ?></a></li>
 				<li><a href="<?php echo base_url('logout'); ?>">Odhlásit se</a></li>
 			</ul>
 		</div>

@@ -1,4 +1,4 @@
-<form class="form" role="form" action="<?php echo base_url('admin/edit/submit'); ?>" method="post">
+<form class="form" role="form" action="<?php echo base_url('edit/submit'); ?>" method="post">
 	<div class="row">
 		<div class="col-sm-7 col-sm-push-5">
 			<div class="form-group">

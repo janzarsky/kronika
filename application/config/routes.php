@@ -45,11 +45,7 @@ $route['logout'] = "login/logout";
 
 $route['admin'] = "archive";
 
-$route['admin/archive'] = "archive";
-
-$route['admin/edit'] = "edit";
-$route['admin/edit/(:num)'] = "edit/edit/$1";
-$route['admin/edit/(:any)'] = "edit/$1";
+$route['edit/(:num)'] = "edit/edit/$1";
 
 $route['d/(:num)'] = "events/by_id/$1";
 $route['detail/(:any)'] = "events/by_url/$1";

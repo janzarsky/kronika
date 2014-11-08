@@ -11,7 +11,7 @@
 				<?php foreach ($events as $event): ?>
 					<tr>
 						<td>
-							<a href="<?php echo base_url('/admin/edit/' . $event['id']); ?>">
+							<a href="<?php echo base_url('/edit/' . $event['id']); ?>">
 								<?php echo $event['title']; ?>
 							</a>
 						</td>
