@@ -6,7 +6,7 @@
 	<meta name="description" content="Website for keeping important events from history" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 	
-	<link href="<?php echo stylesheet('bootstrap-custom.css'); ?>" rel="stylesheet">
+	<link href="<?php echo stylesheet('bootstrap.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo stylesheet('screen.css'); ?>" rel="stylesheet">
 	
 	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
