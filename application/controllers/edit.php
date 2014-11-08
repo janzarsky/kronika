@@ -17,10 +17,10 @@ class Edit extends CI_Controller {
 	{
 		$this->user_model->check_login_with_redirect();
 		
-		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]');
-		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_czech');
+		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
 		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
-		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean');
+		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_czech');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
@@ -52,5 +52,13 @@ class Edit extends CI_Controller {
 		}
 		
 		return $str;
+	}
+	
+	function date($str) {
+		
+	}
+	
+	function czech($str) {
+		
 	}
 }
