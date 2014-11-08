@@ -43,7 +43,9 @@ $route['404_override'] = '';
 
 $route['logout'] = "login/logout";
 
-$route['admin'] = "edit";
+$route['admin'] = "archive";
+
+$route['admin/archive'] = "archive";
 
 $route['admin/edit'] = "edit";
 $route['admin/edit/(:num)'] = "edit/edit/$1";
