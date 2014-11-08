@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;;;;;;AAAA,IAAK;EACJ,WAAW,EAAE,kEAAkE",
+"sources": ["../assets/stylesheets/base/_general.scss"],
+"names": [],
+"file": "admin.css"
+}
