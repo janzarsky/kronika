@@ -1,4 +1,14 @@
-<form class="form" role="form" action="<?php echo base_url('edit/submit'); ?>" method="post">
+<div class="row">
+	<div class="col-sm-12">
+		<?php if (validation_errors() != ''): ?>
+			<div class="alert alert-danger" role="alert">
+				<?php echo validation_errors(); ?>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>
+
+<form class="form" role="form" action="" method="post">
 	<div class="row">
 		<div class="col-sm-7 col-sm-push-5">
 			<div class="form-group">
