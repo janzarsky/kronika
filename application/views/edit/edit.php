@@ -14,7 +14,7 @@
 			<div class="form-group">
 				<label class="sr-only" for="event_title">Titulek</label>
 				<input type="text" class="form-control" name="title" id="event_title" placeholder="Titulek"
-					value="<?php echo $event['title']; ?>">
+					value="<?php echo set_value('title', $event['title']); ?>">
 			</div>
 		</div>
 		
@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label class="sr-only" for="event_date">Datum</label>
 				<input type="text" class="form-control" name="date" id="event_date" placeholder="Datum"
-					value="<?php echo $event['date']; ?>">
+					value="<?php echo set_value('date', $event['date']); ?>">
 			</div>
 		</div>
 	</div>
@@ -32,12 +32,12 @@
 			<div class="form-group">
 				<label class="sr-only" for="event_url">URL</label>
 				<input type="text" class="form-control" name="url" id="event_url" placeholder="URL"
-					value="<?php echo $event['url']; ?>">
+					value="<?php echo set_value('url', $event['url']); ?>">
 			</div>
 		</div>
 		
 		<div class="col-sm-7">
-			<textarea class="form-control" name="text" rows="7"><?php echo $event['text']; ?></textarea>
+			<textarea class="form-control" name="text" rows="7"><?php echo set_value('text', $event['text']); ?></textarea>
 		</div>
 	</div>
 	
