@@ -12,6 +12,7 @@ class Events_model extends CI_Model {
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
 			->where('events.id', $id)
+			->where('events.published', 1)
 			->get()->result_array();
 		
 		if (count($events) > 0) {
@@ -28,6 +29,7 @@ class Events_model extends CI_Model {
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
 			->where('events.url', $url)
+			->where('events.published', 1)
 			->get()->result_array();
 		
 		if (count($events) > 0) {
@@ -43,6 +45,7 @@ class Events_model extends CI_Model {
 			->select('events.*, media.id as main_image_id')
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->where('events.published', 1)
 			->limit($this->config->item('posts_per_page'))
 			->order_by('events.date', 'desc')
 			->get()->result_array();
@@ -65,6 +68,7 @@ class Events_model extends CI_Model {
 			->select('events.*, media.id as main_image_id')
 			->from('events')
 			->join('media', 'media.event_id = events.id AND media.main = 1 AND media.type = 0', 'left')
+			->where('events.published', 1)
 			->where('date <=', $date)
 			->limit($this->config->item('posts_per_page'))
 			->order_by('date', 'desc')
@@ -172,6 +176,7 @@ class Events_model extends CI_Model {
 			->select('*')
 			->from('events')
 			->where('date', $event['date'])
+			->where('events.published', 1)
 			->where('id >', $event['id'])
 			->get()->result_array();
 	}
@@ -209,6 +214,7 @@ class Events_model extends CI_Model {
 			->select('id, date')
 			->from('events')
 			->where('date >', $date)
+			->where('events.published', 1)
 			->order_by('date', 'asc')
 			->limit($this->config->item('posts_per_page'))
 			->get()->result_array();
