@@ -53,7 +53,8 @@
 				</label>
 			</div>
 			
-			<button type="submit" class="btn btn-default">Uložit</button>
+			<button type="submit" class="btn btn-primary">Uložit</button>
+			<a class="btn btn-default" href="<?php echo base_url('/archive'); ?>" role="button">Zavřít</a>
 		</div>
 	</div>
 </form>
