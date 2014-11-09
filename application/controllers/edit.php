@@ -136,7 +136,7 @@ class Edit extends CI_Controller {
 	}
 	
 	function get_event_data() {
-		return array(
+		$data = array(
 			'title' => $this->input->post('title'),
 			'text' => $this->input->post('text'),
 			'url' => $this->input->post('url'),
@@ -144,5 +144,14 @@ class Edit extends CI_Controller {
 			'date_precision' => $this->date_precision,
 			'owner' => $this->user_model->get_id()
 		);
+		
+		$permissions = $this->user_model->get_permissions();
+		
+		if ($permissions['can_publish'] && $this->input->post('publish'))
+			$data['published'] = true;
+		else if ($permissions['can_publish'] == false && $this->input->post('send_for_approval'))
+			$data['sent_for_approval'] = true;
+		
+		return $data;
 	}
 }

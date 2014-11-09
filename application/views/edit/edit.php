@@ -46,9 +46,11 @@
 			<div class="checkbox">
 				<label>
 					<?php if ($can_publish): ?>
-						<input type="checkbox" name="publish"> Publikovat
+						<input type="checkbox" name="publish" value="1"
+							<?php echo set_checkbox('publish', '1', $event['published'] == 1); ?>> Publikovat
 					<?php else: ?>
-						<input type="checkbox" name="send_for_approval"> Odeslat ke schválení
+						<input type="checkbox" name="send_for_approval" value="1"
+							<?php echo set_checkbox('send_for_aproval', '1', $event['sent_for_approval'] == 1); ?>> Odeslat ke schválení
 					<?php endif; ?>
 				</label>
 			</div>
