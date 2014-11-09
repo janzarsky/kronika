@@ -5,6 +5,7 @@
 				<tr>
 					<th>Název</th>
 					<th>Datum</th>
+					<th>Status</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -15,7 +16,21 @@
 								<?php echo $event['title']; ?>
 							</a>
 						</td>
-						<td><?php echo $event['date']; ?></td>
+						
+						<td>
+							<?php echo $event['date']; ?>
+						</td>
+						
+						<td>
+							<?php
+								if ($event['published'])
+									echo 'Publikováno';
+								else if ($event['sent_for_approval'])
+									echo 'Odesláno ke schválení';
+								else
+									echo 'Návrh';
+							?>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
