@@ -10,6 +10,12 @@
 body {
   font-family: "Libre Baskerville", "Helvetica Neue", Helvetica,Arial, sans-serif; }
 
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url("../fonts/librebaskerville-regular-webfont.eot");
+  src: url("../fonts/librebaskerville-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/librebaskerville-regular-webfont.woff2") format("woff2"), url("../fonts/librebaskerville-regular-webfont.woff") format("woff"), url("../fonts/librebaskerville-regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 .dateHeader {
   padding: 1.5em 0;
   line-height: 1.5em; }
