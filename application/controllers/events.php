@@ -11,8 +11,13 @@ class Events extends CI_Controller {
 	public function index()
 	{
 		$content_data['events'] = $this->events_model->get_events_with_main_images();
-		$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
-		$data['content'] = $this->load->view('events/index', $content_data, true);
+		
+		if ($content_data['events']) {
+			$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
+			$data['content'] = $this->load->view('events/index', $content_data, true);
+		}
+		else
+			$data['content'] = $this->load->view('events/no-events', null, true);
 		
 		$this->load->view('templates/main', $data);
 	}
@@ -20,11 +25,19 @@ class Events extends CI_Controller {
 	public function by_id($id)
 	{
 		$content_data['event'] = $this->events_model->get_event_with_main_image($id);
-		$content_data['event']['media'] = $this->events_model->get_media($id);
-		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
-		$data['header'] = $this->load->view('templates/header', $header_data, true);
+		if ($content_data['event']) {
+			$content_data['event']['media'] = $this->events_model->get_media($id);
+			$data['content'] = $this->load->view('events/detail', $content_data, true);
+			
+			$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
+			$data['header'] = $this->load->view('templates/header', $header_data, true);
+		}
+		else {
+			$data['content'] = $this->load->view('events/no-events', null, true);
+			
+			$data['header'] = $this->load->view('templates/header', null, true);
+		}
 		
 		$this->load->view('templates/main', $data);
 	}
@@ -32,11 +45,19 @@ class Events extends CI_Controller {
 	public function by_url($url)
 	{
 		$content_data['event'] = $this->events_model->get_event_by_url_with_main_image($url);
-		$content_data['event']['media'] = $this->events_model->get_media($content_data['event']['id']);
-		$data['content'] = $this->load->view('events/detail', $content_data, true);
 		
-		$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
-		$data['header'] = $this->load->view('templates/header', $header_data, true);
+		if ($content_data['event']) {
+			$content_data['event']['media'] = $this->events_model->get_media($content_data['event']['id']);
+			$data['content'] = $this->load->view('events/detail', $content_data, true);
+			
+			$header_data['active_year'] = $this->getYear(array($content_data['event']), date('Y'));
+			$data['header'] = $this->load->view('templates/header', $header_data, true);
+		}
+		else {
+			$data['content'] = $this->load->view('events/no-events', null, true);
+			
+			$data['header'] = $this->load->view('templates/header', null, true);
+		}
 		
 		$this->load->view('templates/main', $data);
 	}
@@ -45,7 +66,7 @@ class Events extends CI_Controller {
 	{
 		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
 		
-		if (count($content_data['events']) > 0) {
+		if ($content_data['events']) {
 			if ($this->is_event_the_last($content_data['events'][count($content_data['events']) - 1]) == false)
 				$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 			

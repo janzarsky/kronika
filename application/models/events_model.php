@@ -14,9 +14,12 @@ class Events_model extends CI_Model {
 			->where('events.id', $id)
 			->get()->result_array();
 		
-		$events = $this->add_friendly_date($events);
-		
-		return $events[0];
+		if (count($events) > 0) {
+			$events = $this->add_friendly_date($events);
+			return $events[0];
+		}
+		else
+			return false;
 	}
 	
 	public function get_event_by_url_with_main_image($url) {
@@ -27,9 +30,12 @@ class Events_model extends CI_Model {
 			->where('events.url', $url)
 			->get()->result_array();
 		
-		$events = $this->add_friendly_date($events);
-		
-		return $events[0];
+		if (count($events) > 0) {
+			$events = $this->add_friendly_date($events);
+			return $events[0];
+		}
+		else
+			return false;
 	}
 	
 	public function get_events_with_main_images() {
@@ -41,11 +47,15 @@ class Events_model extends CI_Model {
 			->order_by('events.date', 'desc')
 			->get()->result_array();
 		
-		$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
-		
-		$events = $this->add_friendly_date($events);
-		
-		return $events;
+		if (count($events) > 0) {
+			$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
+			
+			$events = $this->add_friendly_date($events);
+			
+			return $events;
+		}
+		else
+			return false;
 	}
 	
 	public function get_events_by_date_with_main_images($year, $month, $day) {
@@ -62,10 +72,13 @@ class Events_model extends CI_Model {
 		
 		if (count($events) > 0) {
 			$events = array_merge($events, $this->get_prev_events_with_same_date($events[count($events) - 1]));
+			
 			$events = $this->add_friendly_date($events);
+			
+			return $events;
 		}
-		
-		return $events;
+		else
+			return false;
 	}
 	
 	private function get_date_string($year, $month, $day) {
@@ -164,30 +177,45 @@ class Events_model extends CI_Model {
 	}
 	
 	public function get_main_image($event_id) {
-		return $this->db
+		$media = $this->db
 			->select('*')
 			->from('media')
 			->where('event_id', $event_id)
 			->where('main', '1')
 			->where('type', '0')
 			->get()->row_array();
+		
+		if (count($media) > 0)
+			return $media;
+		else
+			return false;
 	}
 	
 	public function get_media($event_id) {
-		return $this->db
+		$media = $this->db
 			->select('*')
 			->from('media')
 			->where('event_id', $event_id)
 			->get()->result_array();
+		
+		if (count($media) > 0)
+			return $media;
+		else
+			return false;
 	}
 	
 	public function get_events_by_date_reverse($date) {
-		return $this->db
+		$events = $this->db
 			->select('id, date')
 			->from('events')
 			->where('date >', $date)
 			->order_by('date', 'asc')
 			->limit($this->config->item('posts_per_page'))
 			->get()->result_array();
+		
+		if (count($events) > 0)
+			return $events;
+		else
+			return false;
 	}
 }
