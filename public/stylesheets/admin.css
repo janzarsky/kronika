@@ -16,5 +16,17 @@ body {
   src: url("../fonts/librebaskerville-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/librebaskerville-regular-webfont.woff2") format("woff2"), url("../fonts/librebaskerville-regular-webfont.woff") format("woff"), url("../fonts/librebaskerville-regular-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+.edit {
+  line-height: 1.5em; }
+
+.edit__title {
+  color: black;
+  font-size: 1.5em;
+  line-height: 1em; }
+  .edit__title a {
+    color: #333; }
+
+.edit__date {
+  color: #808073; }
 
 /*# sourceMappingURL=admin.css.map */

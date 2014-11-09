@@ -1,0 +1,15 @@
+.edit {
+	line-height: $line-for-normal;
+}
+.edit__title {
+	color: black;
+	font-size: $font-large;
+	line-height: $line-for-large;
+	
+	a {
+		color: $text-color;
+	}
+}
+.edit__date {
+	color: $event_date;
+}
