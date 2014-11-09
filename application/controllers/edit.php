@@ -17,10 +17,10 @@ class Edit extends CI_Controller {
 	{
 		$this->user_model->check_login_with_redirect();
 		
-		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_czech');
+		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
 		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
-		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_czech');
+		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
@@ -34,7 +34,7 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			echo "success" . $this->input->post('url');
+			echo "success" . $this->input->post('title');
 		}
 	}
 	
@@ -58,7 +58,22 @@ class Edit extends CI_Controller {
 		
 	}
 	
-	function czech($str) {
+	function special_chars($str) {
+		$html_chars = array("&#0;", "&#1;", "&#2;", "&#3;", "&#4;", "&#5;", "&#6;", "&#7;",
+												"&#8;", "&#9;", "&#10;", "&#11;", "&#12;", "&#13;", "&#14;", "&#15;",
+												"&#16;", "&#17;", "&#18;", "&#19;", "&#20;", "&#21;", "&#22;", "&#23;",
+												"&#24;", "&#25;", "&#26;", "&#27;", "&#28;", "&#29;", "&#30;", "&#31;");
 		
+		$html = implode(',', $html_chars);
+		
+		$output = preg_replace_callback("/(&#[0-9]+;)/", function($m) { return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES"); }, $html); 
+		
+		$utf8_chars = explode(',', $output);
+		
+		$final =  str_replace($utf8_chars, '', $str);
+		
+		var_dump($final); exit;
+		
+		return $final;
 	}
 }
