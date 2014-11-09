@@ -18,6 +18,23 @@
 	?>
 	
 	<div class="container-fluid">
+		<?php if ($this->session->flashdata('message') != ''): ?>
+			<?php
+				if ($this->session->flashdata('type') == '')
+					$type = 'success';
+				else
+					$type = $this->session->flashdata('type');
+			?>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-<?php echo $type; ?>" role="alert">
+						<?php echo $this->session->flashdata('message'); ?>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+		
 		<?php echo $content; ?>
 	</div>
 	

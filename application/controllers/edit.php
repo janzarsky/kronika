@@ -40,6 +40,9 @@ class Edit extends CI_Controller {
 			
 			$this->edit_model->update_event($event_id, $data);
 			
+			$this->session->set_flashdata('message', 'Událost je uložená. <a href="' . base_url('/d/' . $event_id) .
+																		'" target="_blank">Zobrazit událost</a>');
+			
 			redirect('/archive');
 		}
 	}
