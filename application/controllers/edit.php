@@ -36,7 +36,11 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			echo "success" . $this->input->post('date') . ' ' . $this->date_precision;
+			$data = $this->get_event_data();
+			
+			$this->edit_model->update_event($event_id, $data);
+			
+			redirect('/archive');
 		}
 	}
 	
@@ -126,5 +130,16 @@ class Edit extends CI_Controller {
 		$final =  str_replace($utf8_chars, '', $str);
 		
 		return $final;
+	}
+	
+	function get_event_data() {
+		return array(
+			'title' => $this->input->post('title'),
+			'text' => $this->input->post('text'),
+			'url' => $this->input->post('url'),
+			'date' => $this->input->post('date'),
+			'date_precision' => $this->date_precision,
+			'owner' => $this->user_model->get_id()
+		);
 	}
 }

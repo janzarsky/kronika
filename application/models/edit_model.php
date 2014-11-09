@@ -13,4 +13,8 @@ class Edit_model extends CI_Model {
 			->where('id', $event_id)
 			->get()->row_array();
 	}
+	
+	public function update_event($event_id, $data) {
+		$this->db->update('events', $data, array('id' => $event_id));
+	}
 }
