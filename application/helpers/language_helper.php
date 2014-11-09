@@ -17,3 +17,16 @@ function convert_to_ascii($str) {
 	
 	return strtr($str, $convertTable);
 }
+
+function get_last_day_in_month($year, $month) {
+	if (checkdate($month, 31, $year))
+		return 31;
+	else if (checkdate($month, 30, $year))
+		return 30;
+	else if (checkdate($month, 29, $year))
+		return 29;
+	else if (checkdate($month, 28, $year))
+		return 28;
+	else
+		return 0;
+}

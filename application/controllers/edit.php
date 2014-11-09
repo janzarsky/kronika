@@ -2,6 +2,8 @@
 
 class Edit extends CI_Controller {
 	
+	private $date_precision = false;
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -34,7 +36,7 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			echo "success" . $this->input->post('title');
+			echo "success" . $this->input->post('date') . ' ' . $this->date_precision;
 		}
 	}
 	
@@ -55,7 +57,92 @@ class Edit extends CI_Controller {
 	}
 	
 	function date($str) {
+		$str = str_replace(array('-', '_', '/', '.', ','), ' ', $str);
+		$str = preg_replace('/\s+/', ' ', $str);
 		
+		$all_words = explode(' ', $str);
+		
+		foreach ($all_words as $word)
+			if ($this->form_validation->integer($word))
+				$legit_words[] = array('value' => $word, 'type' => 'int', 'date_type' => '');
+			else {
+				$month = $this->get_month_from_string($word);
+				
+				if ($month != false)
+					$legit_words[] = array('value' => $month, 'date_type' => 'month');
+			}
+		
+		foreach ($legit_words as $key => $word)
+			if ($word['date_type'] == '' && $word['type'] == 'int') {
+				if ($word['value'] >= 2200) {
+					$this->form_validation->set_message('date', 'Špatný formát data');
+					return false;
+				}
+				else if ($word['value'] >= 1900) {
+					$legit_words[$key]['date_type'] = 'year';
+				}
+				else if ($word['value'] > 31) {
+					$this->form_validation->set_message('date', 'Špatný formát data');
+					return false;
+				}
+				else if ($word['value'] <= 0) {
+					$this->form_validation->set_message('date', 'Špatný formát data');
+					return false;
+				}
+				else {
+					$legit_words[$key]['date_type'] = 'day_or_month';
+				}
+			}
+		
+		$count = count($legit_words);
+		
+		if ($count == 0) {
+			$this->form_validation->set_message('date', 'Špatný formát data');
+			return false;
+		}
+		else if ($count == 1) {
+			if ($legit_words[0]['date_type'] == 'year') {
+				$this->date_precision = 1;
+				return $legit_words[0]['value'] . '-12-31';
+			}
+		}
+		else if ($count == 2) {
+			if ($legit_words[0]['date_type'] == 'year' && $legit_words[1]['date_type'] == 'day_or_month') {
+				$temp = $legit_words[0];
+				$legit_words[0] = $legit_words[1];
+				$legit_words[1] = $temp;
+			}
+			
+			if ($legit_words[0]['date_type'] == 'month_or_day' && $legit_words[1]['date_type'] == 'year') {
+				$this->date_precision = 2;
+				return $legit_words[1]['value'] . '-' . $legit_words[0]['value'] . '-'
+					. get_last_day_in_month($legit_words[1]['value'], $legit_words[0]['value']);
+			}
+		}
+		else
+			return false;
+	}
+	
+	function get_month_from_string($str) {
+		$months = array(
+			'leden' => 1, 'ledna' => 1,
+			'únor' => 2, 'února' => 2,
+			'březen' => 3, 'března' => 3,
+			'duben' => 4, 'dubna' => 4,
+			'květen' => 5, 'května' => 5,
+			'červen' => 6, 'června' => 6,
+			'červenec' => 7, 'července' => 7,
+			'srpen' => 8, 'srpna' => 8,
+			'září' => 9, 'září' => 9,
+			'říjen' => 10, 'října' => 10,
+			'listopad' => 11, 'listopadu' => 11,
+			'prosinec' => 12, 'prosince' => 12
+		);
+		
+		if (key_exists($str, $months))
+			return $months[$str];
+		else
+			return false;
 	}
 	
 	function special_chars($str) {
@@ -71,8 +158,6 @@ class Edit extends CI_Controller {
 		$utf8_chars = explode(',', $output);
 		
 		$final =  str_replace($utf8_chars, '', $str);
-		
-		var_dump($final); exit;
 		
 		return $final;
 	}
