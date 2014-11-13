@@ -9,7 +9,7 @@
 </div>
 
 <section class="edit">
-	<form class="form form-horizontal" role="form" action="" method="post">
+	<form class="form form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-7 col-sm-push-5">
 				<div class="form-group">
@@ -40,6 +40,15 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="URL"
 								value="<?php echo set_value('url', $event['url']); ?>">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="event_url">Média</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control edit__file" name="userfile" id="event_file">
 						</div>
 					</div>
 				</div>

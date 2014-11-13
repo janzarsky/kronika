@@ -11,6 +11,7 @@ class Edit extends CI_Controller {
 		$this->load->model('user_model');
 		
 		$this->load->library('form_validation');
+		$this->load->library('upload');
 		$this->load->helper('form');
 		$this->load->helper('language');
 	}
@@ -24,7 +25,14 @@ class Edit extends CI_Controller {
 		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
 		
-		if ($this->form_validation->run() == FALSE) {
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'jpg';
+		$this->upload->initialize($config);
+		
+		$success_validation = $this->form_validation->run();
+		$success_upload = $this->upload->do_upload();
+		
+		if ($success_validation == false || $success_upload == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
 			$content_data['event'] = $this->edit_model->get_event($event_id);
 			$data['content'] = $this->load->view('edit/edit', $content_data, true);
@@ -36,6 +44,8 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
+			$this->process_image($this->upload->data(), $event_id);
+			
 			$data = $this->get_event_data();
 			
 			$this->edit_model->update_event($event_id, $data);
@@ -45,6 +55,14 @@ class Edit extends CI_Controller {
 			
 			redirect('/edit/' . $event_id);
 		}
+	}
+	
+	function process_image($upload_data, $event_id) {
+		$id = $this->edit_model->add_media($event_id);
+		
+		$images_path = FCPATH . 'public/media/images/';
+		
+		copy($upload_data['full_path'], $images_path . 'h1080px/' . $id . '.jpg');
 	}
 	
 	function url($str) {

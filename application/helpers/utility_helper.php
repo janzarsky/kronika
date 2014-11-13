@@ -9,5 +9,5 @@ function javascript($filename){
 }
 
 function media_image($filename){
-   return base_url() . 'public/media/images/' . $filename . '.jpg';
+   return base_url() . 'public/media/images/h1080px/' . $filename . '.jpg';
 }
