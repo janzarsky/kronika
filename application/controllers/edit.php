@@ -12,6 +12,8 @@ class Edit extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		$this->load->library('upload');
+		$this->load->library('image_lib');
+		
 		$this->load->helper('form');
 		$this->load->helper('language');
 	}
@@ -62,7 +64,32 @@ class Edit extends CI_Controller {
 		
 		$images_path = FCPATH . 'public/media/images/';
 		
-		copy($upload_data['full_path'], $images_path . 'h1080px/' . $id . '.jpg');
+		$heights = array(1080, 768, 420, 210);
+		
+		$config['quality']	= 75;
+		$config['maintain_ratio'] = TRUE;
+		
+		foreach ($heights as $height) {
+			copy($upload_data['full_path'], $images_path . 'h' . $height . 'px/' . $id . '.jpg');
+			
+			$config['source_image']	= $images_path . 'h' . $height . 'px/' . $id . '.jpg';
+			$config['height']	= $height;
+			
+			$this->image_lib->initialize($config);
+			
+			$this->image_lib->resize();
+		}
+		
+		copy($upload_data['full_path'], $images_path . 'thumb/' . $id . '.jpg');
+			
+		$config['source_image']	= $images_path . 'thumb/' . $id . '.jpg';
+		$config['quality']	= 30;
+		$config['height']	= 100;
+		$config['width']	= 100;
+		
+		$this->image_lib->initialize($config);
+		
+		$this->image_lib->resize();
 	}
 	
 	function url($str) {
