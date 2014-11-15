@@ -72,12 +72,14 @@ class Edit extends CI_Controller {
 		foreach ($heights as $height) {
 			copy($upload_data['full_path'], $images_path . 'h' . $height . 'px/' . $id . '.jpg');
 			
-			$config['source_image']	= $images_path . 'h' . $height . 'px/' . $id . '.jpg';
-			$config['height']	= $height;
-			
-			$this->image_lib->initialize($config);
-			
-			$this->image_lib->resize();
+			if ($upload_data['image_height'] >= $height) {
+				$config['source_image']	= $images_path . 'h' . $height . 'px/' . $id . '.jpg';
+				$config['height']	= $height;
+				
+				$this->image_lib->initialize($config);
+				
+				$this->image_lib->resize();
+			}
 		}
 		
 		copy($upload_data['full_path'], $images_path . 'thumb/' . $id . '.jpg');
