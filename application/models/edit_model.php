@@ -7,11 +7,19 @@ class Edit_model extends CI_Model {
 	}
 	
 	public function get_event($event_id) {
-		return $this->db
+		$event = $this->db
 			->select('*')
 			->from('events')
 			->where('id', $event_id)
 			->get()->row_array();
+		
+		$event['media'] = $this->db
+			->select('*')
+			->from('media')
+			->where('event_id', $event_id)
+			->get()->result_array();
+		
+		return $event;
 	}
 	
 	public function update_event($event_id, $data) {

@@ -11,7 +11,7 @@
 <section class="edit">
 	<form class="form form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 		<div class="row">
-			<div class="col-sm-7 col-sm-push-5">
+			<div class="col-md-7 col-md-push-5">
 				<div class="form-group">
 					<label class="sr-only" for="event_title">Titulek</label>
 					<div class="col-sm-12">
@@ -23,7 +23,7 @@
 				<textarea class="form-control edit__text" name="text" rows="7"><?php echo set_value('text', $event['text']); ?></textarea>
 			</div>
 			
-			<div class="col-sm-5 col-sm-pull-7">
+			<div class="col-md-5 col-md-pull-7">
 				<div class="row">
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="event_date">Datum</label>
@@ -51,6 +51,20 @@
 							<input type="file" class="form-control edit__file" name="userfile" id="event_file">
 						</div>
 					</div>
+				</div>
+				
+				<div class="row">
+					<?php foreach ($event['media'] as $media): ?>
+						<div class="col-sm-4">
+							<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
+							<label>
+								<input type="checkbox" class="" name=""> Odstranit
+							</label>
+							<label>
+								<input type="radio" class="" name="media_main"> Titulní
+							</label>
+						</div>
+					<?php endforeach; ?>
 				</div>
 				
 				<div class="row">
