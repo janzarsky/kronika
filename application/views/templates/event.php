@@ -27,7 +27,10 @@
 			<?php if(isset($event['main_image_id']) && isset($event['media']) == false): ?>
 				<div class="event__main-image">
 					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-						<img src="<?php echo media_image($event['main_image_id']); ?>" alt="" />
+						<img srcset="<?php echo media_image($event['main_image_id'], 210); ?> 1x,
+												 <?php echo media_image($event['main_image_id'], 420); ?> 2x"
+							src="<?php echo media_image($event['main_image_id'], 210); ?>"
+							alt="" />
 					</a>
 				</div>
 			<?php endif; ?>
