@@ -18,10 +18,10 @@
 	<div class="container-fluid">
 		<?php if ($this->session->flashdata('message') != ''): ?>
 			<?php
-				if ($this->session->flashdata('type') == '')
+				if ($this->session->flashdata('message_type') == '')
 					$type = 'success';
 				else
-					$type = $this->session->flashdata('type');
+					$type = $this->session->flashdata('message_type');
 			?>
 			
 			<div class="row">
