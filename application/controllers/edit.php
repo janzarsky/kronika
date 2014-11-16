@@ -159,10 +159,18 @@ class Edit extends CI_Controller {
 		
 		$permissions = $this->user_model->get_permissions();
 		
-		if ($permissions['can_publish'] && $this->input->post('publish'))
+		if ($permissions['can_publish'] && $this->input->post('publish')) {
 			$data['published'] = true;
-		else if ($permissions['can_publish'] == false && $this->input->post('send_for_approval'))
+			$data['sent_for_approval'] = false;
+		}
+		else if ($permissions['can_publish'] == false && $this->input->post('send_for_approval')) {
 			$data['sent_for_approval'] = true;
+			$data['published'] = false;
+		}
+		else {
+			$data['sent_for_approval'] = false;
+			$data['published'] = false;
+		}
 		
 		return $data;
 	}
