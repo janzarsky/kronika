@@ -31,6 +31,10 @@
 								</td>
 							</tr>
 						<?php endforeach; ?>
+						
+						<?php if (count($medias) == 0): ?>
+						<td>Událost neobsahuje žádná média</td>
+						<?php endif; ?>
 					</tbody>
 				</table>
 				
