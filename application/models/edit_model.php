@@ -17,4 +17,10 @@ class Edit_model extends CI_Model {
 	public function update_event($event_id, $data) {
 		$this->db->update('events', $data, array('id' => $event_id));
 	}
+	
+	public function add_event($data) {
+		$this->db->insert('events', $data);
+		
+		return $this->db->insert_id();
+	}
 }

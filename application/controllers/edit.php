@@ -29,7 +29,12 @@ class Edit extends CI_Controller {
 		
 		if ($this->form_validation->run() == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
-			$content_data['event'] = $this->edit_model->get_event($event_id);
+			
+			if ($event_id == 0)
+				$content_data['event'] = $this->get_empty_event();
+			else
+				$content_data['event'] = $this->edit_model->get_event($event_id);
+			
 			$data['content'] = $this->load->view('edit/edit', $content_data, true);
 			
 			$header_data['name'] = $this->user_model->get_name();
@@ -40,7 +45,12 @@ class Edit extends CI_Controller {
 		}
 		else {
 			$data = $this->get_event_data();
-			$this->edit_model->update_event($event_id, $data);
+			
+			if ($event_id == 0) {
+				$event_id = $this->edit_model->add_event($data);
+			}
+			else
+				$this->edit_model->update_event($event_id, $data);
 			
 			$this->session->set_flashdata('message', 'Událost je uložená. <a href="' . base_url('/d/' . $event_id) .
 																		'" target="_blank">Zobrazit událost</a>');
@@ -155,5 +165,18 @@ class Edit extends CI_Controller {
 			$data['sent_for_approval'] = true;
 		
 		return $data;
+	}
+	
+	function get_empty_event() {
+		return array(
+			'id' => 0,
+			'title' => '',
+			'text' => '',
+			'date' => date('Y-m-d'),
+			'date_precision' => 3,
+			'url' => '',
+			'sent_for_approval' => 0,
+			'published' => 0
+		);
 	}
 }
