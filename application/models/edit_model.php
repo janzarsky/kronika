@@ -27,11 +27,21 @@ class Edit_model extends CI_Model {
 	}
 	
 	public function add_media($event_id) {
+		$main_images_count = $this->db
+			->select('id')
+			->from('media')
+			->where('event_id', $event_id)
+			->where('main', 1)
+			->get()->num_rows();
+		
 		$data = array(
 			'event_id' => $event_id,
 			'type' => 0,
 			'main' => 0
 		);
+		
+		if ($main_images_count == 0)
+			$data['main'] = 1;
 		
 		$this->db->insert('media', $data);
 		
