@@ -92,6 +92,8 @@ class Edit extends CI_Controller {
 		$this->image_lib->initialize($config);
 		
 		$this->image_lib->resize();
+		
+		unlink($upload_data['full_path']);
 	}
 	
 	function url($str) {
