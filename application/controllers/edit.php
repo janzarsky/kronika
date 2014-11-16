@@ -11,8 +11,6 @@ class Edit extends CI_Controller {
 		$this->load->model('user_model');
 		
 		$this->load->library('form_validation');
-		$this->load->library('upload');
-		$this->load->library('image_lib');
 		
 		$this->load->helper('form');
 		$this->load->helper('language');
@@ -42,70 +40,11 @@ class Edit extends CI_Controller {
 			$data = $this->get_event_data();
 			$this->edit_model->update_event($event_id, $data);
 			
-			$this->edit_model->update_main_image($this->input->post('main'));
-			$this->delete_media();
-			
 			$this->session->set_flashdata('message', 'Událost je uložená. <a href="' . base_url('/d/' . $event_id) .
 																		'" target="_blank">Zobrazit událost</a>');
 			
 			redirect('/edit/' . $event_id);
 		}
-	}
-	
-	public function media($event_id) {
-		$this->user_model->check_login_with_redirect();
-		
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'jpg';
-		$this->upload->initialize($config);
-		
-		if ($this->upload->do_upload() == false) {
-			redirect('/edit/' . $event_id);
-		}
-		else {
-			$this->process_image($this->upload->data(), $event_id);
-			
-			$this->session->set_flashdata('message', 'Obrázek je nahrán');
-			
-			redirect('/edit/' . $event_id);
-		}
-	}
-	
-	function process_image($upload_data, $event_id) {
-		$id = $this->edit_model->add_media($event_id);
-		
-		$images_path = FCPATH . 'public/media/images/';
-		
-		$heights = array(1080, 768, 420, 210);
-		
-		$config['quality']	= 75;
-		$config['maintain_ratio'] = TRUE;
-		
-		foreach ($heights as $height) {
-			copy($upload_data['full_path'], $images_path . 'h' . $height . 'px/' . $id . '.jpg');
-			
-			if ($upload_data['image_height'] >= $height) {
-				$config['source_image']	= $images_path . 'h' . $height . 'px/' . $id . '.jpg';
-				$config['height']	= $height;
-				
-				$this->image_lib->initialize($config);
-				
-				$this->image_lib->resize();
-			}
-		}
-		
-		copy($upload_data['full_path'], $images_path . 'thumb/' . $id . '.jpg');
-			
-		$config['source_image']	= $images_path . 'thumb/' . $id . '.jpg';
-		$config['quality']	= 30;
-		$config['height']	= 100;
-		$config['width']	= 100;
-		
-		$this->image_lib->initialize($config);
-		
-		$this->image_lib->resize();
-		
-		unlink($upload_data['full_path']);
 	}
 	
 	function url($str) {
@@ -214,25 +153,5 @@ class Edit extends CI_Controller {
 			$data['sent_for_approval'] = true;
 		
 		return $data;
-	}
-	
-	function delete_media() {
-		$ids = $this->input->post('delete');
-		
-		if ($ids == null)
-			$ids = array();
-		
-		$this->edit_model->delete_media($ids);
-		
-		$heights = array(1080, 768, 420, 210);
-		$images_path = FCPATH . 'public/media/images/';
-		
-		foreach ($ids as $id) {
-			foreach ($heights as $height) {
-				unlink($images_path . 'h' . $height . 'px/' . $id . '.jpg');
-			}
-			
-			unlink($images_path . 'thumb/' . $id . '.jpg');
-		}
 	}
 }

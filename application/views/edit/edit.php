@@ -72,33 +72,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-7">
-				<div class="row">
-					<?php foreach ($event['media'] as $media): ?>
-						<div class="col-sm-4">
-							<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
-							<label>
-								<input type="checkbox" class="" name="delete[]" value="<?php echo $media['id']; ?>"> Odstranit
-							</label>
-							<label>
-								<input type="radio" class="" name="main" value="<?php echo $media['id']; ?>"
-									<?php echo set_checkbox('media_main', '1', $media['main'] == 1); ?>> Titulní
-							</label>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</div>
 
 	</form>
-	
-	<?php
-		$data = array(
-			'media' => $event['media'],
-			'event_id' => $event['id']
-		);
-		
-		echo $this->load->view('edit/edit_media', $data, true);
-	?>
 </section>
