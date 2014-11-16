@@ -1,6 +1,6 @@
 <form class="form form-horizontal" role="form" action="media/<?php echo $event_id; ?>" method="post" enctype="multipart/form-data">
 	<div class="row">
-		<div class="col-md-7 col-md-offset-5">
+		<div class="col-md-7">
 			<div class="row">
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="event_url">Média</label>
