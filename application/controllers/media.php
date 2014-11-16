@@ -52,6 +52,9 @@ class Media extends CI_Controller {
 		$this->upload->initialize($config);
 		
 		if ($this->upload->do_upload() == false) {
+			$this->session->set_flashdata('message_type', 'danger');
+			$this->session->set_flashdata('message', $this->upload->display_errors());
+			
 			redirect('/media/' . $event_id);
 		}
 		else {
