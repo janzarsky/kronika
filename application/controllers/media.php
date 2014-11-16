@@ -73,7 +73,7 @@ class Media extends CI_Controller {
 		
 		$heights = array(1080, 768, 420, 210);
 		
-		$config['quality']	= 75;
+		$config['quality']	= 85;
 		$config['maintain_ratio'] = TRUE;
 		
 		foreach ($heights as $height) {
