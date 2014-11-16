@@ -35,13 +35,14 @@
 				</table>
 				
 				<button type="submit" class="btn btn-primary">Uložit</button>
+				<a class="btn btn-default" href="<?php echo base_url('/edit/' . $event_id); ?>" role="button">Zpět</a>
 			</div>
 		</form>
 	
 		<form class="form form-horizontal" role="form" action="upload/<?php echo $event_id; ?>" method="post" enctype="multipart/form-data">
 			<div class="col-md-5">
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="event_url">Média</label>
+					<label class="col-sm-2 control-label" for="event_url">Přidat</label>
 					<div class="col-sm-8">
 						<input type="file" class="form-control edit__file" name="userfile" id="event_file">
 					</div>

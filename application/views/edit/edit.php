@@ -45,6 +45,13 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="col-sm-2 control-label">Média</label>
+					<div class="col-sm-10">
+						<a class="btn btn-primary" href="<?php echo base_url('/media/' . $event['id']); ?>" role="button">Spravovat média</a>
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
 						<div class="checkbox">
 							<label>
