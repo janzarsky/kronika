@@ -12,21 +12,6 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="row">
-				<?php foreach ($event['media'] as $media): ?>
-					<div class="col-sm-4">
-						<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
-						<label>
-							<input type="checkbox" class="" name=""> Odstranit
-						</label>
-						<label>
-							<input type="radio" class="" name="media_main" value="<?php echo $media['id']; ?>"
-								<?php echo set_checkbox('media_main', '1', $media['main'] == 1); ?>> Titulní
-						</label>
-					</div>
-				<?php endforeach; ?>
-			</div>
 		</div>
 	</div>
 </form>

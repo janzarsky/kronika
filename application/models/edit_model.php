@@ -26,6 +26,19 @@ class Edit_model extends CI_Model {
 		$this->db->update('events', $data, array('id' => $event_id));
 	}
 	
+	public function update_main_image($id) {
+		$this->db->update('media', array('main' => 1), array('id' => $id));
+	}
+	
+	public function delete_media($ids) {
+		if (count($ids) > 0) {
+			foreach ($ids as $id)
+				$this->db->or_where('id', $id);
+			
+			$this->db->delete('media');
+		}
+	}
+	
 	public function add_media($event_id) {
 		$main_images_count = $this->db
 			->select('id')

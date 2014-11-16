@@ -40,8 +40,10 @@ class Edit extends CI_Controller {
 		}
 		else {
 			$data = $this->get_event_data();
-			
 			$this->edit_model->update_event($event_id, $data);
+			
+			$this->edit_model->update_main_image($this->input->post('main'));
+			$this->delete_media();
 			
 			$this->session->set_flashdata('message', 'Událost je uložená. <a href="' . base_url('/d/' . $event_id) .
 																		'" target="_blank">Zobrazit událost</a>');
@@ -51,6 +53,8 @@ class Edit extends CI_Controller {
 	}
 	
 	public function media($event_id) {
+		$this->user_model->check_login_with_redirect();
+		
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'jpg';
 		$this->upload->initialize($config);
@@ -210,5 +214,22 @@ class Edit extends CI_Controller {
 			$data['sent_for_approval'] = true;
 		
 		return $data;
+	}
+	
+	function delete_media() {
+		$ids = $this->input->post('delete');
+		
+		$this->edit_model->delete_media($ids);
+		
+		$heights = array(1080, 768, 420, 210);
+		$images_path = FCPATH . 'public/media/images/';
+		
+		foreach ($ids as $id) {
+			foreach ($heights as $height) {
+				unlink($images_path . 'h' . $height . 'px/' . $id . '.jpg');
+			}
+			
+			unlink($images_path . 'thumb/' . $id . '.jpg');
+		}
 	}
 }
