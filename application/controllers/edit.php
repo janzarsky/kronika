@@ -24,6 +24,8 @@ class Edit extends CI_Controller {
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
 		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
+		$this->form_validation->set_rules('publish', '', '');
+		$this->form_validation->set_rules('send_for_approval', '', '');
 		
 		if ($this->form_validation->run() == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
