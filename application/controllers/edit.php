@@ -27,14 +27,7 @@ class Edit extends CI_Controller {
 		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
 		
-		$config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'jpg';
-		$this->upload->initialize($config);
-		
-		$success_validation = $this->form_validation->run();
-		$success_upload = $this->upload->do_upload();
-		
-		if ($success_validation == false || $success_upload == false) {
+		if ($this->form_validation->run() == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
 			$content_data['event'] = $this->edit_model->get_event($event_id);
 			$data['content'] = $this->load->view('edit/edit', $content_data, true);
@@ -46,14 +39,29 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			$this->process_image($this->upload->data(), $event_id);
-			
 			$data = $this->get_event_data();
 			
 			$this->edit_model->update_event($event_id, $data);
 			
 			$this->session->set_flashdata('message', 'Událost je uložená. <a href="' . base_url('/d/' . $event_id) .
 																		'" target="_blank">Zobrazit událost</a>');
+			
+			redirect('/edit/' . $event_id);
+		}
+	}
+	
+	public function media($event_id) {
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'jpg';
+		$this->upload->initialize($config);
+		
+		if ($this->upload->do_upload() == false) {
+			redirect('/edit/' . $event_id);
+		}
+		else {
+			$this->process_image($this->upload->data(), $event_id);
+			
+			$this->session->set_flashdata('message', 'Obrázek je nahrán');
 			
 			redirect('/edit/' . $event_id);
 		}

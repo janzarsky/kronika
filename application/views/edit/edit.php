@@ -45,29 +45,6 @@
 				</div>
 				
 				<div class="row">
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="event_url">Média</label>
-						<div class="col-sm-10">
-							<input type="file" class="form-control edit__file" name="userfile" id="event_file">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<?php foreach ($event['media'] as $media): ?>
-						<div class="col-sm-4">
-							<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
-							<label>
-								<input type="checkbox" class="" name=""> Odstranit
-							</label>
-							<label>
-								<input type="radio" class="" name="media_main"> Titulní
-							</label>
-						</div>
-					<?php endforeach; ?>
-				</div>
-				
-				<div class="row">
 					<div class="col-sm-10 col-sm-offset-2">
 						<div class="form-group">
 							<div class="checkbox">
@@ -97,4 +74,13 @@
 		</div>
 
 	</form>
+	
+	<?php
+		$data = array(
+			'media' => $event['media'],
+			'event_id' => $event['id']
+		);
+		
+		echo $this->load->view('edit/edit_media', $data, true);
+	?>
 </section>
