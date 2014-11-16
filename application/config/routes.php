@@ -46,6 +46,7 @@ $route['logout'] = "login/logout";
 $route['admin'] = "archive";
 
 $route['edit/(:num)'] = "edit/edit/$1";
+$route['media/(:num)'] = "media/media/$1";
 
 $route['d/(:num)'] = "events/by_id/$1";
 $route['detail/(:any)'] = "events/by_url/$1";

@@ -219,6 +219,9 @@ class Edit extends CI_Controller {
 	function delete_media() {
 		$ids = $this->input->post('delete');
 		
+		if ($ids == null)
+			$ids = array();
+		
 		$this->edit_model->delete_media($ids);
 		
 		$heights = array(1080, 768, 420, 210);
