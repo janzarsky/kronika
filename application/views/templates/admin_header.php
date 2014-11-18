@@ -9,17 +9,25 @@
 			</button>
 			<a class="navbar-brand" href="<?php echo base_url('admin'); ?>">Kronika</a>
 		</div>
+		
+		<?php if (isset($page) == false) $page = ''; ?>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="<?php echo base_url('archive'); ?>">Události</a></li>
+				<li <?php echo ($page == 'archive') ? 'class="active"' : ''; ?>>
+					<a href="<?php echo base_url('archive'); ?>">Události</a>
+				</li>
 				
 				<?php if ($permissions['can_edit_users']): ?>
-					<li><a href="<?php echo base_url('users'); ?>">Uživatelé</a></li>
+					<li <?php echo ($page == 'users') ? 'class="active"' : ''; ?>>
+						<a href="<?php echo base_url('users'); ?>">Uživatelé</a>
+					</li>
 				<?php endif; ?>
 				
 				<?php if ($permissions['can_edit_settings']): ?>
-					<li><a href="<?php echo base_url('settings'); ?>">Nastavení</a></li>
+					<li <?php echo ($page == 'settings') ? 'class="active"' : ''; ?>>
+						<a href="<?php echo base_url('settings'); ?>">Nastavení</a>
+					</li>
 				<?php endif; ?>
 			</ul>
 			

@@ -37,6 +37,7 @@ class Edit extends CI_Controller {
 			
 			$data['content'] = $this->load->view('edit/edit', $content_data, true);
 			
+			$header_data['page'] = 'archive';
 			$header_data['name'] = $this->user_model->get_name();
 			$header_data['permissions'] = $this->user_model->get_permissions();
 			$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
