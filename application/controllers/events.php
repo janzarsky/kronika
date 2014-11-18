@@ -67,10 +67,10 @@ class Events extends CI_Controller {
 		$content_data['events'] = $this->events_model->get_events_by_date_with_main_images($year, $month, $day);
 		
 		if ($content_data['events']) {
-			if ($this->is_event_the_last($content_data['events'][count($content_data['events']) - 1]) == false)
+			if ($this->events_model->is_event_the_last($content_data['events'][count($content_data['events']) - 1]) == false)
 				$content_data['prev_url'] = $this->get_prev_url($content_data['events']);
 			
-			if ($this->is_event_the_first($content_data['events'][0]) == false)
+			if ($this->events_model->is_event_the_first($content_data['events'][0]) == false)
 				$content_data['next_url'] = $this->get_next_url($content_data['events']);
 			
 			$data['content'] = $this->load->view('events/index', $content_data, true);
@@ -90,24 +90,6 @@ class Events extends CI_Controller {
 			return $selected_year;
 		else
 			return substr($events[0]['date'], 0, 4);
-	}
-	
-	private function is_event_the_first($event) {
-		return $this->db
-			->select('id')
-			->from('events')
-			->where('date >=', $event['date'])
-			->where('id <', $event['id'])
-			->get()->num_rows() == 0;
-	}
-	
-	private function is_event_the_last($event) {
-		return $this->db
-			->select('id')
-			->from('events')
-			->where('date <=', $event['date'])
-			->where('id >', $event['id'])
-			->get()->num_rows() == 0;
 	}
 	
 	private function get_prev_url($events) {

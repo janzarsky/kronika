@@ -224,4 +224,22 @@ class Events_model extends CI_Model {
 		else
 			return false;
 	}
+	
+	public function is_event_the_first($event) {
+		return $this->db
+			->select('id')
+			->from('events')
+			->where('date >=', $event['date'])
+			->where('id <', $event['id'])
+			->get()->num_rows() == 0;
+	}
+	
+	public function is_event_the_last($event) {
+		return $this->db
+			->select('id')
+			->from('events')
+			->where('date <=', $event['date'])
+			->where('id >', $event['id'])
+			->get()->num_rows() == 0;
+	}
 }
