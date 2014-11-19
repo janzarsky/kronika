@@ -75,6 +75,8 @@ class Media extends CI_Controller {
 		
 		$config['quality']	= 85;
 		$config['maintain_ratio'] = TRUE;
+		$config['width'] = 1;
+		$config['master_dim'] = 'height';
 		
 		foreach ($heights as $height) {
 			copy($upload_data['full_path'], $images_path . 'h' . $height . 'px/' . $id . '.jpg');
