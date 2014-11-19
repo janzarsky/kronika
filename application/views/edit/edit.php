@@ -37,6 +37,23 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="col-sm-2 control-label" for="event_importance">Důležitost</label>
+					<div class="col-sm-10">
+						<select class="form-control" name="importance" id="event_importance" >
+							<option value="1" <?php echo set_select('importance', '1', $event['importance'] == 1); ?>>
+								Vysoká - významné události, tábory
+							</option>
+							<option value="2" <?php echo set_select('importance', '2', $event['importance'] == 2); ?>>
+								Střední - chaty, vánoční schůzky
+							</option>
+							<option value="3" <?php echo set_select('importance', '3', $event['importance'] == 3); ?>>
+								Nízká - výpravy, schůzky
+							</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<label class="col-sm-2 control-label" for="event_url">URL</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="URL"
