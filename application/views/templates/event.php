@@ -1,45 +1,80 @@
 <section class="event">
-	<div class="row">
-		<div class="col-sm-7 col-sm-push-5">
-			<header class="event__title">
-				<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-					<?php echo $event['title']; ?>
-				</a>
-			</header>
-		</div>
-		
-		<div class="col-sm-5 col-sm-pull-7">
-			<header class="event__date">
-				<?php if(isset($event['friendly_date']) && $event['friendly_date'] != null):
-					echo $event['friendly_date'];
-				endif; ?>
-			</header>
-		</div>
-	</div>
-	
-	<?php
-		if(isset($event['media']))
-			$this->load->view('templates/event_media', array('media' => $event['media']));
-	?>
-		
-	<div class="row">
-		<div class="col-sm-5">
-			<?php if(isset($event['main_image_id']) && isset($event['media']) == false): ?>
-				<div class="event__main-image">
-					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-						<img srcset="<?php echo media_image($event['main_image_id'], 210); ?> 1x,
-												 <?php echo media_image($event['main_image_id'], 420); ?> 2x"
-							src="<?php echo media_image($event['main_image_id'], 210); ?>"
-							alt="" />
-					</a>
+	<?php if ($event['importance'] == 1 && isset($event['main_image_id'])): ?>
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="row">
+					<div class="col-sm-12">
+						<?php echo $this->load->view('templates/event_title.php', array('type' => 'important'), true); ?>
+					</div>
+					<div class="col-sm-12">
+						<?php echo $this->load->view('templates/event_date.php', array('type' => 'important'), true); ?>
+					</div>
+					<div class="col-sm-12">
+						<p class="event__text event__text--important">
+							<?php echo $event['text']; ?>
+						</p>
+					</div>
 				</div>
-			<?php endif; ?>
+			</div>
+			<div class="col-sm-7">
+				<?php echo $this->load->view('templates/event_main_image.php', array('image_type' => 'important'), true); ?>
+			</div>
 		</div>
-		
-		<div class="col-sm-7">
-			<p class="event__text">
-				<?php echo $event['text']; ?>
-			</p>
+	<?php elseif ($event['importance'] == 2): ?>
+		<?php if (isset($event['main_image_id']) && $event['text'] != ''): ?>
+			<div class="row">
+				<div class="col-sm-7 col-sm-push-5">
+					<?php echo $this->load->view('templates/event_title.php', array('type' => null), true); ?>
+				</div>
+				
+				<div class="col-sm-5 col-sm-pull-7">
+					<?php echo $this->load->view('templates/event_date.php', array('type' => null), true); ?>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-5">
+					<?php echo $this->load->view('templates/event_main_image.php', array('image_type' => ''), true); ?>
+				</div>
+				
+				<div class="col-sm-7">
+					<p class="event__text">
+						<?php echo $event['text']; ?>
+					</p>
+				</div>
+			</div>
+		<?php else: ?>
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="row">
+						<div class="col-sm-12">
+							<?php echo $this->load->view('templates/event_title.php', array('type' => 'left'), true); ?>
+						</div>
+						<div class="col-sm-12">
+							<?php echo $this->load->view('templates/event_date.php', array('type' => null), true); ?>
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-sm-7">
+					<?php if (isset($event['main_image_id'])): ?>
+						<?php echo $this->load->view('templates/event_main_image.php', array('image_type' => 'left'), true); ?>
+					<?php else: ?>
+						<p class="event__text">
+							<?php echo $event['text']; ?>
+						</p>
+					<?php endif; ?>
+				</div>
+		<?php endif; ?>
+	<?php elseif ($event['importance'] == 3): ?>
+		<div class="row">
+			<div class="col-sm-7 col-sm-push-5">
+				<?php echo $this->load->view('templates/event_title.php', array('type' => null), true); ?>
+			</div>
+			
+			<div class="col-sm-5 col-sm-pull-7">
+				<?php echo $this->load->view('templates/event_date.php', array('type' => null), true); ?>
+			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 </section>
