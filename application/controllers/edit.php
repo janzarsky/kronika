@@ -60,6 +60,32 @@ class Edit extends CI_Controller {
 		}
 	}
 	
+	public function delete($event_id = 0) {
+		$this->user_model->check_login_with_redirect();
+		
+		if ($event_id != 0) {
+			$this->edit_model->delete_event($event_id);
+			
+			$this->session->set_flashdata('message', 'Událost byla smazána. <a href="' . base_url('/edit/restore/' . $event_id) .
+																		'">Vrátit zpět</a>');
+			
+			redirect('/archive');
+		}
+	}
+	
+	public function restore($event_id = 0) {
+		$this->user_model->check_login_with_redirect();
+		
+		if ($event_id != 0) {
+			$this->edit_model->restore_event($event_id);
+			
+			$this->session->set_flashdata('message', 'Událost byla obnovena. <a href="' . base_url('/edit/' . $event_id) .
+																		'">Upravit událost</a>');
+			
+			redirect('/archive');
+		}
+	}
+	
 	function url($str) {
     $str = strtolower(convert_to_ascii($str));
     $str = preg_replace('/[^a-zA-Z0-9]+/u', '-', $str);

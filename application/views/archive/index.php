@@ -12,6 +12,7 @@
 					<th>Název</th>
 					<th>Datum</th>
 					<th>Status</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +37,12 @@
 								else
 									echo 'Návrh';
 							?>
+						</td>
+						
+						<td>
+							<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+								Odstranit
+							</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

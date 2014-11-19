@@ -52,7 +52,7 @@
 				</div>
 				
 				<div class="form-group">
-					<div class="col-sm-10 col-sm-offset-2">
+					<div class="col-sm-5 col-sm-offset-2">
 						<div class="checkbox">
 							<label>
 								<?php if ($can_publish): ?>
@@ -64,6 +64,11 @@
 								<?php endif; ?>
 							</label>
 						</div>
+					</div>
+					<div class="col-sm-5">
+						<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+							Odstranit
+						</a>
 					</div>
 				</div>
 				

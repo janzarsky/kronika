@@ -23,4 +23,12 @@ class Edit_model extends CI_Model {
 		
 		return $this->db->insert_id();
 	}
+	
+	public function delete_event($event_id) {
+		$this->db->update('events', array('deleted' => 1), array('id' => $event_id));
+	}
+	
+	public function restore_event($event_id) {
+		$this->db->update('events', array('deleted' => 0), array('id' => $event_id));
+	}
 }
