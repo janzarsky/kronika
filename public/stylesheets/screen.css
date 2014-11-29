@@ -8,12 +8,11 @@
 	text-decoration: underline;
 }*/
 body {
-  font-family: "Libre Baskerville", "Helvetica Neue", Helvetica,Arial, sans-serif; }
+  font-family: "Libre Baskerville", "Georgia", serif; }
 
 @font-face {
   font-family: 'Libre Baskerville';
-  src: url("../fonts/librebaskerville-regular-webfont.eot");
-  src: url("../fonts/librebaskerville-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/librebaskerville-regular-webfont.woff2") format("woff2"), url("../fonts/librebaskerville-regular-webfont.woff") format("woff"), url("../fonts/librebaskerville-regular-webfont.ttf") format("truetype");
+  src: url("../fonts/LibreBaskerville-Regular.woff") format("woff"), url("../fonts/LibreBaskerville-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 .dateHeader {
