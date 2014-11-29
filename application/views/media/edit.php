@@ -48,7 +48,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="event_url">Přidat</label>
 					<div class="col-sm-8">
-						<input type="file" class="form-control edit__file" name="userfile" id="event_file">
+						<input type="file" class="form-control edit__file" name="files[]" id="event_file" multiple="multiple">
 					</div>
 					<div class="col-sm-2">
 						<button type="submit" class="btn btn-primary">Nahrát</button>

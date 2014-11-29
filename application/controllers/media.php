@@ -51,14 +51,15 @@ class Media extends CI_Controller {
 		$config['allowed_types'] = 'jpg';
 		$this->upload->initialize($config);
 		
-		if ($this->upload->do_upload() == false) {
+		if ($this->upload->do_multi_upload('files') == false) {
 			$this->session->set_flashdata('message_type', 'danger');
 			$this->session->set_flashdata('message', $this->upload->display_errors());
 			
 			redirect('/media/' . $event_id);
 		}
 		else {
-			$this->process_image($this->upload->data(), $event_id);
+			foreach ($this->upload->get_multi_upload_data() as $data)
+				$this->process_image($data, $event_id);
 			
 			$this->session->set_flashdata('message', 'Obrázek je nahrán');
 			
