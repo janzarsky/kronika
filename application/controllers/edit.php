@@ -211,6 +211,7 @@ class Edit extends CI_Controller {
 			'text' => '',
 			'date' => date('Y-m-d'),
 			'date_precision' => 3,
+			'importance' => 2,
 			'url' => '',
 			'sent_for_approval' => 0,
 			'published' => 0
