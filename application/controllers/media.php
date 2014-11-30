@@ -26,7 +26,7 @@ class Media extends CI_Controller {
 		$this->user_model->check_rights_with_redirect($event_id);
 		
 		$this->form_validation->set_rules('delete', 'Odstranit', '');
-		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean');
+		$this->form_validation->set_rules('text', 'Text', 'xss_clean');
 		
 		if ($this->form_validation->run() == false) {
 			$content_data['event_id'] = $event_id;
