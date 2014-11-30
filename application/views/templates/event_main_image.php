@@ -1,5 +1,5 @@
 <?php if ($image_type == 'large'): ?>
-	<div class="event__main-image event__main-image--large">
+	<div class="event__mainImage event__mainImage--large">
 		<a href="<?php echo base_url('detail/' . $event['url']); ?>">
 			<img srcset="<?php echo media_image($event['main_image_id'], 1080); ?> 1620w,
 								 <?php echo media_image($event['main_image_id'], 768); ?> 1152w,
@@ -11,7 +11,7 @@
 		</a>
 	</div>
 <?php else: ?>
-	<div class="event__main-image event__main-image--small">
+	<div class="event__mainImage">
 		<a href="<?php echo base_url('detail/' . $event['url']); ?>">
 			<img srcset="<?php echo media_image($event['main_image_id'], 210); ?> 1x,
 									 <?php echo media_image($event['main_image_id'], 420); ?> 2x"

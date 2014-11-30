@@ -14,7 +14,7 @@
 		color: $text-color;
 	}
 }
-.event__main-image {
+.event__mainImage {
 	margin: 0 auto 0.5*$line-for-normal auto;
 	max-width: $width-for-normal;
 	
@@ -23,7 +23,7 @@
 		max-width: 100%;
 	}
 }
-.event__main-image--large {
+.event__mainImage--large {
 	max-width: none;
 	text-align: center;
 	
@@ -67,5 +67,12 @@
 }
 
 @media (min-width: $screen-sm-min) {
-
+	.event__title, .event__text, .event__date, .event__mainImage {
+		max-width: none;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.event__mainImage {
+		text-align: right;
+	}
 }

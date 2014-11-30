@@ -97,17 +97,17 @@ body {
   .event__title a {
     color: #333; }
 
-.event__main-image {
+.event__mainImage {
   margin: 0 auto 0.75em auto;
   max-width: 33em; }
-  .event__main-image img {
+  .event__mainImage img {
     max-height: 15em;
     max-width: 100%; }
 
-.event__main-image--large {
+.event__mainImage--large {
   max-width: none;
   text-align: center; }
-  .event__main-image--large img {
+  .event__mainImage--large img {
     max-height: 30em;
     max-width: 100%; }
 
@@ -136,5 +136,14 @@ body {
 .noEvents__smiley {
   font-size: 2.25em;
   margin: 1.3333em 0; }
+
+@media (min-width: 768px) {
+  .event__title, .event__text, .event__date, .event__mainImage {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0; }
+
+  .event__mainImage {
+    text-align: right; } }
 
 /*# sourceMappingURL=screen.css.map */
