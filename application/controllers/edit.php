@@ -22,7 +22,7 @@ class Edit extends CI_Controller {
 		
 		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
-		$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
+		$this->form_validation->set_rules('url', 'URL', 'trim|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
 		$this->form_validation->set_rules('importance', 'Důležitost', 'required');
 		$this->form_validation->set_rules('publish', '', '');
@@ -46,7 +46,7 @@ class Edit extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			$data = $this->get_event_data();
+			$data = $this->get_event_data($event_id);
 			
 			if ($event_id == 0) {
 				$event_id = $this->edit_model->add_event($data);
@@ -94,11 +94,6 @@ class Edit extends CI_Controller {
     $str = trim($str, '-');
 		
 		$str = strtolower($str);
-		
-		if (strlen($str) == 0) {
-			$this->form_validation->set_message('url', 'Pole %s nesmí být prázdné');
-			return false;
-		}
 		
 		return $str;
 	}
@@ -175,16 +170,20 @@ class Edit extends CI_Controller {
 		return $final;
 	}
 	
-	function get_event_data() {
+	function get_event_data($event_id) {
 		$data = array(
 			'title' => $this->input->post('title'),
 			'text' => $this->input->post('text'),
-			'url' => $this->input->post('url'),
 			'date' => $this->input->post('date'),
 			'date_precision' => $this->date_precision,
 			'importance' => $this->input->post('importance'),
 			'owner' => $this->user_model->get_id()
 		);
+		
+		if ($event_id == 0)
+			$data['url'] = $this->url($this->input->post('title'));
+		else
+			$data['url'] = $this->input->post('url');
 		
 		$permissions = $this->user_model->get_permissions();
 		

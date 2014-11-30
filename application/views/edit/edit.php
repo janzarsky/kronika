@@ -22,9 +22,8 @@
 				
 				<div class="form-group">
 					<div class="col-sm-12">
-						<textarea class="form-control edit__text" name="text" rows="7" placeholder="Text (nepovinné)">
-							<?php echo set_value('text', $event['text']); ?>
-						</textarea>
+						<textarea class="form-control edit__text" name="text" rows="7" placeholder="Text (nepovinné)"
+							><?php echo set_value('text', $event['text']); ?></textarea>
 					</div>
 				</div>
 			</div>
@@ -55,20 +54,26 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="event_url">URL</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="(nepovinné)"
-							value="<?php echo set_value('url', $event['url']); ?>">
+				<?php if ($event['id'] != 0): ?>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="event_url">URL</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="(nepovinné)"
+								value="<?php echo set_value('url', $event['url']); ?>">
+						</div>
 					</div>
-				</div>
+				<?php else: ?>
+					<input type="hidden" name="url" id="event_url" value="<?php echo set_value('url', $event['url']); ?>">
+				<?php endif; ?>
 				
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Média</label>
-					<div class="col-sm-10">
-						<a class="btn btn-primary" href="<?php echo base_url('/media/' . $event['id']); ?>" role="button">Spravovat média</a>
+				<?php if ($event['id'] != 0): ?>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Média</label>
+						<div class="col-sm-10">
+							<a class="btn btn-primary" href="<?php echo base_url('/media/' . $event['id']); ?>" role="button">Spravovat média</a>
+						</div>
 					</div>
-				</div>
+				<?php endif; ?>
 				
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
@@ -84,11 +89,13 @@
 							</label>
 						</div>
 					</div>
-					<div class="col-sm-5">
-						<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
-							Odstranit
-						</a>
-					</div>
+					<?php if ($event['id'] != 0): ?>
+						<div class="col-sm-5">
+							<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+								Odstranit
+							</a>
+						</div>
+					<?php endif; ?>
 				</div>
 				
 				<div class="form-group">
