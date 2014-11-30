@@ -15,7 +15,11 @@ class Archive extends CI_Controller {
 		
 		$user_id = $this->user_model->get_id();
 		
-		$content_data['events'] = $this->archive_model->get_events($user_id);
+		if ($this->user_model->get_permissions()['can_approve'] == 1)
+			$content_data['events'] = $this->archive_model->get_all_events();
+		else
+			$content_data['events'] = $this->archive_model->get_user_events($user_id);
+		
 		$data['content'] = $this->load->view('archive/index', $content_data, true);
 		
 		$header_data['page'] = 'archive';

@@ -11,6 +11,9 @@
 				<tr>
 					<th>Název</th>
 					<th>Datum</th>
+					<?php if (isset($events[0]['owner_name'])): ?>
+						<th>Autor</th>
+					<?php endif; ?>
 					<th>Status</th>
 					<th></th>
 				</tr>
@@ -27,6 +30,10 @@
 						<td>
 							<?php echo $event['date']; ?>
 						</td>
+						
+						<?php if (isset($event['owner_name'])): ?>
+							<td><?php echo $event['owner_name']; ?></td>
+						<?php endif; ?>
 						
 						<td>
 							<?php
