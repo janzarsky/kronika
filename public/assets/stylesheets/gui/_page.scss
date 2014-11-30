@@ -14,7 +14,7 @@
 .pageNav {
 	font-size: $font-normal;
 	line-height: $line-for-normal;
-	padding: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
+	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
 	max-width: $width-for-normal;
 	color: $nav-color;
@@ -51,6 +51,7 @@
 	
 	.pageNav {
 		margin: 0;
+		padding: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
 		max-width: none;
 	}
 	.pageNav__year--additional {
