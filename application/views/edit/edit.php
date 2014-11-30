@@ -22,7 +22,9 @@
 				
 				<div class="form-group">
 					<div class="col-sm-12">
-						<textarea class="form-control edit__text" name="text" rows="7"><?php echo set_value('text', $event['text']); ?></textarea>
+						<textarea class="form-control edit__text" name="text" rows="7" placeholder="Text (nepovinné)">
+							<?php echo set_value('text', $event['text']); ?>
+						</textarea>
 					</div>
 				</div>
 			</div>
@@ -56,7 +58,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="event_url">URL</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="URL"
+						<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="(nepovinné)"
 							value="<?php echo set_value('url', $event['url']); ?>">
 					</div>
 				</div>
