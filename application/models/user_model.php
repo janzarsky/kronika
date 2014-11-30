@@ -21,7 +21,7 @@ class User_model extends CI_Model {
 	}
 	
 	public function get_id() {
-		return $this->session->userdata('user_id') == 1;
+		return $this->session->userdata('user_id');
 	}
 	
 	public function get_name() {
@@ -40,5 +40,16 @@ class User_model extends CI_Model {
 	function check_login() {
 		if ($this->session->userdata('logged_in') == false)
 			throw new Exception('Not logged in');
+	}
+	
+	public function check_rights_with_redirect($event_id) {
+		$event_owner = $this->db->select('owner')->from('events')->where('id', $event_id)->get()->row_array()['owner'];
+		
+		if ($event_owner != $this->get_id())
+			if ($this->get_permissions()['can_approve'] == false) {
+				$this->session->set_flashdata('message_type', 'danger');
+				$this->session->set_flashdata('message', 'Nemáte oprávnění editovat tuto událost.');
+				redirect('/archive');
+			}
 	}
 }
