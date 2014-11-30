@@ -36,8 +36,10 @@ class Edit extends CI_Controller {
 			
 			if ($event_id == 0)
 				$content_data['event'] = $this->get_empty_event();
-			else
+			else {
 				$content_data['event'] = $this->edit_model->get_event($event_id);
+				$content_data['media_count'] = $this->edit_model->get_media_count($event_id);
+			}
 			
 			$data['content'] = $this->load->view('edit/edit', $content_data, true);
 			

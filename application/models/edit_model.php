@@ -40,4 +40,12 @@ class Edit_model extends CI_Model {
 	public function restore_event($event_id) {
 		$this->db->update('events', array('deleted' => 0), array('id' => $event_id));
 	}
+	
+	public function get_media_count($event_id) {
+		return $this->db
+			->select('id')
+			->from('media')
+			->where('event_id', $event_id)
+			->get()->num_rows();
+	}
 }
