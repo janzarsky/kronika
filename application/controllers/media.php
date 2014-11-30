@@ -20,6 +20,11 @@ class Media extends CI_Controller {
 	{
 		$this->user_model->check_login_with_redirect();
 		
+		if ($event_id == 0)
+			redirect('/archive');
+		
+		$this->user_model->check_rights_with_redirect($event_id);
+		
 		$this->form_validation->set_rules('delete', 'Odstranit', '');
 		
 		if ($this->form_validation->run() == false) {
@@ -46,6 +51,11 @@ class Media extends CI_Controller {
 	
 	public function upload($event_id) {
 		$this->user_model->check_login_with_redirect();
+		
+		if ($event_id == 0)
+			redirect('/archive');
+		
+		$this->user_model->check_rights_with_redirect($event_id);
 		
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'jpg';
