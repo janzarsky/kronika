@@ -19,7 +19,9 @@ class Edit extends CI_Controller {
 	public function index($event_id = 0)
 	{
 		$this->user_model->check_login_with_redirect();
-		$this->user_model->check_rights_with_redirect($event_id);
+		
+		if ($event_id != 0)
+			$this->user_model->check_rights_with_redirect($event_id);
 		
 		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
@@ -64,9 +66,10 @@ class Edit extends CI_Controller {
 	
 	public function delete($event_id = 0) {
 		$this->user_model->check_login_with_redirect();
-		$this->user_model->check_rights_with_redirect($event_id);
-		
+
 		if ($event_id != 0) {
+			$this->user_model->check_rights_with_redirect($event_id);
+			
 			$this->edit_model->delete_event($event_id);
 			
 			$this->session->set_flashdata('message', 'Událost byla smazána. <a href="' . base_url('/edit/restore/' . $event_id) .
@@ -78,9 +81,10 @@ class Edit extends CI_Controller {
 	
 	public function restore($event_id = 0) {
 		$this->user_model->check_login_with_redirect();
-		$this->user_model->check_rights_with_redirect($event_id);
 		
 		if ($event_id != 0) {
+			$this->user_model->check_rights_with_redirect($event_id);
+			
 			$this->edit_model->restore_event($event_id);
 			
 			$this->session->set_flashdata('message', 'Událost byla obnovena. <a href="' . base_url('/edit/' . $event_id) .
