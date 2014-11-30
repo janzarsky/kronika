@@ -108,7 +108,7 @@ body {
   max-width: none;
   text-align: center; }
   .event__mainImage--large img {
-    max-height: 30em;
+    max-height: none;
     max-width: 100%; }
 
 .event__text {
