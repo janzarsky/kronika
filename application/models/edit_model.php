@@ -7,11 +7,20 @@ class Edit_model extends CI_Model {
 	}
 	
 	public function get_event($event_id) {
-		return $this->db
+		$event = $this->db
 			->select('*')
 			->from('events')
 			->where('id', $event_id)
 			->get()->row_array();
+		
+		if ($event['date_precision'] == 1)
+			$event['friendly_date'] = substr($event['date'], 0, 4);
+		else if ($event['date_precision'] == 2)
+			$event['friendly_date'] = substr($event['date'], 5, 2) . '/' . substr($event['date'], 0, 4);
+		else if ($event['date_precision'] == 3)
+			$event['friendly_date'] = substr($event['date'], 8, 2) . '. ' . substr($event['date'], 5, 2) . '. ' . substr($event['date'], 0, 4);
+		
+		return $event;
 	}
 	
 	public function update_event($event_id, $data) {

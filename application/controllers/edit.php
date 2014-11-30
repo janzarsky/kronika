@@ -209,6 +209,7 @@ class Edit extends CI_Controller {
 			'title' => '',
 			'text' => '',
 			'date' => date('Y-m-d'),
+			'friendly_date' => date('d. m. Y'),
 			'date_precision' => 3,
 			'importance' => 2,
 			'url' => '',

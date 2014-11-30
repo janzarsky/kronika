@@ -33,7 +33,7 @@
 					<label class="col-sm-2 control-label" for="event_date">Datum</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control edit__date" name="date" id="event_date" placeholder="Datum"
-							value="<?php echo set_value('date', $event['date']); ?>">
+							value="<?php echo set_value('date', $event['friendly_date']); ?>">
 					</div>
 				</div>
 				
