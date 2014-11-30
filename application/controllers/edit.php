@@ -179,12 +179,13 @@ class Edit extends CI_Controller {
 			'text' => $this->input->post('text'),
 			'date' => $this->input->post('date'),
 			'date_precision' => $this->date_precision,
-			'importance' => $this->input->post('importance'),
-			'owner' => $this->user_model->get_id()
+			'importance' => $this->input->post('importance')
 		);
 		
-		if ($event_id == 0)
+		if ($event_id == 0) {
 			$data['url'] = $this->url($this->input->post('title'));
+			$data['owner'] = $this->user_model->get_id();
+		}
 		else
 			$data['url'] = $this->input->post('url');
 		
