@@ -7,22 +7,44 @@ class Archive_model extends CI_Model {
 	}
 	
 	public function get_user_events($user_id) {
-		return $this->db
+		$events = $this->db
 			->select('id, title, date, date_precision, url, sent_for_approval, published')
 			->from('events')
 			->where('owner', $user_id)
 			->where('deleted', 0)
 			->order_by('date', 'DESC')
 			->get()->result_array();
+		
+		foreach ($events as $key => $event)
+			if ($event['date_precision'] == 1)
+				$events[$key]['friendly_date'] = substr($event['date'], 0, 4);
+			else if ($event['date_precision'] == 2)
+				$events[$key]['friendly_date'] = substr($event['date'], 5, 2) . '/' . substr($event['date'], 0, 4);
+			else if ($event['date_precision'] == 3)
+				$events[$key]['friendly_date'] = substr($event['date'], 8, 2) . '. ' . substr($event['date'], 5, 2)
+					. '. ' . substr($event['date'], 0, 4);
+		
+		return $events;
 	}
 	
 	public function get_all_events() {
-		return $this->db
+		$events = $this->db
 			->select('events.id as id, title, date, date_precision, url, sent_for_approval, published, users.name as owner_name')
 			->from('events')
 			->join('users', 'users.id = events.owner')
 			->where('deleted', 0)
 			->order_by('date', 'DESC')
 			->get()->result_array();
+		
+		foreach ($events as $key => $event)
+			if ($event['date_precision'] == 1)
+				$events[$key]['friendly_date'] = substr($event['date'], 0, 4);
+			else if ($event['date_precision'] == 2)
+				$events[$key]['friendly_date'] = substr($event['date'], 5, 2) . '/' . substr($event['date'], 0, 4);
+			else if ($event['date_precision'] == 3)
+				$events[$key]['friendly_date'] = substr($event['date'], 8, 2) . '. ' . substr($event['date'], 5, 2)
+					. '. ' . substr($event['date'], 0, 4);
+		
+		return $events;
 	}
 }

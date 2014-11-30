@@ -28,7 +28,7 @@
 						</td>
 						
 						<td>
-							<?php echo $event['date']; ?>
+							<?php echo $event['friendly_date']; ?>
 						</td>
 						
 						<?php if (isset($event['owner_name'])): ?>
