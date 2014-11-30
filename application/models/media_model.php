@@ -46,14 +46,25 @@ class Media_model extends CI_Model {
 	}
 	
 	public function update_main_image($id, $event_id) {
-		$current_main = $this->db
+		$q = $this->db
 			->select('id')
 			->from('media')
 			->where('event_id', $event_id)
 			->where('main', 1)
-			->get()->row_array()['id'];
+			->get();
+		
+		if ($q->num_rows() > 0) {
+			$current_main = $q->row_array()['id'];
+			$this->db->update('media', array('main' => 0), array('id' => $current_main));
+		}
 		
 		$this->db->update('media', array('main' => 1), array('id' => $id));
-		$this->db->update('media', array('main' => 0), array('id' => $current_main));
+	}
+	
+	public function update_texts($texts) {
+		foreach ($texts as $key => $text)
+			$texts[$key] = array('id' => $key, 'text' => $text);
+		
+		$this->db->update_batch('media', $texts, 'id');
 	}
 }

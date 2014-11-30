@@ -26,6 +26,7 @@ class Media extends CI_Controller {
 		$this->user_model->check_rights_with_redirect($event_id);
 		
 		$this->form_validation->set_rules('delete', 'Odstranit', '');
+		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean');
 		
 		if ($this->form_validation->run() == false) {
 			$content_data['event_id'] = $event_id;
@@ -41,6 +42,8 @@ class Media extends CI_Controller {
 		else {
 			$this->media_model->update_main_image($this->input->post('main'), $event_id);
 			$this->delete_media();
+
+			$this->media_model->update_texts($this->input->post('text'));
 			
 			$this->session->set_flashdata('message', 'Obrázky jsou uloženy. <a href="' . base_url('/d/' . $event_id) .
 																		'" target="_blank">Zobrazit událost</a>');

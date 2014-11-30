@@ -17,7 +17,10 @@
 								<td>
 									<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
 								</td>
-								<td></td>
+								<td>
+									<input type="text" class="form-control" name="text[<?php echo $media['id']; ?>]" 
+										value="<?php echo set_value('text[' .$media['id'] .']', $media['text']); ?>">
+								</td>
 								<td>
 									<label>
 										<input type="radio" class="" name="main" value="<?php echo $media['id']; ?>"
