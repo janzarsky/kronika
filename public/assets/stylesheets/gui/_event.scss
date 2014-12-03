@@ -23,6 +23,13 @@
 		max-width: 100%;
 	}
 }
+.event__image {
+	margin-bottom: 30px;
+	
+	img {
+		width: 100%;
+	}
+}
 .event__mainImage--large {
 	max-width: none;
 	text-align: center;
@@ -31,6 +38,9 @@
 		max-height: none;
 		max-width: 100%;
 	}
+}
+.event__detail {
+	margin-bottom: 15px;
 }
 
 .event__text {
