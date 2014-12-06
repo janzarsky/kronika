@@ -14,27 +14,31 @@
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li <?php echo ($page == 'archive') ? 'class="active"' : ''; ?>>
-					<a href="<?php echo base_url('archive'); ?>">Události</a>
-				</li>
-				
-				<?php if ($permissions['can_edit_users']): ?>
-					<li <?php echo ($page == 'users') ? 'class="active"' : ''; ?>>
-						<a href="<?php echo base_url('users'); ?>">Uživatelé</a>
+				<?php if (isset($permissions)): ?>
+					<li <?php echo ($page == 'archive') ? 'class="active"' : ''; ?>>
+						<a href="<?php echo base_url('archive'); ?>">Události</a>
 					</li>
-				<?php endif; ?>
-				
-				<?php if ($permissions['can_edit_settings']): ?>
-					<li <?php echo ($page == 'settings') ? 'class="active"' : ''; ?>>
-						<a href="<?php echo base_url('settings'); ?>">Nastavení</a>
-					</li>
+					
+					<?php if ($permissions['can_edit_users']): ?>
+						<li <?php echo ($page == 'users') ? 'class="active"' : ''; ?>>
+							<a href="<?php echo base_url('users'); ?>">Uživatelé</a>
+						</li>
+					<?php endif; ?>
+					
+					<?php if ($permissions['can_edit_settings']): ?>
+						<li <?php echo ($page == 'settings') ? 'class="active"' : ''; ?>>
+							<a href="<?php echo base_url('settings'); ?>">Nastavení</a>
+						</li>
+					<?php endif; ?>
 				<?php endif; ?>
 			</ul>
 			
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<?php echo base_url('profile'); ?>"><?php echo $name; ?></a></li>
-				<li><a href="<?php echo base_url('logout'); ?>">Odhlásit se</a></li>
-			</ul>
+			<?php if (isset($name)): ?>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="<?php echo base_url('profile'); ?>"><?php echo $name; ?></a></li>
+					<li><a href="<?php echo base_url('logout'); ?>">Odhlásit se</a></li>
+				</ul>
+			<?php endif; ?>
 		</div>
 	</div>
 </nav>
