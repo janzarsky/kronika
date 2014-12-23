@@ -5,8 +5,7 @@
 		$has_text = $event['text'] != '';
 	?>
 	
-	<?php if ($importance == 3 ||
-						($importance == 2 && $has_image == false) ||
+	<?php if (($importance == 2 && $has_image == false) ||
 						($importance == 1 && $has_image == false)): ?>
 		<div class="row">
 			<div class="col-sm-5 col-sm-offset-7">
@@ -17,7 +16,7 @@
 				<?php echo $this->load->view('templates/event_date.php', array('type' => 'right'), true); ?>
 			</div>
 		</div>
-	<?php elseif ($importance == 2): ?>
+	<?php elseif ($importance == 2 || $importance == 3): ?>
 		<div class="row">
 			<div class="col-sm-7">
 				<?php if (isset($event['main_image_id'])): ?>
