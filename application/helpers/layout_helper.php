@@ -1,43 +1,63 @@
 <?php
 
 function layout_events($events) {
-   $initial_split = array();
-   $i = 0;
-   
-   foreach ($events as $event) {
-      if ($event['importance'] == 1) {
-         $event['layout_width'] = 12;
-         
-         $i++;
-         $initial_split[$i][] = $event;
-         $i++;
-      }
-      else {
-         $event['layout_width'] = 4;
-         
-         $initial_split[$i][] = $event;
+   foreach ($events as $key => $event) {
+      switch ($event['importance']) {
+         case 1:
+            $events[$key]['lg_width'] = 12;
+            $events[$key]['sm_width'] = 12;
+            break;
+         case 2:
+            $events[$key]['lg_width'] = 8;
+            $events[$key]['sm_width'] = 12;
+            break;
+         default:
+            $events[$key]['lg_width'] = 4;
+            $events[$key]['sm_width'] = 6;
       }
    }
    
-   $final_split = array();
+   $numbered_events = array_values($events);
    
-   foreach ($initial_split as $row) {
-      $count = count($row);
+   $numbered_events = sort_events($numbered_events, 3, 'lg_width');
+   $numbered_events = sort_events($numbered_events, 2, 'sm_width');
+
+   return array(0 => $numbered_events);
+}
+
+function sort_events($events, $cols, $width) {
+   $width_sum = 0;
+   $row_counter = 0;
+   $event_counter = 0;
+   
+   foreach ($events as $i => $event) {
+      $width_sum += $event[$width];
       
-      if ($count > 3) {
-         for ($i = 0; $i < $count - $count%3; $i += 3) {
-            $final_split[] = array($row[$i], $row[$i + 1], $row[$i + 2]);
+      if ($width_sum > 12) {
+         if ($events[$i - 1][$width] == 12 - ($width_sum - $events[$i][$width])
+             && isset($events[$i - 1]['swapped']) == false) {
+            $tmp = $events[$i - 1];
+            $events[$i - 1] = $events[$i];
+            $events[$i] = $tmp;
+            
+            $width_sum = $events[$i][$width];
+            $row_counter++;
          }
-         
-         if ($count%3 == 2)
-            $final_split[] = array($row[$i], $row[$i + 1]);
-         else if ($count%3 == 1)
-            $final_split[] = array($row[$i]);
+         else if ($i != count($events) - 1
+                  && $events[$i + 1][$width] == 12 - ($width_sum - $events[$i][$width])) {
+            $tmp = $events[$i + 1];
+            $events[$i + 1] = $events[$i];
+            $events[$i] = $tmp;
+            
+            $width_sum = $events[$i][$width];
+            $row_counter++;
+         }
       }
-      else {
-         $final_split[] = $row;
+      else if ($width_sum == 12) {
+         $width_sum = 0;
+         $row_counter++;
       }
    }
    
-   return $final_split;
+   return $events;
 }

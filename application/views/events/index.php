@@ -14,7 +14,7 @@
 <?php foreach (layout_events($events) as $row) : ?>
 	<div class="row">
 		<?php foreach ($row as $event): ?>
-			<div class="col-md-<?php echo $event['layout_width']; ?>">
+			<div class="col-sm-<?php echo $event['sm_width']; ?> col-lg-<?php echo $event['lg_width']; ?>">
 				<?php $this->load->view('templates/event', array('event' => $event)); ?>
 			</div>
 		<?php endforeach; ?>
