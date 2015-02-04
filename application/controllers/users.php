@@ -11,7 +11,12 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		$data['content'] = '';
+		$this->user_model->check_login_with_redirect();
+		$this->user_model->check_permission_with_redirect('can_edit_users');
+		
+		$content_data['users'] = $this->user_edit_model->get_users();
+		
+		$data['content'] = $this->load->view('users/index', $content_data, true);
 		
 		$header_data['page'] = 'users';
 		$header_data['name'] = $this->user_model->get_name();
