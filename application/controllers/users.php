@@ -35,15 +35,38 @@ class Users extends CI_Controller {
 		$this->user_model->check_login_with_redirect();
 		$this->user_model->check_permission_with_redirect('can_edit_users');
 		
-		$content_data['user'] = $this->user_edit_model->get_user($user_id);
+		$this->form_validation->set_rules('name', 'Jméno', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 		
-		$data['content'] = $this->load->view('users/edit', $content_data, true);
-		
-		$header_data['page'] = 'users';
-		$header_data['name'] = $this->user_model->get_name();
-		$header_data['permissions'] = $this->user_model->get_permissions();
-		$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
-		
-		$this->load->view('templates/admin', $data);
+		if ($this->form_validation->run() == false) {
+			$content_data['user'] = $this->user_edit_model->get_user($user_id);
+			
+			$data['content'] = $this->load->view('users/edit', $content_data, true);
+			
+			$header_data['page'] = 'users';
+			$header_data['name'] = $this->user_model->get_name();
+			$header_data['permissions'] = $this->user_model->get_permissions();
+			$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
+			
+			$this->load->view('templates/admin', $data);
+		}
+		else {
+			$this->user_edit_model->update_user($user_id, $this->get_user_data());
+			
+			$this->session->set_flashdata('message', 'Uživatel je uložen.');
+			
+			redirect('/users');
+		}
+	}
+	
+	function get_user_data() {
+		return array(
+			'name' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'can_publish' => $this->input->post('can_publish'),
+			'can_approve' => $this->input->post('can_approve'),
+			'can_edit_users' => $this->input->post('can_edit_users'),
+			'can_edit_settings' => $this->input->post('can_edit_settings')
+		);
 	}
 }

@@ -21,4 +21,8 @@ class User_edit_model extends CI_Model {
 			->where('id', $user_id)
 			->get()->row_array();
 	}
+	
+	public function update_user($user_id, $data) {
+		$this->db->update('users', $data, array('id' => $user_id));
+	}
 }
