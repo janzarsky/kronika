@@ -12,7 +12,9 @@
 				<?php foreach ($users as $user): ?>
 					<tr>
 						<td>
+							<a href="<?php echo base_url('/users/edit/' . $user['id']); ?>">
 								<?php echo $user['name']; ?>
+							</a>
 						</td>
 						
 						<td>
