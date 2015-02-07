@@ -1,13 +1,13 @@
 <form class="form" role="form" action="" method="post">
 	<div class="form-group">
 		<label for="user_name">Jméno</label>
-		<input type="text" class="form-control" name="name" id="user_name" placeholder="Jméno"
+		<input type="text" class="form-control" name="name" id="user_name"
 			value="<?php echo set_value('name', $user['name']); ?>">
 	</div>	
 	
 	<div class="form-group">
 		<label for="user_email">Email</label>
-		<input type="text" class="form-control" name="email" id="user_email" placeholder="Email"
+		<input type="text" class="form-control" name="email" id="user_email"
 			value="<?php echo set_value('email', $user['email']); ?>">
 	</div>
 	
