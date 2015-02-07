@@ -32,7 +32,7 @@ class Archive_model extends CI_Model {
 			->select('events.id as id, title, date, date_precision, url, sent_for_approval, published, users.name as owner_name')
 			->from('events')
 			->join('users', 'users.id = events.owner')
-			->where('deleted', 0)
+			->where('events.deleted', 0)
 			->order_by('date', 'DESC')
 			->get()->result_array();
 		
