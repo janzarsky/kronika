@@ -30,7 +30,7 @@ class Users extends CI_Controller {
 		$this->load->view('templates/admin', $data);
 	}
 	
-	public function edit($user_id)
+	public function edit($user_id = 0)
 	{
 		$this->user_model->check_login_with_redirect();
 		$this->user_model->check_permission_with_redirect('can_edit_users');
@@ -39,7 +39,10 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 		
 		if ($this->form_validation->run() == false) {
-			$content_data['user'] = $this->user_edit_model->get_user($user_id);
+			if ($user_id == 0)
+				$content_data['user'] = $this->get_empty_user();
+			else
+				$content_data['user'] = $this->user_edit_model->get_user($user_id);
 			
 			$data['content'] = $this->load->view('users/edit', $content_data, true);
 			
@@ -51,9 +54,14 @@ class Users extends CI_Controller {
 			$this->load->view('templates/admin', $data);
 		}
 		else {
-			$this->user_edit_model->update_user($user_id, $this->get_user_data());
-			
-			$this->session->set_flashdata('message', 'Uživatel je uložen.');
+			if ($user_id == 0) {
+				$this->user_edit_model->add_user($this->get_user_data());
+				$this->session->set_flashdata('message', 'Uživatel byl přidán.');
+			}
+			else {
+				$this->user_edit_model->update_user($user_id, $this->get_user_data());
+				$this->session->set_flashdata('message', 'Uživatel je uložen.');
+			}
 			
 			redirect('/users');
 		}
@@ -67,6 +75,18 @@ class Users extends CI_Controller {
 			'can_approve' => $this->input->post('can_approve'),
 			'can_edit_users' => $this->input->post('can_edit_users'),
 			'can_edit_settings' => $this->input->post('can_edit_settings')
+		);
+	}
+	
+	function get_empty_user() {
+		return array(
+			'id' => 0,
+			'name' => '',
+			'email' => '',
+			'can_publish' => 0,
+			'can_approve' => 0,
+			'can_edit_users' => 0,
+			'can_edit_settings' => 0
 		);
 	}
 }

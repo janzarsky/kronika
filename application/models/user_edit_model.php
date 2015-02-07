@@ -25,4 +25,8 @@ class User_edit_model extends CI_Model {
 	public function update_user($user_id, $data) {
 		$this->db->update('users', $data, array('id' => $user_id));
 	}
+	
+	public function add_user($data) {
+		$this->db->insert('users', $data);
+	}
 }
