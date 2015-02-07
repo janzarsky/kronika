@@ -52,4 +52,10 @@ class User_model extends CI_Model {
 				redirect('/archive');
 			}
 	}
+	
+	public function check_permission_with_redirect($permission) {
+		if ($this->get_permissions()[$permission] == false) {
+			redirect('/admin');
+		}
+	}
 }
