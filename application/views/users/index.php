@@ -6,6 +6,7 @@
 			<th>Jméno</th>
 			<th>Email</th>
 			<th>Oprávnění</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -42,6 +43,12 @@
 						
 						echo $permissions;
 					?>
+				</td>
+				
+				<td>
+					<a href="<?php echo base_url('users/delete/' . $user['id']); ?>">
+						Odstranit
+					</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

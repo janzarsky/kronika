@@ -67,6 +67,19 @@ class Users extends CI_Controller {
 		}
 	}
 	
+	public function delete($user_id = 0) {
+		$this->user_model->check_login_with_redirect();
+		$this->user_model->check_permission_with_redirect('can_edit_users');
+		
+		if ($user_id != 0) {
+			$this->user_edit_model->delete_user($user_id);
+			
+			$this->session->set_flashdata('message', 'Uživatel byl odstraněn');
+			
+			redirect('/users');
+		}
+	}
+	
 	function get_user_data() {
 		return array(
 			'name' => $this->input->post('name'),
