@@ -79,17 +79,26 @@
 				
 				<div class="form-group">
 					<div class="col-sm-5 col-sm-offset-2">
-						<div class="checkbox">
-							<label>
-								<?php if ($can_publish): ?>
-									<input type="checkbox" name="publish" value="1"
-										<?php echo set_checkbox('publish', '1', $event['published'] == 1); ?>> Publikovat
-								<?php else: ?>
-									<input type="checkbox" name="send_for_approval" value="1"
-										<?php echo set_checkbox('send_for_aproval', '1', $event['sent_for_approval'] == 1); ?>> Odeslat ke schválení
-								<?php endif; ?>
-							</label>
-						</div>
+						<?php if ($is_owner || $event['sent_for_approval'] == false): ?>
+							<div class="checkbox">
+								<label>
+									<?php if ($can_publish): ?>
+										<input type="checkbox" name="publish" value="1"
+											<?php echo set_checkbox('publish', '1', $event['published'] == 1); ?>> Publikovat
+									<?php else: ?>
+										<input type="checkbox" name="send_for_approval" value="1"
+											<?php echo set_checkbox('send_for_aproval', '1', $event['sent_for_approval'] == 1); ?>> Odeslat ke schválení
+									<?php endif; ?>
+								</label>
+							</div>
+						<?php else: ?>
+							<a href="<?php echo base_url('edit/approve/' . $event['id']); ?>">
+								Schválit
+							</a> /
+							<a href="<?php echo base_url('edit/reject/' . $event['id']); ?>">
+								Zamítnout
+							</a>
+						<?php endif; ?>
 					</div>
 					<?php if ($event['id'] != 0): ?>
 						<div class="col-sm-5">
