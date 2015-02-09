@@ -96,6 +96,35 @@ class Edit extends CI_Controller {
 		}
 	}
 	
+	public function approve($event_id = 0) {
+		$this->user_model->check_login_with_redirect();
+		
+		if ($event_id != 0) {
+			$this->user_model->check_permission_with_redirect('can_approve');
+			
+			$this->edit_model->approve_event($event_id);
+			
+			$this->session->set_flashdata('message', 'Událost byla publikována. <a href="' . base_url('/d/' . $event_id) .
+																		'" target="_blank">Zobrazit událost</a>');
+			
+			redirect('/archive');
+		}
+	}
+	
+	public function reject($event_id = 0) {
+		$this->user_model->check_login_with_redirect();
+		
+		if ($event_id != 0) {
+			$this->user_model->check_permission_with_redirect('can_approve');
+			
+			$this->edit_model->reject_event($event_id);
+			
+			$this->session->set_flashdata('message', 'Návrh události byl zamítnut.');
+			
+			redirect('/archive');
+		}
+	}
+	
 	function url($str) {
     $str = strtolower(convert_to_ascii($str));
     $str = preg_replace('/[^a-zA-Z0-9]+/u', '-', $str);

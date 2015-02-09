@@ -11,10 +11,17 @@
 				<tr>
 					<th>Název</th>
 					<th>Datum</th>
+					
 					<?php if (isset($events[0]['owner_name'])): ?>
 						<th>Autor</th>
 					<?php endif; ?>
+					
 					<th>Status</th>
+					
+					<?php if ($can_approve): ?>
+						<th></th>
+					<?php endif; ?>
+					
 					<th></th>
 				</tr>
 			</thead>
@@ -45,6 +52,19 @@
 									echo 'Návrh';
 							?>
 						</td>
+						
+						<?php if ($can_approve): ?>
+							<td>
+								<?php if ($event['sent_for_approval']): ?>
+									<a href="<?php echo base_url('edit/approve/' . $event['id']); ?>">
+										Schválit
+									</a> /
+									<a href="<?php echo base_url('edit/reject/' . $event['id']); ?>">
+										Zamítnout
+									</a>
+								<?php endif; ?>
+							</td>
+						<?php endif; ?>
 						
 						<td>
 							<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">

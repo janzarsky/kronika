@@ -41,6 +41,14 @@ class Edit_model extends CI_Model {
 		$this->db->update('events', array('deleted' => 0), array('id' => $event_id));
 	}
 	
+	public function approve_event($event_id) {
+		$this->db->update('events', array('sent_for_approval' => 0, 'published' => 1), array('id' => $event_id));
+	}
+	
+	public function reject_event($event_id) {
+		$this->db->update('events', array('sent_for_approval' => 0, 'published' => 0), array('id' => $event_id));
+	}
+	
 	public function get_media_count($event_id) {
 		return $this->db
 			->select('id')
