@@ -42,7 +42,16 @@
 							<td><?php echo $event['owner_name']; ?></td>
 						<?php endif; ?>
 						
-						<td>
+						<?php
+							if ($event['sent_for_approval'])
+								$cell_class = 'warning';
+							else if ($event['published'])
+								$cell_class = 'info';
+							else
+								$cell_class = 'danger';
+						?>
+						
+						<td class="<?php echo $cell_class; ?>">
 							<?php
 								if ($event['published'])
 									echo 'Publikováno';
