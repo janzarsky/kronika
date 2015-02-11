@@ -9,7 +9,7 @@ class Archive extends CI_Controller {
 		$this->load->model('user_model');
 	}
 
-	public function index()
+	public function index($filter = false)
 	{
 		$this->user_model->check_login_with_redirect();
 		
@@ -18,9 +18,11 @@ class Archive extends CI_Controller {
 		$content_data['can_approve'] = ($this->user_model->get_permissions()['can_approve'] == 1);
 		
 		if ($content_data['can_approve'])
-			$content_data['events'] = $this->archive_model->get_all_events();
+			$content_data['events'] = $this->archive_model->get_all_events($user_id, $filter);
 		else
-			$content_data['events'] = $this->archive_model->get_user_events($user_id);
+			$content_data['events'] = $this->archive_model->get_user_events($user_id, $filter);
+		
+		$content_data['filter'] = $filter;
 		
 		$data['content'] = $this->load->view('archive/index', $content_data, true);
 		

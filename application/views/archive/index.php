@@ -1,6 +1,25 @@
 <div class="row">
-	<div class="col-sm-12">
-		<a class="btn btn-primary" href="<?php echo base_url('/add'); ?>" role="button">Přidat událost</a>
+	<div class="col-sm-6">
+		<div class="btn-group" role="group">
+			<a class="btn btn-primary" href="<?php echo base_url('/add'); ?>" role="button">Přidat událost</a>
+		</div>
+	</div>
+	
+	<div class="col-sm-6 text-right">
+		<div class="btn-group btn-group-sm" role="group">
+			<a class="btn <?php echo ($filter == '') ? 'btn-primary' : 'btn-default'; ?>"
+				href="<?php echo base_url('/archive'); ?>" role="button">Všechny</a>
+			<?php if ($can_approve): ?>
+				<a class="btn <?php echo ($filter == 'user') ? 'btn-primary' : 'btn-default'; ?>"
+					href="<?php echo base_url('/archive/user'); ?>" role="button">Moje</a>
+			<?php endif; ?>
+			<a class="btn <?php echo ($filter == 'published') ? 'btn-primary' : 'btn-default'; ?>"
+				href="<?php echo base_url('/archive/published'); ?>" role="button">Publikované</a>
+			<a class="btn <?php echo ($filter == 'sent-for-approval') ? 'btn-primary' : 'btn-default'; ?>"
+				href="<?php echo base_url('/archive/sent-for-approval'); ?>" role="button">Ke schválení</a>
+			<a class="btn <?php echo ($filter == 'drafts') ? 'btn-primary' : 'btn-default'; ?>"
+				href="<?php echo base_url('/archive/drafts'); ?>" role="button">Návrhy</a>
+		</div>
 	</div>
 </div>
 
