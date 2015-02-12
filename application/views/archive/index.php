@@ -49,7 +49,12 @@
 					<tr>
 						<td>
 							<a href="<?php echo base_url('/edit/' . $event['id']); ?>">
-								<?php echo $event['title']; ?>
+								<?php
+									if ($event['title'])
+										echo $event['title'];
+									else
+										echo '(Bez titulku)';
+								?>
 							</a>
 						</td>
 						

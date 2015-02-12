@@ -23,7 +23,7 @@ class Edit extends CI_Controller {
 		if ($event_id != 0)
 			$this->user_model->check_rights_with_redirect($event_id);
 		
-		$this->form_validation->set_rules('title', 'Titulek', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
+		$this->form_validation->set_rules('title', 'Titulek', 'trim|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
 		$this->form_validation->set_rules('url', 'URL', 'trim|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');

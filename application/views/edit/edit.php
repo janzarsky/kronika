@@ -15,7 +15,7 @@
 				<div class="form-group">
 					<label class="sr-only" for="event_title">Titulek</label>
 					<div class="col-sm-12">
-						<input type="text" class="form-control edit__title" name="title" id="event_title" placeholder="Titulek"
+						<input type="text" class="form-control edit__title" name="title" id="event_title" placeholder="Titulek (nepovinné)"
 							value="<?php echo set_value('title', $event['title']); ?>">
 					</div>
 				</div>	
