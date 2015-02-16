@@ -34,8 +34,10 @@ class Edit extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
 			
-			if ($event_id == 0)
+			if ($event_id == 0) {
 				$content_data['event'] = $this->get_empty_event();
+				$content_data['is_owner'] = true;
+			}
 			else {
 				$content_data['event'] = $this->edit_model->get_event($event_id);
 				$content_data['media_count'] = $this->edit_model->get_media_count($event_id);
