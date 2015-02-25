@@ -100,17 +100,30 @@ class Users extends CI_Controller {
 	public function profile() {
 		$this->user_model->check_login_with_redirect();
 		
+		$this->form_validation->set_rules('password', 'Heslo',
+			'trim|xss_clean|required|min_length[3]|max_length[60]|md5|callback_password');
+		$this->form_validation->set_rules('password2', 'Heslo',
+			'trim|xss_clean|required|min_length[3]|max_length[60]|md5|callback_password2');
+		
 		$user_id = $this->user_model->get_id();
 		$content_data['user'] = $this->user_edit_model->get_user($user_id);
 		
-		$data['content'] = $this->load->view('users/profile', $content_data, true);
-		
-		$header_data['page'] = 'profile';
-		$header_data['name'] = $this->user_model->get_name();
-		$header_data['permissions'] = $this->user_model->get_permissions();
-		$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
-		
-		$this->load->view('templates/admin', $data);
+		if ($this->form_validation->run() == false) {
+			$data['content'] = $this->load->view('users/profile', $content_data, true);
+			
+			$header_data['page'] = 'profile';
+			$header_data['name'] = $this->user_model->get_name();
+			$header_data['permissions'] = $this->user_model->get_permissions();
+			$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
+			
+			$this->load->view('templates/admin', $data);
+		}
+		else {
+			$this->user_edit_model->update_user($user_id, $this->get_profile_data());
+			$this->session->set_flashdata('message', 'Heslo bylo změněno.');
+			
+			redirect('/profile');
+		}
 	}
 	
 	function get_user_data() {
@@ -130,6 +143,10 @@ class Users extends CI_Controller {
 			$data['password'] = $pwd;
 		
 		return $data;
+	}
+	
+	function get_profile_data() {
+		return array('password' => $this->input->post('password'));
 	}
 	
 	function get_empty_user() {
