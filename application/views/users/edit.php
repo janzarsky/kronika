@@ -45,6 +45,16 @@
 	</div>
 	
 	<div class="form-group">
+		<label for="user_password">Změnit heslo</label>
+		<input type="password" class="form-control" name="password" id="user_password" value="" placeholder="(nechat stejné)">
+	</div>
+	
+	<div class="form-group">
+		<label for="user_password">Zopakovat heslo</label>
+		<input type="password" class="form-control" name="password2" id="user_password2" value="" placeholder="(nechat stejné)">
+	</div>
+	
+	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Uložit</button>
 		<a class="btn btn-default" href="<?php echo base_url('/users'); ?>" role="button">Zavřít</a>
 	</div>

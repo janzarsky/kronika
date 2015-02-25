@@ -37,6 +37,10 @@ class Users extends CI_Controller {
 		
 		$this->form_validation->set_rules('name', 'Jméno', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+		$this->form_validation->set_rules('password', 'Heslo',
+			'trim|required|xss_clean|min_length[3]|max_length[60]|md5|callback_password');
+		$this->form_validation->set_rules('password2', 'Heslo',
+			'trim|required|xss_clean|min_length[3]|max_length[60]|md5|callback_password');
 		
 		if ($this->form_validation->run() == false) {
 			if ($user_id == 0)
@@ -84,6 +88,7 @@ class Users extends CI_Controller {
 		return array(
 			'name' => $this->input->post('name'),
 			'email' => $this->input->post('email'),
+			'password' => $this->input->post('password'),
 			'can_publish' => $this->input->post('can_publish'),
 			'can_approve' => $this->input->post('can_approve'),
 			'can_edit_users' => $this->input->post('can_edit_users'),
