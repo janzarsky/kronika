@@ -2,6 +2,8 @@
 
 class Users extends CI_Controller {
 	
+	var $password;
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -37,10 +39,8 @@ class Users extends CI_Controller {
 		
 		$this->form_validation->set_rules('name', 'Jméno', 'trim|required|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
-		$this->form_validation->set_rules('password', 'Heslo',
-			'trim|required|xss_clean|min_length[3]|max_length[60]|md5|callback_password');
-		$this->form_validation->set_rules('password2', 'Heslo',
-			'trim|required|xss_clean|min_length[3]|max_length[60]|md5|callback_password');
+		$this->form_validation->set_rules('password', 'Heslo', 'trim|xss_clean|min_length[3]|max_length[60]|md5|callback_password');
+		$this->form_validation->set_rules('password2', 'Heslo', 'trim|xss_clean|min_length[3]|max_length[60]|md5|callback_password2');
 		
 		if ($this->form_validation->run() == false) {
 			if ($user_id == 0)
@@ -84,6 +84,19 @@ class Users extends CI_Controller {
 		}
 	}
 	
+	function password($pwd) {
+		$this->password = $pwd;
+		return true;
+	}
+	
+	function password2($pwd) {
+		if ($pwd === $this->password)
+			return true;
+		else {
+			$this->form_validation->set_message('password', 'Hesla se neshodují!');
+		}
+	}
+	
 	public function profile() {
 		$this->user_model->check_login_with_redirect();
 		
@@ -101,15 +114,22 @@ class Users extends CI_Controller {
 	}
 	
 	function get_user_data() {
-		return array(
+		$data = array(
 			'name' => $this->input->post('name'),
 			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password'),
+			
 			'can_publish' => $this->input->post('can_publish'),
 			'can_approve' => $this->input->post('can_approve'),
 			'can_edit_users' => $this->input->post('can_edit_users'),
 			'can_edit_settings' => $this->input->post('can_edit_settings')
 		);
+		
+		$pwd = $this->input->post('password');
+		
+		if ($pwd !== '')
+			$data['password'] = $pwd;
+		
+		return $data;
 	}
 	
 	function get_empty_user() {
