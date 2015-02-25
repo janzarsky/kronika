@@ -55,6 +55,8 @@ $route['detail/(:any)'] = "events/by_url/$1";
 
 $route['users/add'] = "users/edit";
 
+$route['profile'] = "users/profile";
+
 $route['archive/(:any)'] = "archive/index/$1";
 
 $route['((19|20|21)[0-9][0-9])'] = "events/by_date/$1/0/0";

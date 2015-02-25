@@ -84,6 +84,22 @@ class Users extends CI_Controller {
 		}
 	}
 	
+	public function profile() {
+		$this->user_model->check_login_with_redirect();
+		
+		$user_id = $this->user_model->get_id();
+		$content_data['user'] = $this->user_edit_model->get_user($user_id);
+		
+		$data['content'] = $this->load->view('users/profile', $content_data, true);
+		
+		$header_data['page'] = 'profile';
+		$header_data['name'] = $this->user_model->get_name();
+		$header_data['permissions'] = $this->user_model->get_permissions();
+		$data['header'] = $this->load->view('templates/admin_header', $header_data, true);
+		
+		$this->load->view('templates/admin', $data);
+	}
+	
 	function get_user_data() {
 		return array(
 			'name' => $this->input->post('name'),
