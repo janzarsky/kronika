@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": ";;;;;;;;;AAAA,IAAK;EACJ,WAAW,EAAE,qCAAqC;;AAGnD,UAMC;EALG,WAAW,EAAE,mBAAmB;EAChC,GAAG,EAAE,6HAA4D;EAEjE,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,MAAM;ACTtB,KAAM;EACL,WAAW,ECkCM,KAAK;;ADhCvB,YAAa;EACZ,KAAK,EAAE,KAAK;EACZ,SAAS,ECuBG,KAAK;EDtBjB,WAAW,EC4BK,GAAG;ED1BnB,cAAE;IACD,KAAK,ECqCM,IAAI;;ADlCjB,WAAY;EACX,KAAK,ECDO,OAAO",
-"sources": ["../assets/stylesheets/base/_general.scss","../assets/stylesheets/gui/_edit.scss","../assets/stylesheets/base/_variables.scss"],
+"mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,IAAK;EACJ,WAAW,EAAE,qCAAqC;EAClD,SAAS,EAAE,IAAI;;AAEhB,CAAE;EACD,KAAK,ECSC,OAAO;EDPb,iBAAkB;IACjB,KAAK,ECEC,OAAO;;ADEf,UAMC;EALG,WAAW,EAAE,mBAAmB;EAChC,GAAG,EAAE,6HAA4D;EAEjE,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,MAAM;AEjBtB,KAAM;EACL,WAAW,ED0CM,KAAK;;ACxCvB,YAAa;EACZ,KAAK,EAAE,KAAK;EACZ,SAAS,ED+BG,KAAK;EC9BjB,WAAW,EDoCK,GAAG;EClCnB,cAAE;IACD,KAAK,EDKA,OAAO;;ACFd,WAAY;EACX,KAAK,EDCC,OAAO",
+"sources": ["../assets/stylesheets/base/_general.scss","../assets/stylesheets/base/_variables.scss","../assets/stylesheets/gui/_edit.scss"],
 "names": [],
 "file": "admin.css"
 }

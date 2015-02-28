@@ -7,8 +7,36 @@
 	background-position: 0 10.5px;
 	text-decoration: underline;
 }*/
+/*
+$event_background: #ffffff;
+$event_title: #422A05;
+$event_date: #808073;
+$nav_color: #808073;
+$gallery_background: #222222;
+
+$navbar_links: #422A05;
+$decade_background: #FDFBCA;
+$decade_background_selected: #FCEF8D;
+$year_background: #FDFBCA;
+$year_background_selected: #FFDF3B;
+
+$year_header_text: #422A05;
+$year_header_background: none;
+$month_header_text: #422A05;
+$month_header_background: none;
+*/
+/*
+$gray-dark: #333;
+$text-color: #333;
+*/
 body {
-  font-family: "Libre Baskerville", "Georgia", serif; }
+  font-family: "Libre Baskerville", "Georgia", serif;
+  font-size: 14px; }
+
+a {
+  color: #554236; }
+  a:hover, a:active {
+    color: #D3CE3D; }
 
 @font-face {
   font-family: 'Libre Baskerville';
@@ -23,9 +51,9 @@ body {
   font-size: 1.5em;
   line-height: 1em; }
   .edit__title a {
-    color: #333; }
+    color: #554236; }
 
 .edit__date {
-  color: #808073; }
+  color: #554236; }
 
 /*# sourceMappingURL=admin.css.map */

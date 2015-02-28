@@ -1,5 +1,13 @@
 body {
 	font-family: "Libre Baskerville", "Georgia", serif;
+	font-size: 14px;
+}
+a {
+	color: $dark;
+	
+	&:hover, &:active {
+		color: $first;
+	}
 }
 
 @font-face {

@@ -4,11 +4,7 @@
 	padding: 0.5*$line-for-larger 0 0.25*$line-for-larger 0;
 	margin: 0 auto;
 	max-width: $width-for-larger;
-	color: $gray-dark;
-	
-	a {
-		color: $text-color;
-	}
+	color: $dark;
 }
 
 .pageNav {
@@ -17,14 +13,14 @@
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
 	max-width: $width-for-normal;
-	color: $nav-color;
+	color: $dark;
 }
 .pageNav__year {
 	padding: 0.5em;
-	color: $nav-color;
+	color: $dark;
 }
 .pageNav__year--active {
-	color: $gray-dark;
+	color: $first;
 }
 .pageNav__year--additional {
 	display: none;
@@ -38,7 +34,7 @@
 	margin: 0 auto;
 	
 	a {
-		color: $text-color;
+		color: $dark;
 	}
 }
 
