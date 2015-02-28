@@ -11,14 +11,8 @@
 	</div>
 <?php endif; ?>
 
-<?php foreach (layout_events($events) as $row) : ?>
-	<div class="row">
-		<?php foreach ($row as $event): ?>
-			<div class="col-sm-<?php echo $event['sm_width']; ?> col-lg-<?php echo $event['lg_width']; ?>">
-				<?php $this->load->view('templates/event', array('event' => $event)); ?>
-			</div>
-		<?php endforeach; ?>
-	</div>
+<?php foreach ($events as $event) : ?>
+	<?php $this->load->view('templates/event', array('event' => $event)); ?>
 <?php endforeach; ?>
 
 <?php if (isset($prev_url)): ?>
