@@ -1,9 +1,13 @@
+.container-fluid {
+	padding: 0 30px;
+}
+
 .pageHeader {
 	font-size: $font-larger;
 	line-height: $line-for-larger;
 	padding: 0.5*$line-for-larger 0 0.25*$line-for-larger 0;
 	margin: 0 auto;
-	max-width: $width-for-larger;
+	max-width: $text-width;
 	color: $dark;
 }
 
@@ -12,7 +16,7 @@
 	line-height: $line-for-normal;
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
-	max-width: $width-for-normal;
+	max-width: $text-width;
 	color: $dark;
 }
 .pageNav__year {
@@ -29,7 +33,7 @@
 .loader {
 	font-size: $font-normal;
 	line-height: $line-for-normal;
-	max-width: $width-for-normal;
+	max-width: $text-width;
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
 	

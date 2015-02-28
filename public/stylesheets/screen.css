@@ -29,9 +29,12 @@ $month_header_background: none;
 $gray-dark: #333;
 $text-color: #333;
 */
+html {
+  font-size: 16px; }
+
 body {
   font-family: "Libre Baskerville", "Georgia", serif;
-  font-size: 14px;
+  font-size: 16px;
   background: #F1EFA5; }
 
 a {
@@ -44,12 +47,15 @@ a {
   src: url("../fonts/LibreBaskerville-Regular.woff") format("woff"), url("../fonts/LibreBaskerville-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+.container-fluid {
+  padding: 0 30px; }
+
 .pageHeader {
   font-size: 2.25em;
   line-height: 1.3333em;
   padding: 0.66665em 0 0.33333em 0;
   margin: 0 auto;
-  max-width: 14.666em;
+  max-width: 33rem;
   color: #554236; }
 
 .pageNav {
@@ -57,7 +63,7 @@ a {
   line-height: 1.5em;
   padding: 0.375em 0 1.125em 0;
   margin: 0 auto;
-  max-width: 33em;
+  max-width: 33rem;
   color: #554236; }
 
 .pageNav__year {
@@ -73,7 +79,7 @@ a {
 .loader {
   font-size: 1em;
   line-height: 1.5em;
-  max-width: 33em;
+  max-width: 33rem;
   padding: 0.375em 0 1.125em 0;
   margin: 0 auto; }
   .loader a {
@@ -97,13 +103,13 @@ a {
     margin: 0; } }
 .event {
   line-height: 1.5em;
-  background: white;
   margin: 0 -15px 3.75em -15px; }
 
 .event__widthContainer {
-  max-width: 33em;
+  max-width: 33rem;
   margin: 0 auto;
-  padding: 15px; }
+  padding: 15px;
+  background: white; }
 
 .event__title {
   color: black;
@@ -111,7 +117,7 @@ a {
   line-height: 1em;
   padding: 0.15em 0 0.35em 0;
   margin: 0 auto;
-  max-width: 22em; }
+  max-width: 33rem; }
   .event__title a {
     color: #554236; }
 
@@ -120,7 +126,6 @@ a {
   padding: 0;
   text-align: center; }
   .event__mainImage img {
-    max-height: 15em;
     max-width: 100%; }
 
 .event__image {
@@ -131,13 +136,13 @@ a {
 .event__text {
   padding: 0.375em 0 1.125em 0;
   margin: 0 auto;
-  max-width: 33em; }
+  max-width: 33rem; }
 
 .event__date {
   color: #554236;
   margin: 0 auto;
   padding: 0.375em 0 1.125em 0;
-  max-width: 33em; }
+  max-width: 33rem; }
 
 .event__mediaItem {
   margin-bottom: 1.5em; }
@@ -148,19 +153,47 @@ a {
 .event__mediaTitle {
   padding: 0 0 3em 0;
   margin: 0 auto;
-  max-width: 33em; }
+  max-width: 33rem; }
 
 .noEvents__smiley {
   font-size: 2.25em;
   margin: 1.3333em 0; }
 
 @media (min-width: 768px) {
-  .event__title, .event__text, .event__date, .event__mainImage {
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0; }
+  .eventsContainer {
+    margin-left: -15px;
+    margin-right: -15px; }
+    .eventsContainer:before, .eventsContainer:after {
+      content: " ";
+      display: table; }
+    .eventsContainer:after {
+      clear: both; }
 
-  .event__mainImage {
-    text-align: right; } }
+  .event {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 0 3.75em 0; } }
+  @media (min-width: 768px) and (min-width: 768px) {
+    .event {
+      float: left;
+      width: 50%; } }
+  @media (min-width: 768px) and (min-width: 992px) {
+    .event {
+      float: left;
+      width: 33.33333%; } }
+  @media (min-width: 768px) and (min-width: 1200px) {
+    .event {
+      float: left;
+      width: 25%; } }
 
 /*# sourceMappingURL=screen.css.map */

@@ -11,9 +11,11 @@
 	</div>
 <?php endif; ?>
 
-<?php foreach ($events as $event) : ?>
-	<?php $this->load->view('templates/event', array('event' => $event)); ?>
-<?php endforeach; ?>
+<main class="eventsContainer">
+	<?php foreach ($events as $event) : ?>
+		<?php $this->load->view('templates/event', array('event' => $event)); ?>
+	<?php endforeach; ?>
+</main>
 
 <?php if (isset($prev_url)): ?>
 	<div class="row">

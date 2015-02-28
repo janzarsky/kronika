@@ -3,9 +3,7 @@
 		<?php if (isset($event['main_image_id'])): ?>
 			<div class="event__mainImage">
 				<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-					<img srcset="<?php echo media_image($event['main_image_id'], 210); ?> 1x,
-											 <?php echo media_image($event['main_image_id'], 420); ?> 2x"
-						src="<?php echo media_image($event['main_image_id'], 210); ?>"
+					<img src="<?php echo media_image($event['main_image_id'], 420); ?>"
 						alt="" />
 				</a>
 			</div>

@@ -1,12 +1,12 @@
 .event {
 	line-height: $line-for-normal;
-	background: white;
 	margin: 0 -15px $line-for-normal*2.5 -15px;
 }
 .event__widthContainer {
-	max-width: $width-for-normal;
+	max-width: $text-width;
 	margin: 0 auto;
 	padding: 15px;
+	background: white;
 }
 .event__title {
 	color: black;
@@ -14,7 +14,7 @@
 	line-height: $line-for-large;
 	padding: 0.15*$line-for-large 0 0.35*$line-for-large 0;
 	margin: 0 auto;
-	max-width: $width-for-large;
+	max-width: $text-width;
 	
 	a {
 		color: $dark;
@@ -26,10 +26,10 @@
 	text-align: center;
 	
 	img {
-		max-height: $line-for-normal*10;
 		max-width: 100%;
 	}
 }
+
 .event__image {
 	margin-bottom: 30px;
 	
@@ -41,13 +41,13 @@
 .event__text {
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
-	max-width: $width-for-normal;
+	max-width: $text-width;
 }
 .event__date {
 	color: $dark;
 	margin: 0 auto;
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
-	max-width: $width-for-normal;
+	max-width: $text-width;
 }
 .event__mediaItem {
 	margin-bottom: $line-for-normal;
@@ -60,7 +60,7 @@
 .event__mediaTitle {
 	padding: 0 0 2*$line-for-normal 0;
 	margin: 0 auto;
-	max-width: $width-for-normal;
+	max-width: $text-width;
 }
 
 .noEvents__smiley {
@@ -69,12 +69,13 @@
 }
 
 @media (min-width: $screen-sm-min) {
-	.event__title, .event__text, .event__date, .event__mainImage {
-		max-width: none;
-		margin-left: 0;
-		margin-right: 0;
+	.eventsContainer {
+		@include make-row();
 	}
-	.event__mainImage {
-		text-align: right;
+	.event {
+		@include make-sm-column(6);
+		@include make-md-column(4);
+		@include make-lg-column(3);
+		margin: 0 0 $line-for-normal*2.5 0;
 	}
 }

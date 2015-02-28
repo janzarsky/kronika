@@ -49,11 +49,7 @@ $line-for-normal: 1.5em;
 $line-for-small: 2.25em;
 $line-for-smaller: 3.375em;
 
-$width-for-larger: 14.666em;
-$width-for-large: 22em;
-$width-for-normal: 33em;
-$width-for-small: 49.475em;
-$width-for-smaller: 74.324em;
+$text-width: 33rem;
 
 /*
 $gray-dark: #333;
@@ -61,3 +57,5 @@ $text-color: #333;
 */
 
 $screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
