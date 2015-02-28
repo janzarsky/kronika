@@ -1,6 +1,12 @@
 .event {
 	line-height: $line-for-normal;
-	margin-bottom: $line-for-normal*2.5;
+	background: white;
+	margin: 0 -15px $line-for-normal*2.5 -15px;
+}
+.event__widthContainer {
+	max-width: $width-for-normal;
+	margin: 0 auto;
+	padding: 15px;
 }
 .event__title {
 	color: black;
@@ -15,8 +21,9 @@
 	}
 }
 .event__mainImage {
-	margin: 0 auto 0.5*$line-for-normal auto;
-	max-width: $width-for-normal;
+	margin: -15px -15px 15px -15px;
+	padding: 0;
+	text-align: center;
 	
 	img {
 		max-height: $line-for-normal*10;
@@ -29,18 +36,6 @@
 	img {
 		width: 100%;
 	}
-}
-.event__mainImage--large {
-	max-width: none;
-	text-align: center;
-	
-	img {
-		max-height: none;
-		max-width: 100%;
-	}
-}
-.event__detail {
-	margin-bottom: 15px;
 }
 
 .event__text {
@@ -68,9 +63,6 @@
 	max-width: $width-for-normal;
 }
 
-.noEvents {
-	
-}
 .noEvents__smiley {
 	font-size: $font-larger;
 	margin: $line-for-larger 0;

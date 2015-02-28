@@ -31,7 +31,8 @@ $text-color: #333;
 */
 body {
   font-family: "Libre Baskerville", "Georgia", serif;
-  font-size: 14px; }
+  font-size: 14px;
+  background: #F1EFA5; }
 
 a {
   color: #554236; }
