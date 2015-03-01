@@ -7,24 +7,51 @@
 	@include make-sm-column(6);
 	@include make-md-column(4);
 	@include make-lg-column(3);
+	
+	&.event--imp1 {
+		.event__widthContainer {
+			background: $second;
+			color: white;
+			
+			a {
+				color: white;
+			}
+		}
+	}
+	&.event--imp2 {
+		.event__widthContainer {
+			background: $third;
+			color: white;
+			
+			a {
+				color: white;
+			}
+		}
+	}
+	&.event--imp3 {
+		.event__widthContainer {
+			background: darken($light, 10%);
+			color: $dark;
+			
+			a {
+				color: $dark;
+			}
+		}
+	}
 }
+
 .event__widthContainer {
 	max-width: $text-width;
 	margin: 0 auto;
 	padding: 15px;
-	background: white;
+	
 }
 .event__title {
-	color: black;
 	font-size: $font-large;
 	line-height: $line-for-large;
 	padding: 0.15*$line-for-large 0 0.35*$line-for-large 0;
 	margin: 0 auto;
 	max-width: $text-width;
-	
-	a {
-		color: $dark;
-	}
 }
 .event__mainImage {
 	margin: -15px -15px 15px -15px;
@@ -50,7 +77,6 @@
 	max-width: $text-width;
 }
 .event__date {
-	color: $dark;
 	margin: 0 auto;
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	max-width: $text-width;

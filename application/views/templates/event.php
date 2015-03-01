@@ -1,4 +1,4 @@
-<section class="event">
+<section class="event event--imp<?php echo $event['importance']; ?>">
 	<div class="event__widthContainer">
 		<?php if (isset($event['main_image_id'])): ?>
 			<div class="event__mainImage">
