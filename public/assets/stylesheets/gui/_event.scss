@@ -1,6 +1,12 @@
+.eventsContainer {
+	@include make-row();
+}
 .event {
 	line-height: $line-for-normal;
 	margin: 0 -15px $line-for-normal*2.5 -15px;
+	@include make-sm-column(6);
+	@include make-md-column(4);
+	@include make-lg-column(3);
 }
 .event__widthContainer {
 	max-width: $text-width;
@@ -70,12 +76,10 @@
 
 @media (min-width: $screen-sm-min) {
 	.eventsContainer {
-		@include make-row();
+
 	}
 	.event {
-		@include make-sm-column(6);
-		@include make-md-column(4);
-		@include make-lg-column(3);
+		
 		margin: 0 0 $line-for-normal*2.5 0;
 	}
 }

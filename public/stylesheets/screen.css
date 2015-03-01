@@ -101,9 +101,42 @@ a {
 
   .loader {
     margin: 0; } }
+.eventsContainer {
+  margin-left: -15px;
+  margin-right: -15px; }
+  .eventsContainer:before, .eventsContainer:after {
+    content: " ";
+    display: table; }
+  .eventsContainer:after {
+    clear: both; }
+
 .event {
   line-height: 1.5em;
-  margin: 0 -15px 3.75em -15px; }
+  margin: 0 -15px 3.75em -15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 768px) {
+    .event {
+      float: left;
+      width: 50%; } }
+  @media (min-width: 992px) {
+    .event {
+      float: left;
+      width: 33.33333%; } }
+  @media (min-width: 1200px) {
+    .event {
+      float: left;
+      width: 25%; } }
 
 .event__widthContainer {
   max-width: 33rem;
@@ -160,40 +193,7 @@ a {
   margin: 1.3333em 0; }
 
 @media (min-width: 768px) {
-  .eventsContainer {
-    margin-left: -15px;
-    margin-right: -15px; }
-    .eventsContainer:before, .eventsContainer:after {
-      content: " ";
-      display: table; }
-    .eventsContainer:after {
-      clear: both; }
-
   .event {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
     margin: 0 0 3.75em 0; } }
-  @media (min-width: 768px) and (min-width: 768px) {
-    .event {
-      float: left;
-      width: 50%; } }
-  @media (min-width: 768px) and (min-width: 992px) {
-    .event {
-      float: left;
-      width: 33.33333%; } }
-  @media (min-width: 768px) and (min-width: 1200px) {
-    .event {
-      float: left;
-      width: 25%; } }
 
 /*# sourceMappingURL=screen.css.map */
