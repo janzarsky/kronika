@@ -1,50 +1,61 @@
 .eventsContainer {
 	@include make-row();
 }
+
 .event {
 	line-height: $line-for-normal;
+}
+.event--preview {
 	margin: 0 -15px $line-for-normal*2.5 -15px;
 	@include make-sm-column(6);
 	@include make-md-column(4);
 	@include make-lg-column(3);
-	
-	&.event--imp1 {
-		.event__widthContainer {
-			background: $second;
+}
+.event--imp1 {
+	.event__header {
+		background: $second;
+		color: white;
+		
+		a {
 			color: white;
-			
-			a {
-				color: white;
-			}
 		}
 	}
-	&.event--imp2 {
-		.event__widthContainer {
-			background: $third;
+}
+.event--imp2 {
+	.event__header {
+		background: $third;
+		color: white;
+		
+		a {
 			color: white;
-			
-			a {
-				color: white;
-			}
 		}
 	}
-	&.event--imp3 {
-		.event__widthContainer {
-			background: darken($light, 10%);
+}
+.event--imp3 {
+	.event__header {
+		background: darken($light, 10%);
+		color: $dark;
+		
+		a {
 			color: $dark;
-			
-			a {
-				color: $dark;
-			}
 		}
+	}
+}
+.event--detail {
+	margin: 0 -15px $line-for-normal*2.5 -15px;
+	
+	.event__header {
+		max-width: $text-width;
+		margin: 0 auto;
 	}
 }
 
 .event__widthContainer {
 	max-width: $text-width;
 	margin: 0 auto;
+}
+.event__header {
 	padding: 15px;
-	
 }
 .event__title {
 	font-size: $font-large;
@@ -54,20 +65,11 @@
 	max-width: $text-width;
 }
 .event__mainImage {
-	margin: -15px -15px 15px -15px;
 	padding: 0;
 	text-align: center;
 	
 	img {
 		max-width: 100%;
-	}
-}
-
-.event__image {
-	margin-bottom: 30px;
-	
-	img {
-		width: 100%;
 	}
 }
 
@@ -94,18 +96,39 @@
 	margin: 0 auto;
 	max-width: $text-width;
 }
+.event__gallery {
+	padding: 15px 0;
+	background: $light;
+	
+}
+.event__image {
+	margin-bottom: 15px;
+	text-align: center;
+	
+	img {
+		max-width: 100%;
+		max-height: 80vh;
+	}
+}
 
 .noEvents__smiley {
 	font-size: $font-larger;
 	margin: $line-for-larger 0;
 }
 
-@media (min-width: $screen-sm-min) {
-	.eventsContainer {
-
-	}
+@media only screen and (min-width: $screen-sm-min) {
 	.event {
-		
 		margin: 0 0 $line-for-normal*2.5 0;
+	}
+	.event__widthContainer {
+		max-width: none;
+	}
+	.event__gallery {
+		@include make-row();
+		margin: 0 -22.5px -15px -22.5px;
+	}
+	.event__image {
+		@include make-md-column(6, 15px);
+		@include make-lg-column(4, 15px);
 	}
 }

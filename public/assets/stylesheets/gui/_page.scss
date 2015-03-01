@@ -9,10 +9,6 @@ a {
 	}
 }
 
-.container-fluid {
-	padding: 0 30px;
-}
-
 .pageHeader {
 	font-size: $font-larger;
 	line-height: $line-for-larger;
@@ -54,6 +50,10 @@ a {
 }
 
 @media (min-width: $screen-sm-min) {
+	.container-fluid {
+		padding: 0 30px;
+	}
+	
 	.pageHeader {
 		margin: 0;
 		max-width: none;

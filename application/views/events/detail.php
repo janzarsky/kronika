@@ -1,41 +1,45 @@
-<section class="event">
-	<div class="row event__detail">
-		<div class="col-sm-7">
-			<?php echo $this->load->view('templates/event_main_image.php', array('image_type' => 'large'), true); ?>
-		</div>
-		<div class="col-sm-5">
-			<div class="row">
-				<div class="col-sm-12">
-					<?php echo $this->load->view('templates/event_title.php', array('type' => null), true); ?>
+<section class="event event--detail event--imp<?php echo $event['importance']; ?>">
+	<div class="event__widthContainer">
+		<header class="event__header">
+			<?php	if(isset($event['title'])): ?>
+				<h2 class="event__title">
+					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
+						<?php echo $event['title']; ?>
+					</a>
+				</h2>
+			<?php endif; ?>
+			
+			<?php	if(isset($event['friendly_date'])): ?>
+				<div class="event__date">
+					<?php echo $event['friendly_date']; ?>
 				</div>
-				<div class="col-sm-12">
-					<?php echo $this->load->view('templates/event_date.php', array('type' => null), true); ?>
-				</div>
-				<div class="col-sm-12">
-					<p class="event__text">
-						<?php echo $event['text']; ?>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<?php foreach ($event['media'] as $media): ?>
-			<div class="col-sm-6 col-md-4 col-md-3">
+			<?php endif; ?>
+		</header>
+		
+		<div class="event__gallery">
+			<?php $counter = 0; ?>
+			<?php foreach ($event['media'] as $media): ?>
 				<div class="event__image">
 					<img srcset="<?php echo media_image($media['id'], 1080); ?> 1620w,
 										 <?php echo media_image($media['id'], 768); ?> 1152w,
 										 <?php echo media_image($media['id'], 420); ?> 630w,
 										 <?php echo media_image($media['id'], 210); ?> 315w"
-						sizes="(min-width: 768px) 50vw,
-									 (min-width: 992px) 33vw,
-									 (min-width: 1200px) 25vw,
+						sizes="(min-width: 992px) 50vw,
+									 (min-width: 1200px) 33vw,
 									 100vw"
 						src="<?php echo media_image($media['id'], 768); ?>"
 						alt="" />
 				</div>
-			</div>
-		<?php endforeach; ?>
+				
+				<?php $counter++; ?>
+				
+				<?php if ($counter%2 == 0): ?>
+					<div class="clearfix visible-md-block"></div>
+				<?php endif; ?>
+				<?php if ($counter%3 == 0): ?>
+					<div class="clearfix visible-lg-block"></div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </section>
