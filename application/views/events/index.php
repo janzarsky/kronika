@@ -12,8 +12,21 @@
 <?php endif; ?>
 
 <main class="eventsContainer">
+	<?php $counter = 0; ?>
 	<?php foreach ($events as $event) : ?>
 		<?php $this->load->view('templates/event', array('event' => $event)); ?>
+		
+		<?php $counter++; ?>
+		
+		<?php if ($counter%2 == 0): ?>
+			<div class="clearfix visible-sm-block"></div>
+		<?php endif; ?>
+		<?php if ($counter%3 == 0): ?>
+			<div class="clearfix visible-md-block"></div>
+		<?php endif; ?>
+		<?php if ($counter%4 == 0): ?>
+			<div class="clearfix visible-lg-block"></div>
+		<?php endif; ?>
 	<?php endforeach; ?>
 </main>
 
