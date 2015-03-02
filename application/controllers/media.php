@@ -85,19 +85,19 @@ class Media extends CI_Controller {
 		
 		$images_path = FCPATH . 'public/media/images/';
 		
-		$heights = array(1080, 768, 420, 210);
+		$widths = array(1600, 1200, 960, 640, 320);
 		
 		$config['quality']	= 85;
 		$config['maintain_ratio'] = TRUE;
-		$config['width'] = 1;
-		$config['master_dim'] = 'height';
+		$config['height'] = 1;
+		$config['master_dim'] = 'width';
 		
-		foreach ($heights as $height) {
-			copy($upload_data['full_path'], $images_path . 'h' . $height . 'px/' . $id . '.jpg');
+		foreach ($widths as $width) {
+			copy($upload_data['full_path'], $images_path . 'w' . $width . 'px/' . $id . '.jpg');
 			
-			if ($upload_data['image_height'] >= $height) {
-				$config['source_image']	= $images_path . 'h' . $height . 'px/' . $id . '.jpg';
-				$config['height']	= $height;
+			if ($upload_data['image_width'] >= $width) {
+				$config['source_image']	= $images_path . 'w' . $width . 'px/' . $id . '.jpg';
+				$config['width']	= $width;
 				
 				$this->image_lib->initialize($config);
 				
