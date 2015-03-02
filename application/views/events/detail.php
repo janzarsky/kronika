@@ -3,9 +3,7 @@
 		<header class="event__header">
 			<?php	if(isset($event['title'])): ?>
 				<h2 class="event__title">
-					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
-						<?php echo $event['title']; ?>
-					</a>
+					<?php echo $event['title']; ?>
 				</h2>
 			<?php endif; ?>
 			
