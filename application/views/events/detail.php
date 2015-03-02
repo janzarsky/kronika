@@ -18,14 +18,16 @@
 			<?php $counter = 0; ?>
 			<?php foreach ($event['media'] as $media): ?>
 				<div class="event__image">
-					<img srcset="<?php echo media_image($media['id'], 1080); ?> 1620w,
-										 <?php echo media_image($media['id'], 768); ?> 1152w,
-										 <?php echo media_image($media['id'], 420); ?> 630w,
-										 <?php echo media_image($media['id'], 210); ?> 315w"
-						sizes="(min-width: 992px) 50vw,
-									 (min-width: 1200px) 33vw,
+					<img srcset="<?php echo media_image($media['id'], 1600); ?> 1600w,
+											 <?php echo media_image($media['id'], 1200); ?> 1200w,
+											 <?php echo media_image($media['id'], 960); ?> 960w,
+											 <?php echo media_image($media['id'], 640); ?> 640w,
+											 <?php echo media_image($media['id'], 320); ?> 320w"
+						sizes="(min-width: 1200px) 33vw,
+									 (min-width: 992px) 50vw,
+									 (min-width: 528px) 528px,
 									 100vw"
-						src="<?php echo media_image($media['id'], 768); ?>"
+						src="<?php echo media_image($media['id'], 640); ?>"
 						alt="" />
 				</div>
 				
