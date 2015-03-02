@@ -139,14 +139,15 @@
 		}
 		.event__gallery {
 			width: 100%;
-			display:table;
+			display: table;
 			padding: 0;
 			margin-left: 0;
 			margin-right: 0;
 		}
 		.event__galleryRow {
 			@include make-row();
-			display:table-row;
+			display: table-row;
+			height: 90vh;
 		}
 		.event__navigation {
 			@include make-sm-column(1);
@@ -160,14 +161,17 @@
 				background: none;
 				border: none;
 				outline: none;
+				padding: 15px;
 			}
 		}
 		.event__galleryWrapper {
 			@include make-sm-column(10);
+			vertical-align: middle;
 		}
 		.event__navigation, .event__galleryWrapper {
 			display:table-cell;
 			float:none;
+			vertical-align: middle;
 		}
 		.event__image {
 			display: none;
