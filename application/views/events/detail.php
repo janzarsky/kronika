@@ -1,4 +1,4 @@
-<section class="event event--detail event--imp<?php echo $event['importance']; ?>">
+<section class="event event--nojs event--detail event--imp<?php echo $event['importance']; ?>">
 	<div class="event__widthContainer">
 		<header class="event__header">
 			<?php	if(isset($event['title'])): ?>
