@@ -14,3 +14,7 @@ function media_image($filename, $width=1200){
    else
       return base_url() . 'public/media/images/w' . $width . 'px/' . $filename . '.jpg';
 }
+
+function blank_media_image(){
+   return base_url() . 'public/stylesheets/blank.png';
+}

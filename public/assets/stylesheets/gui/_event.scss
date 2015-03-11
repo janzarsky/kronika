@@ -7,11 +7,10 @@
 }
 .event--preview {
 	margin: 0 -15px $line-for-normal*2.5 -15px;
-	@include make-sm-column(6);
-	@include make-md-column(4);
-	@include make-lg-column(3);
 }
 .event--imp1 {
+	@include make-sm-column(12);
+	
 	.event__header {
 		background: $first;
 		color: $light;
@@ -20,8 +19,15 @@
 			color: $light;
 		}
 	}
+	.event__mainImage {
+		background: $first;
+	}
 }
 .event--imp2 {
+	@include make-sm-column(6);
+	@include make-md-column(4);
+	@include make-lg-column(3);
+	
 	.event__header {
 		background: $second;
 		color: $light;
@@ -30,8 +36,15 @@
 			color: $light;
 		}
 	}
+	.event__mainImage {
+		background: $second;
+	}
 }
 .event--imp3 {
+	@include make-sm-column(6);
+	@include make-md-column(4);
+	@include make-lg-column(3);
+	
 	.event__header {
 		background: $third;
 		color: $light;
@@ -39,6 +52,9 @@
 		a {
 			color: $light;
 		}
+	}
+	.event__mainImage {
+		background: $third;
 	}
 }
 .event--detail {
@@ -69,7 +85,7 @@
 	text-align: center;
 	
 	img {
-		max-width: 100%;
+		width: 100%;
 	}
 }
 
@@ -128,6 +144,38 @@
 	.event__gallery {
 		@include make-row();
 		margin: 0 -22.5px -15px -22.5px;
+	}
+	.event--imp1.event--preview {
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-bottom: 30px;
+		
+		.event__widthContainer {
+			background: $first;
+			@include clearfix();
+		}
+		.event__mainImage {
+			position: relative;
+			min-height: 1px;
+			padding-left:  0;
+			padding-right: 15px;
+		
+			@media (min-width: $screen-sm-min) {
+				float: left;
+				width: 50%;
+			}
+		}
+		.event__header {
+			position: relative;
+			min-height: 1px;
+			padding: 30px;
+			float: left;
+			width: 50%;
+			
+			.event__title, .event__date {
+				max-width: none;
+			}
+		}
 	}
 	.event--nojs .event__image {
 		@include make-md-column(6, 15px);
