@@ -12,11 +12,15 @@ $grid-columns: 12;
 $grid-gutter-width: 30px;
 $grid-float-breakpoint: 768px;
 
-$first: #D3CE3D;
-$second: #F77825;
-$third: #60B99A;
-$light: #F1EFA5;
-$dark: #554236;
+$base: hsl(23.76, 100, 50);
+$back: hsl(23.76, 20, 80);
+
+$first: $base;
+$second: saturate(darken($back, 30%), 20%);
+$third: saturate(darken($back, 15%), 5%);
+
+$light: desaturate(lighten($back, 35%), 35%);
+$dark: saturate(darken($base, 40%), 40%);
 
 /*
 $event_background: #ffffff;

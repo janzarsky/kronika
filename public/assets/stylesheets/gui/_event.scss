@@ -13,31 +13,31 @@
 }
 .event--imp1 {
 	.event__header {
-		background: $second;
-		color: white;
+		background: $first;
+		color: $light;
 		
 		a {
-			color: white;
+			color: $light;
 		}
 	}
 }
 .event--imp2 {
 	.event__header {
-		background: $third;
-		color: white;
+		background: $second;
+		color: $light;
 		
 		a {
-			color: white;
+			color: $light;
 		}
 	}
 }
 .event--imp3 {
 	.event__header {
-		background: darken($light, 10%);
-		color: $dark;
+		background: $third;
+		color: $light;
 		
 		a {
-			color: $dark;
+			color: $light;
 		}
 	}
 }
@@ -120,7 +120,7 @@
 
 @media only screen and (min-width: $screen-sm-min) {
 	.event {
-		margin: 0 0 $line-for-normal*2.5 0;
+		margin: 0 0 15px 0;
 	}
 	.event__widthContainer {
 		max-width: none;

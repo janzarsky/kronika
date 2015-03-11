@@ -42,12 +42,12 @@ body {
   font-weight: normal;
   font-style: normal; }
 body {
-  background: #F1EFA5; }
+  background: white; }
 
 a {
-  color: #554236; }
+  color: #331400; }
   a:hover, a:active {
-    color: #D3CE3D; }
+    color: #ff6500; }
 
 .pageHeader {
   font-size: 2.25em;
@@ -55,7 +55,7 @@ a {
   padding: 0.66665em 0 0.33333em 0;
   margin: 0 auto;
   max-width: 33rem;
-  color: #554236; }
+  color: #331400; }
 
 .pageNav {
   font-size: 1em;
@@ -63,14 +63,14 @@ a {
   padding: 0.375em 0 1.125em 0;
   margin: 0 auto;
   max-width: 33rem;
-  color: #554236; }
+  color: #331400; }
 
 .pageNav__year {
   padding: 0.5em;
-  color: #554236; }
+  color: #331400; }
 
 .pageNav__year--active {
-  color: #D3CE3D; }
+  color: #ff6500; }
 
 .pageNav__year--additional {
   display: none; }
@@ -82,7 +82,7 @@ a {
   padding: 0.375em 0 1.125em 0;
   margin: 0 auto; }
   .loader a {
-    color: #554236; }
+    color: #331400; }
 
 @media (min-width: 768px) {
   .container-fluid {
@@ -143,22 +143,22 @@ a {
       width: 25%; } }
 
 .event--imp1 .event__header {
-  background: #F77825;
+  background: #ff6500;
   color: white; }
   .event--imp1 .event__header a {
     color: white; }
 
 .event--imp2 .event__header {
-  background: #60B99A;
+  background: #b3754d;
   color: white; }
   .event--imp2 .event__header a {
     color: white; }
 
 .event--imp3 .event__header {
-  background: #eae779;
-  color: #554236; }
+  background: #bca18f;
+  color: white; }
   .event--imp3 .event__header a {
-    color: #554236; }
+    color: white; }
 
 .event--detail {
   margin: 0 -15px 3.75em -15px; }
@@ -209,7 +209,7 @@ a {
 
 .event__gallery {
   padding: 15px 0;
-  background: #F1EFA5; }
+  background: white; }
 
 .event__navigation {
   display: none; }
@@ -227,7 +227,7 @@ a {
 
 @media only screen and (min-width: 768px) {
   .event {
-    margin: 0 0 3.75em 0; }
+    margin: 0 0 15px 0; }
 
   .event__widthContainer {
     max-width: none; }
