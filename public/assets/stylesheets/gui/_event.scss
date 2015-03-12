@@ -9,8 +9,6 @@
 	margin: 0 -15px $line-for-normal*2.5 -15px;
 }
 .event--imp1 {
-	@include make-sm-column(12);
-	
 	.event__header {
 		background: $first;
 		color: $light;
@@ -24,10 +22,6 @@
 	}
 }
 .event--imp2 {
-	@include make-sm-column(6);
-	@include make-md-column(4);
-	@include make-lg-column(3);
-	
 	.event__header {
 		background: $second;
 		color: $light;
@@ -41,10 +35,6 @@
 	}
 }
 .event--imp3 {
-	@include make-sm-column(6);
-	@include make-md-column(4);
-	@include make-lg-column(3);
-	
 	.event__header {
 		background: $third;
 		color: $light;
@@ -56,6 +46,14 @@
 	.event__mainImage {
 		background: $third;
 	}
+}
+.event--imp1.event--preview {
+	@include make-sm-column(12);
+}
+.event--imp2.event--preview, .event--imp3.event--preview {
+	@include make-sm-column(6);
+	@include make-md-column(4);
+	@include make-lg-column(3);
 }
 .event--detail {
 	margin: 0 -15px $line-for-normal*2.5 -15px;

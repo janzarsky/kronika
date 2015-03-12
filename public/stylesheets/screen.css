@@ -118,24 +118,41 @@ a {
 .event--preview {
   margin: 0 -15px 3.75em -15px; }
 
-.event--imp1 {
+.event--imp1 .event__header {
+  background: #ff6500;
+  color: white; }
+  .event--imp1 .event__header a {
+    color: white; }
+.event--imp1 .event__mainImage {
+  background: #ff6500; }
+
+.event--imp2 .event__header {
+  background: #b3754d;
+  color: white; }
+  .event--imp2 .event__header a {
+    color: white; }
+.event--imp2 .event__mainImage {
+  background: #b3754d; }
+
+.event--imp3 .event__header {
+  background: #bca18f;
+  color: white; }
+  .event--imp3 .event__header a {
+    color: white; }
+.event--imp3 .event__mainImage {
+  background: #bca18f; }
+
+.event--imp1.event--preview {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px; }
   @media (min-width: 768px) {
-    .event--imp1 {
+    .event--imp1.event--preview {
       float: left;
       width: 100%; } }
-  .event--imp1 .event__header {
-    background: #ff6500;
-    color: white; }
-    .event--imp1 .event__header a {
-      color: white; }
-  .event--imp1 .event__mainImage {
-    background: #ff6500; }
 
-.event--imp2 {
+.event--imp2.event--preview, .event--imp3.event--preview {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -149,57 +166,17 @@ a {
   padding-left: 15px;
   padding-right: 15px; }
   @media (min-width: 768px) {
-    .event--imp2 {
+    .event--imp2.event--preview, .event--imp3.event--preview {
       float: left;
       width: 50%; } }
   @media (min-width: 992px) {
-    .event--imp2 {
+    .event--imp2.event--preview, .event--imp3.event--preview {
       float: left;
       width: 33.33333%; } }
   @media (min-width: 1200px) {
-    .event--imp2 {
+    .event--imp2.event--preview, .event--imp3.event--preview {
       float: left;
       width: 25%; } }
-  .event--imp2 .event__header {
-    background: #b3754d;
-    color: white; }
-    .event--imp2 .event__header a {
-      color: white; }
-  .event--imp2 .event__mainImage {
-    background: #b3754d; }
-
-.event--imp3 {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px; }
-  @media (min-width: 768px) {
-    .event--imp3 {
-      float: left;
-      width: 50%; } }
-  @media (min-width: 992px) {
-    .event--imp3 {
-      float: left;
-      width: 33.33333%; } }
-  @media (min-width: 1200px) {
-    .event--imp3 {
-      float: left;
-      width: 25%; } }
-  .event--imp3 .event__header {
-    background: #bca18f;
-    color: white; }
-    .event--imp3 .event__header a {
-      color: white; }
-  .event--imp3 .event__mainImage {
-    background: #bca18f; }
 
 .event--detail {
   margin: 0 -15px 3.75em -15px; }
