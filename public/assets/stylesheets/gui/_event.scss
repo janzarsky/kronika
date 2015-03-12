@@ -70,6 +70,8 @@
 }
 .event__header {
 	padding: 15px;
+	max-height: 108px;
+	overflow: hidden;
 }
 .event__title {
 	font-size: $font-large;
