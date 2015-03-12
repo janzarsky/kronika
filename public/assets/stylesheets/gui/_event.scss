@@ -86,6 +86,18 @@
 		width: 100%;
 	}
 }
+.event--imp2 .event__mainImage,
+.event--imp3 .event__mainImage {
+	padding-bottom: 66.6%;
+	overflow: hidden;
+	position: relative;
+	
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
 
 .event__text {
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
