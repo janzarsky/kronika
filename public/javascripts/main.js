@@ -35,4 +35,13 @@ $(function () {
 		btnLeft.on('click', function() { gallery.slide(-1); });
 		btnRight.on('click', function() { gallery.slide(1); });
 	});
+	
+	$('.pageNav').removeClass('pageNav--nojs').addClass('pageNav--js');
+	
+	$('.pageNav__toggleMore').on('click', function() {
+		var t = $(this);
+		var more = t.parent().children('.pageNav__more');
+		
+		more.toggleClass('pageNav__more--hidden');
+	});
 });

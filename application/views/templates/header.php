@@ -7,9 +7,9 @@
 		</header>
 	</div>
 	<div class="col-sm-7">
-		<nav class="pageNav">
+		<nav class="pageNav pageNav--nojs">
 			<?php
-				$first_year = (isset($first_year)) ? $first_year : 1963;
+				$first_year = (isset($first_year)) ? $first_year : 1907;
 				$last_year = (isset($last_year)) ? $last_year : date("Y");
 				
 				$active_year = (isset($active_year)) ? $active_year : $last_year;
@@ -23,6 +23,14 @@
 				if ($end_year > $last_year)
 					$end_year = $last_year;
 			?>
+			
+			<div class="pageNav__more pageNav__more--hidden">
+				<?php for ($year = ($first_year - $first_year%10); $year <= $last_year; $year += 10): ?>
+					<a class="pageNav__year" href="<?php echo base_url($year); ?>">
+						<?php echo $year; ?>
+					</a>
+				<?php endfor; ?>
+			</div>
 			
 			<?php for ($year = $start_year; $year < $active_year; $year++): ?>
 				<?php
@@ -51,6 +59,8 @@
 					<?php echo $year; ?>
 				</a>
 			<?php endfor; ?>
+			
+			<button class="pageNav__toggleMore">více</button>
 		</nav>
 	</div>
 </div>

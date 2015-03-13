@@ -36,6 +36,37 @@ a {
 .pageNav__year--additional {
 	display: none;
 }
+.pageNav__toggleMore {
+	border: none;
+	background: none;
+	outline: none;
+	
+	&:hover, &:focus {
+		text-decoration: underline;
+		color: $first;
+	}
+}
+.pageNav--nojs {
+	.pageNav__toggleMore {
+		display: none;
+	}
+}
+.pageNav__more {
+	.pageNav__year {
+		color: $third;
+	}
+}
+.pageNav--js {
+	.pageNav__more {
+		transition: 0.5s all ease;
+		opacity: 1;
+		overflow: hidden;
+	}
+	.pageNav__more--hidden {
+		opacity: 0;
+		max-height: 0;
+	}
+}
 
 .loader {
 	font-size: $font-normal;
@@ -62,11 +93,16 @@ a {
 	
 	.pageNav {
 		margin: 0;
-		padding: 1.75*$line-for-normal 0 0.75*$line-for-normal 0;
+		padding: 0.75*$line-for-normal 0 0.75*$line-for-normal 0;
 		max-width: none;
 	}
 	.pageNav__year--additional {
 		display: inline;
+	}
+	.pageNav--js {
+		.pageNav__more--hidden {
+			max-height: $line-for-normal;
+		}
 	}
 	
 	.loader {
