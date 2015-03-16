@@ -19,7 +19,7 @@ $first: $base;
 $second: saturate(darken($back, 30%), 20%);
 $third: saturate(darken($back, 15%), 5%);
 
-$light: desaturate(lighten($back, 35%), 35%);
+$light: desaturate(lighten($back, 17%), 10%);
 $dark: saturate(darken($base, 40%), 40%);
 
 /*

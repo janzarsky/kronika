@@ -36,12 +36,12 @@ $(function () {
 		btnRight.on('click', function() { gallery.slide(1); });
 	});
 	
-	$('.pageNav').removeClass('pageNav--nojs').addClass('pageNav--js');
+	$('.header').removeClass('header--nojs').addClass('header--js');
 	
-	$('.pageNav__toggleMore').on('click', function() {
+	$('.header__toggleMore').on('click', function() {
 		var t = $(this);
-		var more = t.parent().children('.pageNav__more');
+		var more = t.parent().children('.header__more');
 		
-		more.toggleClass('pageNav__more--hidden');
+		more.toggleClass('header__more--hidden');
 	});
 });

@@ -8,35 +8,44 @@ a {
 		color: $first;
 	}
 }
-
-.pageHeader {
+.header {
+	@include make-row();
+	margin-left: 0;
+	margin-right: 0;
+}
+.header__title {
+	@include make-sm-column(6);
 	font-size: $font-larger;
 	line-height: $line-for-larger;
-	padding: 0.5*$line-for-larger 0 0.25*$line-for-larger 0;
+	padding-top: 0.5*$line-for-larger;
+	padding-bottom: 0.25*$line-for-larger;
+	color: $dark;
+	max-width: $text-width;
+	margin: 0 auto;
+}
+
+.header__nav {
+	@include make-sm-column(6);
+	font-size: $font-normal;
+	line-height: $line-for-normal;
+	padding-top: 0.25*$line-for-normal;
+	padding-bottom: 0.75*$line-for-normal;
 	margin: 0 auto;
 	max-width: $text-width;
 	color: $dark;
 }
 
-.pageNav {
-	font-size: $font-normal;
-	line-height: $line-for-normal;
-	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
-	margin: 0 auto;
-	max-width: $text-width;
-	color: $dark;
-}
-.pageNav__year {
+.header__year {
 	padding: 0.5em;
 	color: $dark;
 }
-.pageNav__year--active {
+.header__year--active {
 	color: $first;
 }
-.pageNav__year--additional {
+.header__year--additional {
 	display: none;
 }
-.pageNav__toggleMore {
+.header__toggleMore {
 	border: none;
 	background: none;
 	outline: none;
@@ -46,23 +55,23 @@ a {
 		color: $first;
 	}
 }
-.pageNav--nojs {
-	.pageNav__toggleMore {
+.header--nojs {
+	.header__toggleMore {
 		display: none;
 	}
 }
-.pageNav__more {
-	.pageNav__year {
+.header__more {
+	.header__year {
 		color: $third;
 	}
 }
-.pageNav--js {
-	.pageNav__more {
+.header--js {
+	.header__more {
 		transition: 0.5s all ease;
 		opacity: 1;
 		overflow: hidden;
 	}
-	.pageNav__more--hidden {
+	.header__more--hidden {
 		opacity: 0;
 		max-height: 0;
 	}
@@ -85,22 +94,26 @@ a {
 		padding: 0 30px;
 	}
 	
-	.pageHeader {
+	.header {
+		margin-left: -30px;
+		margin-right: -30px;
+	}
+	.header__title {
 		margin: 0;
 		max-width: none;
 		text-align: right;
 	}
-	
-	.pageNav {
+	.header__nav {
 		margin: 0;
-		padding: 0.75*$line-for-normal 0 0.75*$line-for-normal 0;
+		padding-top: 0.75*$line-for-normal;
+		padding-bottom: 0.75*$line-for-normal;
 		max-width: none;
 	}
-	.pageNav__year--additional {
+	.header__year--additional {
 		display: inline;
 	}
-	.pageNav--js {
-		.pageNav__more--hidden {
+	.header--js {
+		.header__more--hidden {
 			max-height: $line-for-normal;
 		}
 	}
