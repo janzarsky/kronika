@@ -9,42 +9,42 @@
 	margin: 0 -15px $line-for-normal*2.5 -15px;
 }
 .event--imp1 {
+	.event__widthContainer {
+		background-color: $first;
+	}
+	
 	.event__header {
-		background: $first;
 		color: $light;
 		
 		a {
 			color: $light;
 		}
-	}
-	.event__mainImage {
-		background: $first;
 	}
 }
 .event--imp2 {
+	.event__widthContainer {
+		background-color: $second;
+	}
+	
 	.event__header {
-		background: $second;
 		color: $light;
 		
 		a {
 			color: $light;
 		}
-	}
-	.event__mainImage {
-		background: $second;
 	}
 }
 .event--imp3 {
+	.event__widthContainer {
+		background-color: $third;
+	}
+	
 	.event__header {
-		background: $third;
 		color: $light;
 		
 		a {
 			color: $light;
 		}
-	}
-	.event__mainImage {
-		background: $third;
 	}
 }
 .event--imp1.event--preview {
@@ -67,6 +67,7 @@
 .event__widthContainer {
 	max-width: $text-width;
 	margin: 0 auto;
+	background-image: url('pattern.png');
 }
 .event__header {
 	padding: 15px;
@@ -167,7 +168,6 @@
 		padding-right: 15px;
 		
 		.event__widthContainer {
-			background: $first;
 			@include clearfix();
 		}
 		.event__mainImage {

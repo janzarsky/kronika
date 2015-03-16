@@ -42,7 +42,7 @@ body {
   font-weight: normal;
   font-style: normal; }
 body {
-  background: white; }
+  background: white url("pattern.png"); }
 
 a {
   color: #331400; }
@@ -143,29 +143,26 @@ a {
 .event--preview {
   margin: 0 -15px 3.75em -15px; }
 
+.event--imp1 .event__widthContainer {
+  background-color: #ff6500; }
 .event--imp1 .event__header {
-  background: #ff6500;
   color: white; }
   .event--imp1 .event__header a {
     color: white; }
-.event--imp1 .event__mainImage {
-  background: #ff6500; }
 
+.event--imp2 .event__widthContainer {
+  background-color: #b3754d; }
 .event--imp2 .event__header {
-  background: #b3754d;
   color: white; }
   .event--imp2 .event__header a {
     color: white; }
-.event--imp2 .event__mainImage {
-  background: #b3754d; }
 
+.event--imp3 .event__widthContainer {
+  background-color: #bca18f; }
 .event--imp3 .event__header {
-  background: #bca18f;
   color: white; }
   .event--imp3 .event__header a {
     color: white; }
-.event--imp3 .event__mainImage {
-  background: #bca18f; }
 
 .event--imp1.event--preview {
   position: relative;
@@ -211,7 +208,8 @@ a {
 
 .event__widthContainer {
   max-width: 33rem;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-image: url("pattern.png"); }
 
 .event__header {
   padding: 15px; }
@@ -306,13 +304,11 @@ a {
   .event--imp1.event--preview {
     padding-left: 15px;
     padding-right: 15px; }
-    .event--imp1.event--preview .event__widthContainer {
-      background: #ff6500; }
-      .event--imp1.event--preview .event__widthContainer:before, .event--imp1.event--preview .event__widthContainer:after {
-        content: " ";
-        display: table; }
-      .event--imp1.event--preview .event__widthContainer:after {
-        clear: both; }
+    .event--imp1.event--preview .event__widthContainer:before, .event--imp1.event--preview .event__widthContainer:after {
+      content: " ";
+      display: table; }
+    .event--imp1.event--preview .event__widthContainer:after {
+      clear: both; }
     .event--imp1.event--preview .event__mainImage {
       position: relative;
       min-height: 1px;
