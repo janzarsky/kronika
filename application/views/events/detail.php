@@ -19,46 +19,46 @@
 				</div>
 			<?php endif; ?>
 		</header>
-		
-		<div class="event__gallery">
-			<div class="event__galleryRow">
-				<div class="event__navigation event__navigation--left">
-					<div class="event__navigationArrow">
-						<button><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-					</div>
+	</div>
+	
+	<div class="event__gallery">
+		<div class="event__galleryRow">
+			<div class="event__navigation event__navigation--left">
+				<div class="event__navigationArrow">
+					<button><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
 				</div>
-				
-				<div class="event__galleryWrapper">
-					<?php $counter = 0; ?>
-					<?php foreach ($event['media'] as $media): ?>
-						<div class="event__image <?php if ($counter == 0) echo 'event__image--active'; ?>">
-							<img srcset="<?php echo media_image($media['id'], 1600); ?> 1600w,
-													 <?php echo media_image($media['id'], 1200); ?> 1200w,
-													 <?php echo media_image($media['id'], 960); ?> 960w,
-													 <?php echo media_image($media['id'], 640); ?> 640w,
-													 <?php echo media_image($media['id'], 320); ?> 320w"
-								sizes="(min-width: 768px) 83vw,
-											 (min-width: 528px) 528px,
-											 100vw"
-								src="<?php echo media_image($media['id'], 960); ?>"
-								alt="" />
-						</div>
-						
-						<?php $counter++; ?>
-						
-						<?php if ($counter%2 == 0): ?>
-							<div class="clearfix visible-md-block"></div>
-						<?php endif; ?>
-						<?php if ($counter%3 == 0): ?>
-							<div class="clearfix visible-lg-block"></div>
-						<?php endif; ?>
-					<?php endforeach; ?>
-				</div>
-				
-				<div class="event__navigation event__navigation--right">
-					<div class="event__navigationArrow">
-						<button><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+			</div>
+			
+			<div class="event__galleryWrapper">
+				<?php $counter = 0; ?>
+				<?php foreach ($event['media'] as $media): ?>
+					<div class="event__image <?php if ($counter == 0) echo 'event__image--active'; ?>">
+						<img srcset="<?php echo media_image($media['id'], 1600); ?> 1600w,
+												 <?php echo media_image($media['id'], 1200); ?> 1200w,
+												 <?php echo media_image($media['id'], 960); ?> 960w,
+												 <?php echo media_image($media['id'], 640); ?> 640w,
+												 <?php echo media_image($media['id'], 320); ?> 320w"
+							sizes="(min-width: 768px) 83vw,
+										 (min-width: 528px) 528px,
+										 100vw"
+							src="<?php echo media_image($media['id'], 960); ?>"
+							alt="" />
 					</div>
+					
+					<?php $counter++; ?>
+					
+					<?php if ($counter%2 == 0): ?>
+						<div class="clearfix visible-md-block"></div>
+					<?php endif; ?>
+					<?php if ($counter%3 == 0): ?>
+						<div class="clearfix visible-lg-block"></div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+			
+			<div class="event__navigation event__navigation--right">
+				<div class="event__navigationArrow">
+					<button><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
 				</div>
 			</div>
 		</div>

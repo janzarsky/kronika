@@ -264,8 +264,7 @@ a {
   max-width: 33rem; }
 
 .event__gallery {
-  padding: 15px 0;
-  background: white; }
+  padding: 15px 0; }
 
 .event__navigation {
   display: none; }
@@ -288,9 +287,6 @@ a {
   .event--preview {
     margin-bottom: 30px; }
 
-  .event__widthContainer {
-    max-width: none; }
-
   .event__gallery {
     margin-left: -15px;
     margin-right: -15px;
@@ -304,11 +300,13 @@ a {
   .event--imp1.event--preview {
     padding-left: 15px;
     padding-right: 15px; }
-    .event--imp1.event--preview .event__widthContainer:before, .event--imp1.event--preview .event__widthContainer:after {
-      content: " ";
-      display: table; }
-    .event--imp1.event--preview .event__widthContainer:after {
-      clear: both; }
+    .event--imp1.event--preview .event__widthContainer {
+      max-width: none; }
+      .event--imp1.event--preview .event__widthContainer:before, .event--imp1.event--preview .event__widthContainer:after {
+        content: " ";
+        display: table; }
+      .event--imp1.event--preview .event__widthContainer:after {
+        clear: both; }
     .event--imp1.event--preview .event__mainImage {
       position: relative;
       min-height: 1px;
@@ -383,7 +381,8 @@ a {
       background: none;
       border: none;
       outline: none;
-      padding: 15px; }
+      padding: 15px;
+      font-size: 30px; }
   .event--js.event--detail .event__galleryWrapper {
     position: relative;
     min-height: 1px;

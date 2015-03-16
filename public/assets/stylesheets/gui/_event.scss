@@ -129,7 +129,6 @@
 }
 .event__gallery {
 	padding: 15px 0;
-	background: $light;
 }
 .event__navigation {
 	display: none;
@@ -156,9 +155,6 @@
 	.event--preview {
 		margin-bottom: 30px;
 	}
-	.event__widthContainer {
-		max-width: none;
-	}
 	.event__gallery {
 		@include make-row();
 		margin: 0 -22.5px -15px -22.5px;
@@ -169,6 +165,7 @@
 		
 		.event__widthContainer {
 			@include clearfix();
+			max-width: none;
 		}
 		.event__mainImage {
 			position: relative;
@@ -226,6 +223,7 @@
 				border: none;
 				outline: none;
 				padding: 15px;
+				font-size: 30px;
 			}
 		}
 		.event__galleryWrapper {
