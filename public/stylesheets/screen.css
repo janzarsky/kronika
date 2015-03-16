@@ -287,6 +287,9 @@ a {
   .event {
     margin: 0 0 15px 0; }
 
+  .event--preview {
+    margin-bottom: 30px; }
+
   .event__widthContainer {
     max-width: none; }
 
@@ -302,8 +305,7 @@ a {
 
   .event--imp1.event--preview {
     padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 30px; }
+    padding-right: 15px; }
     .event--imp1.event--preview .event__widthContainer {
       background: #ff6500; }
       .event--imp1.event--preview .event__widthContainer:before, .event--imp1.event--preview .event__widthContainer:after {

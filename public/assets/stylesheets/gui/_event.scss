@@ -152,6 +152,9 @@
 	.event {
 		margin: 0 0 15px 0;
 	}
+	.event--preview {
+		margin-bottom: 30px;
+	}
 	.event__widthContainer {
 		max-width: none;
 	}
@@ -162,7 +165,6 @@
 	.event--imp1.event--preview {
 		padding-left: 15px;
 		padding-right: 15px;
-		margin-bottom: 30px;
 		
 		.event__widthContainer {
 			background: $first;
