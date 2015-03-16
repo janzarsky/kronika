@@ -12,6 +12,12 @@
 					<?php echo $event['friendly_date']; ?>
 				</div>
 			<?php endif; ?>
+			
+			<?php	if(isset($event['text'])): ?>
+				<div class="event__text">
+					<?php echo $event['text']; ?>
+				</div>
+			<?php endif; ?>
 		</header>
 		
 		<div class="event__gallery">

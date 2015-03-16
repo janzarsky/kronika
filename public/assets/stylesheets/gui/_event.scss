@@ -70,6 +70,8 @@
 }
 .event__header {
 	padding: 15px;
+}
+.event__preview .event__header {
 	max-height: 108px;
 	overflow: hidden;
 }
@@ -103,7 +105,7 @@
 
 .event__text {
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
-	margin: 0 auto;
+	margin: 0 auto 0 0;
 	max-width: $text-width;
 }
 .event__date {
@@ -193,7 +195,7 @@
 		@include make-md-column(6, 15px);
 		@include make-lg-column(4, 15px);
 	}
-	.event--js {
+	.event--js.event--detail {
 		.event__header {
 			margin-bottom: 15px;
 		}

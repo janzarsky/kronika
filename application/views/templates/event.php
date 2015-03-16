@@ -52,6 +52,12 @@
 					<?php echo $event['friendly_date']; ?>
 				</div>
 			<?php endif; ?>
+			
+			<?php	if(isset($event['text']) && $event['importance'] == 1): ?>
+				<div class="event__text">
+					<?php echo $event['text']; ?>
+				</div>
+			<?php endif; ?>
 		</header>
 	</div>
 </section>
