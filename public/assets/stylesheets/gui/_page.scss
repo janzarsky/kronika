@@ -89,6 +89,13 @@ a {
 	}
 }
 
+.footer {
+	margin: 0 auto;
+	padding: 2*$line-for-normal 0 $line-for-normal 0;
+	text-align: center;
+	color: $second;
+}
+
 @media (min-width: $screen-sm-min) {
 	.container-fluid {
 		padding: 0 30px;

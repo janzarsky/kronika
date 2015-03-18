@@ -17,7 +17,15 @@
 			else
 				$this->load->view('templates/header');
 		?>
+		
 		<?php echo $content; ?>
+		
+		<?php
+			if (isset($footer))
+				echo $footer;
+			else
+				$this->load->view('templates/footer');
+		?>
 	</div>
 	
 	<script src="<?php echo javascript('jquery.min.js'); ?>"></script>

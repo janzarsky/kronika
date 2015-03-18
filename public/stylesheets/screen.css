@@ -135,6 +135,12 @@ a {
   .loader a {
     color: #331400; }
 
+.footer {
+  margin: 0 auto;
+  padding: 3em 0 1.5em 0;
+  text-align: center;
+  color: #b3754d; }
+
 @media (min-width: 768px) {
   .container-fluid {
     padding: 0 30px; }
