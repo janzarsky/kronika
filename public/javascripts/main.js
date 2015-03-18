@@ -10,7 +10,7 @@ $(function () {
 		var btnRight = gallery.find('.event__navigation--right > .event__navigationArrow > button');
 		
 		gallery.scroll = function() {
-			$('body').animate({ scrollTop: parseInt(wrapper.offset().top, 10) }, 600);
+			$('body').animate({ scrollTop: parseInt(wrapper.offset().top - document.documentElement.clientHeight/20, 10) }, 600);
 		};
 		
 		gallery.slide = function(direction) {
