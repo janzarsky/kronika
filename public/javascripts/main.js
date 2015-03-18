@@ -3,10 +3,15 @@ $(function () {
 	
 	$('.event__gallery').each(function() {
 		var gallery = $(this);
+		var wrapper = gallery.find('.event__galleryWrapper');
 		var images = gallery.find('.event__image');
 		
 		var btnLeft = gallery.find('.event__navigation--left > .event__navigationArrow > button');
 		var btnRight = gallery.find('.event__navigation--right > .event__navigationArrow > button');
+		
+		gallery.scroll = function() {
+			$('body').animate({ scrollTop: parseInt(wrapper.offset().top, 10) }, 600);
+		};
 		
 		gallery.slide = function(direction) {
 			var curr = images.filter('.event__image--active');
@@ -30,10 +35,14 @@ $(function () {
 			next.addClass('event__image--active');
 			
 			curr.removeClass('event__image--active');
+			
+			gallery.scroll();
 		};
 		
 		btnLeft.on('click', function() { gallery.slide(-1); });
 		btnRight.on('click', function() { gallery.slide(1); });
+		
+		wrapper.on('click', function() { gallery.scroll(); });
 	});
 	
 	$('.header').removeClass('header--nojs').addClass('header--js');
