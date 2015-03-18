@@ -129,9 +129,9 @@ a {
 .loader {
   font-size: 1em;
   line-height: 1.5em;
-  max-width: 33rem;
   padding: 0.375em 0 1.125em 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
   .loader a {
     color: #331400; }
 

@@ -80,9 +80,9 @@ a {
 .loader {
 	font-size: $font-normal;
 	line-height: $line-for-normal;
-	max-width: $text-width;
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
+	text-align: center;
 	
 	a {
 		color: $dark;
