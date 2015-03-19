@@ -22,14 +22,14 @@
 		?>
 		
 		<div class="header__more header__more--hidden">
-			<?php for ($year = ($first_year - $first_year%10); $year <= $last_year; $year += 10): ?>
+			<?php for ($year = ($last_year - $last_year%10); $year >= $first_year; $year -= 10): ?>
 				<a class="header__year" href="<?php echo base_url($year); ?>">
 					<?php echo $year; ?>
 				</a>
 			<?php endfor; ?>
 		</div>
 		
-		<?php for ($year = $start_year; $year < $active_year; $year++): ?>
+		<?php for ($year = $end_year; $year > $active_year; $year--): ?>
 			<?php
 				if ($active_year - $year > 2)
 					$additional_class = 'header__year--additional';
@@ -44,7 +44,7 @@
 		
 		<a class="header__year header__year--active" href="<?php echo base_url($active_year); ?>"><?php echo $active_year; ?></a>
 		
-		<?php for ($year = $active_year + 1; $year <= $end_year; $year++): ?>
+		<?php for ($year = $active_year - 1; $year >= $start_year; $year--): ?>
 			<?php
 				if ($year - $active_year > 2)
 					$additional_class = 'header__year--additional';
