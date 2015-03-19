@@ -146,6 +146,11 @@ class Events_model extends CI_Model {
 				$date .= 'r. ' . $this->get_year($event['date']);
 			
 			$events[$key]['friendly_date'] = $date;
+			
+			if ($this->get_month($event['date']) < 9)
+				$events[$key]['scout_year'] = $this->get_year($event['date']) - 1;
+			else
+				$events[$key]['scout_year'] = $this->get_year($event['date']);
 		}
 		
 		return $events;

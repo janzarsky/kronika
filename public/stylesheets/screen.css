@@ -135,6 +135,21 @@ a {
   .loader a {
     color: #331400; }
 
+.separator {
+  padding-top: 1.125em;
+  padding-bottom: 1.125em;
+  margin: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  font-size: 1.5em; }
+  @media (min-width: 768px) {
+    .separator {
+      float: left;
+      width: 100%; } }
+
 .footer {
   margin: 0 auto;
   padding: 3em 0 1.5em 0;
