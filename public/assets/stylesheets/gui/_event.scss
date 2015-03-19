@@ -60,6 +60,12 @@
 		@include make-md-column(8);
 		@include make-lg-column(6);
 	}
+	
+	&.event--width3 {
+		@include make-sm-column(12);
+		@include make-md-column(12);
+		@include make-lg-column(9);
+	}
 }
 .event--detail {
 	margin: 0 -15px $line-for-normal*2.5 -15px;
@@ -196,7 +202,8 @@
 			}
 		}
 	}
-	.event--width2.event--preview {
+	.event--width2.event--preview,
+	.event--width3.event--preview {
 		padding-left: 15px;
 		padding-right: 15px;
 		

@@ -1,6 +1,57 @@
 $(function () {
 	$('.event').removeClass('event--nojs').addClass('event--js');
 	
+	$(window).on('resize', function() {
+		var width = document.documentElement.clientWidth;
+		var columns;
+		
+		if (width < 768)
+			columns = 1;
+		else if (width < 992)
+			columns = 2;
+		else if (width < 1200)
+			columns = 3;
+		else
+			columns = 4;
+		
+		if (columns > 1) {
+			var events = $('.eventsContainer');
+			
+			events.children('.layoutSeparator').each(function() {
+				var event = $(this);
+				var prevEvents = event.prevUntil('.layoutSeparator', '.event');
+				
+				prevEvents.filter('.event--width2').removeClass('event--width2').addClass('event--width1');
+				prevEvents.filter('.event--width3').removeClass('event--width3').addClass('event--width1');
+				
+				var blankSpace = columns - (prevEvents.length % columns);
+				var eventCount = prevEvents.length;
+				
+				if (blankSpace !== 0) {
+					if (blankSpace === 1) {
+						prevEvents.first().removeClass('event--width1').addClass('event--width2');
+					}
+					else if (blankSpace === 2) {
+						if (columns === 3) {
+							prevEvents.last().removeClass('event--width1').addClass('event--width3');
+						}
+						else if (columns === 4) {
+							prevEvents.first().removeClass('event--width1').addClass('event--width2');
+							prevEvents.last().removeClass('event--width1').addClass('event--width2');
+						}
+					}
+					else if (blankSpace === 3 && eventCount > 4) {
+						prevEvents.first().removeClass('event--width1').addClass('event--width2');
+						prevEvents.last().removeClass('event--width1').addClass('event--width2');
+						prevEvents.last().next().removeClass('event--width1').addClass('event--width2');
+					}
+				}
+			});
+		}
+	});
+	
+	$(window).trigger('resize');
+	
 	$('.event__gallery').each(function() {
 		var gallery = $(this);
 		var wrapper = gallery.find('.event__galleryWrapper');

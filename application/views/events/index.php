@@ -11,7 +11,7 @@
 	<?php $prev_year = 0; ?>
 	<?php foreach ($events as $event) : ?>
 		<?php if ($prev_year != 0 && $event['scout_year'] != $prev_year): ?>
-			<h2 class="separator">
+			<h2 class="separator layoutSeparator">
 				Oddílový rok <?php echo $event['scout_year']; ?>/<?php echo $event['scout_year'] + 1; ?>
 			</h2>
 		<?php endif; ?>
