@@ -82,6 +82,8 @@ a {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-left: 0;
+  padding-right: 0;
   font-size: 1em;
   line-height: 1.5em;
   padding-top: 0.375em;
@@ -95,10 +97,13 @@ a {
       width: 50%; } }
 
 .header__year {
-  padding: 0.5em;
-  color: #331400; }
+  min-width: 2.8em;
+  color: #331400;
+  display: inline-block; }
+  .header__year a {
+    color: #331400; }
 
-.header__year--active {
+.header__year--active a {
   color: #ff6500; }
 
 .header__year--additional {
@@ -107,7 +112,8 @@ a {
 .header__toggleMore {
   border: none;
   background: none;
-  outline: none; }
+  outline: none;
+  padding: 0; }
   .header__toggleMore:hover, .header__toggleMore:focus {
     text-decoration: underline;
     color: #ff6500; }
@@ -115,7 +121,7 @@ a {
 .header--nojs .header__toggleMore {
   display: none; }
 
-.header__more .header__year {
+.header__more .header__year a {
   color: #b3754d; }
 
 .header--js .header__more {
@@ -157,7 +163,11 @@ a {
   text-align: center;
   color: #b3754d; }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 321px) {
+  .header__nav {
+    padding-left: 15px;
+    padding-right: 15px; } }
+@media only screen and (min-width: 768px) {
   .container-fluid {
     padding: 0 30px; }
 
@@ -176,14 +186,14 @@ a {
     padding-bottom: 1.125em;
     max-width: none; }
 
-  .header__year--additional {
-    display: inline; }
-
   .header--js .header__more--hidden {
     max-height: 1.5em; }
 
   .loader {
     margin: 0; } }
+@media only screen and (min-width: 992px) {
+  .header__year--additional {
+    display: inline-block; } }
 .eventsContainer {
   margin-left: -15px;
   margin-right: -15px; }

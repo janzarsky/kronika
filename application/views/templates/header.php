@@ -14,6 +14,11 @@
 			$start_year = $active_year - 3;
 			$end_year = $active_year + 3;
 			
+			if ($last_year - $active_year < 3)
+				$start_year = $active_year - 6 + ($last_year - $active_year);
+			else if ($active_year - $first_year < 3)
+				$end_year = $active_year + 6 - ($active_year - $first_year);
+			
 			if ($start_year < $first_year)
 				$start_year = $first_year;
 			
@@ -23,13 +28,33 @@
 		
 		<div class="header__more header__more--hidden">
 			<?php for ($year = ($last_year - $last_year%10); $year >= $first_year; $year -= 10): ?>
-				<a class="header__year" href="<?php echo base_url($year); ?>">
-					<?php echo $year; ?>
-				</a>
+				<div class="header__year">
+					<a href="<?php echo base_url($year); ?>">
+						<?php echo $year; ?>
+					</a>
+				</div>
 			<?php endfor; ?>
 		</div>
 		
 		<?php for ($year = $end_year; $year > $active_year; $year--): ?>
+			<?php
+				if ($year - $active_year > 2)
+					$additional_class = 'header__year--additional';
+				else
+					$additional_class = '';
+			?>
+			<div class="header__year <?php echo $additional_class; ?>">
+				<a href="<?php echo base_url($year); ?>">
+					<?php echo $year; ?>
+				</a>
+			</div>
+		<?php endfor; ?>
+		
+		<div class="header__year header__year--active">
+			<a href="<?php echo base_url($active_year); ?>"><?php echo $active_year; ?></a>
+		</div>
+		
+		<?php for ($year = $active_year - 1; $year >= $start_year; $year--): ?>
 			<?php
 				if ($active_year - $year > 2)
 					$additional_class = 'header__year--additional';
@@ -37,24 +62,11 @@
 					$additional_class = '';
 			?>
 			
-			<a class="header__year <?php echo $additional_class; ?>" href="<?php echo base_url($year); ?>">
-				<?php echo $year; ?>
-			</a>
-		<?php endfor; ?>
-		
-		<a class="header__year header__year--active" href="<?php echo base_url($active_year); ?>"><?php echo $active_year; ?></a>
-		
-		<?php for ($year = $active_year - 1; $year >= $start_year; $year--): ?>
-			<?php
-				if ($year - $active_year > 2)
-					$additional_class = 'header__year--additional';
-				else
-					$additional_class = '';
-			?>
-			
-			<a class="header__year <?php echo $additional_class; ?>" href="<?php echo base_url($year); ?>">
-				<?php echo $year; ?>
-			</a>
+			<div class="header__year <?php echo $additional_class; ?>">
+				<a  href="<?php echo base_url($year); ?>">
+					<?php echo $year; ?>
+				</a>
+			</div>
 		<?php endfor; ?>
 		
 		<button class="header__toggleMore">více</button>

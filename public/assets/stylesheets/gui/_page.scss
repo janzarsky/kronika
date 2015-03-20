@@ -26,6 +26,8 @@ a {
 
 .header__nav {
 	@include make-sm-column(6);
+	padding-left: 0;
+	padding-right: 0;
 	font-size: $font-normal;
 	line-height: $line-for-normal;
 	padding-top: 0.25*$line-for-normal;
@@ -36,11 +38,18 @@ a {
 }
 
 .header__year {
-	padding: 0.5em;
+	min-width: 2.8em;
 	color: $dark;
+	display: inline-block;
+	
+	a {
+		color: $dark;
+	}
 }
 .header__year--active {
-	color: $first;
+	a {
+		color: $first;
+	}
 }
 .header__year--additional {
 	display: none;
@@ -49,6 +58,7 @@ a {
 	border: none;
 	background: none;
 	outline: none;
+	padding: 0;
 	
 	&:hover, &:focus {
 		text-decoration: underline;
@@ -62,7 +72,9 @@ a {
 }
 .header__more {
 	.header__year {
-		color: $second;
+		a {
+			color: $second;
+		}
 	}
 }
 .header--js {
@@ -105,8 +117,14 @@ a {
 	text-align: center;
 	color: $second;
 }
+@media only screen and (min-width: 321px) {
+	.header__nav {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
 
-@media (min-width: $screen-sm-min) {
+@media only screen and (min-width: $screen-sm-min) {
 	.container-fluid {
 		padding: 0 30px;
 	}
@@ -126,9 +144,6 @@ a {
 		padding-bottom: 0.75*$line-for-normal;
 		max-width: none;
 	}
-	.header__year--additional {
-		display: inline;
-	}
 	.header--js {
 		.header__more--hidden {
 			max-height: $line-for-normal;
@@ -137,5 +152,11 @@ a {
 	
 	.loader {
 		margin: 0;
+	}
+}
+
+@media only screen and (min-width: $screen-md-min) {
+	.header__year--additional {
+		display: inline-block;
 	}
 }
