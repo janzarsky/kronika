@@ -2,7 +2,7 @@
 								<?php echo ($event['importance'] == 1) ? 'layoutSeparator' : ''; ?>">
 	<div class="event__widthContainer">
 		<?php if (isset($event['main_image_id'])): ?>
-			<?php if (isset($event['importance']) == 1): ?>
+			<?php if ($event['importance'] == 1): ?>
 				<div class="event__mainImage">
 					<a href="<?php echo base_url('detail/' . $event['url']); ?>">
 						<img srcset="<?php echo media_image($event['main_image_id'], 960); ?> 960w,
@@ -21,7 +21,8 @@
 						<img srcset="<?php echo media_image($event['main_image_id'], 960); ?> 960w,
 												 <?php echo media_image($event['main_image_id'], 640); ?> 640w,
 												 <?php echo media_image($event['main_image_id'], 320); ?> 320w"
-							sizes="(min-width: 992px) 33vw,
+							sizes="(min-width: 1200px) 25vw,
+										 (min-width: 992px) 33vw,
 										 (min-width: 768px) 50vw,
 										 (min-width: 528px) 528px,
 										 100vw"
