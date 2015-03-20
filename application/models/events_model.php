@@ -241,7 +241,8 @@ class Events_model extends CI_Model {
 			->select('id')
 			->from('events')
 			->where('date >=', $event['date'])
-			->where('id <', $event['id'])
+			->where('id !=', $event['id'])
+			->where('events.published', 1)
 			->where('events.deleted', 0)
 			->get()->num_rows() == 0;
 	}
@@ -251,7 +252,8 @@ class Events_model extends CI_Model {
 			->select('id')
 			->from('events')
 			->where('date <=', $event['date'])
-			->where('id >', $event['id'])
+			->where('id !=', $event['id'])
+			->where('events.published', 1)
 			->where('events.deleted', 0)
 			->get()->num_rows() == 0;
 	}
