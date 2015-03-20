@@ -2,7 +2,7 @@
 	<div class="loader loader--top">
 		&#8593;
 		<a href="<?php echo base_url($next_url); ?>">
-			Načíst předchozí události
+			Více do budoucnosti
 		</a>
 	</div>
 <?php endif; ?>
@@ -26,7 +26,7 @@
 	<div class="loader loader--bottom">
 		&#8595;
 		<a href="<?php echo base_url($prev_url); ?>">
-			Načíst další události
+			Více do minulosti
 		</a>
 	</div>
 <?php endif; ?>
