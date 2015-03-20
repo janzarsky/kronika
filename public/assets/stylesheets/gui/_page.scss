@@ -62,7 +62,7 @@ a {
 }
 .header__more {
 	.header__year {
-		color: $third;
+		color: $second;
 	}
 }
 .header--js {
@@ -83,9 +83,10 @@ a {
 	padding: 0.25*$line-for-normal 0 0.75*$line-for-normal 0;
 	margin: 0 auto;
 	text-align: center;
+	color: $second;
 	
 	a {
-		color: $dark;
+		color: $second;
 	}
 }
 
