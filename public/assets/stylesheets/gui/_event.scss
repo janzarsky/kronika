@@ -103,16 +103,36 @@
 		width: 100%;
 	}
 }
-.event--imp2.event--width1 .event__mainImage,
-.event--imp3.event--width1 .event__mainImage {
-	padding-bottom: 66.6%;
-	overflow: hidden;
-	position: relative;
+.event--imp2, .event--imp3 {
+	.event__mainImage {
+		overflow: hidden;
+		position: relative;
+		
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
 	
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
+	&.event--width1 .event__mainImage {
+		padding-bottom: 66.6%;
+	}
+	
+	&.event--width2 .event__mainImage {
+		padding-bottom: 33.3%;
+		
+		img {
+			left: -15px;
+		}
+	}
+	
+	&.event--width3 .event__mainImage {
+		padding-bottom: 33.3%;
+		
+		img {
+			left: -15px;
+		}
 	}
 }
 

@@ -25,6 +25,7 @@ $(function () {
 				prevEvents.filter('.event--width3').removeClass('event--width3').addClass('event--width1');
 				
 				var blankSpace = columns - (prevEvents.length % columns);
+				blankSpace = (blankSpace == columns) ? 0 : blankSpace;
 				var eventCount = prevEvents.length;
 				
 				if (blankSpace !== 0) {
@@ -36,8 +37,8 @@ $(function () {
 							prevEvents.last().removeClass('event--width1').addClass('event--width3');
 						}
 						else if (columns === 4) {
-							prevEvents.first().removeClass('event--width1').addClass('event--width2');
 							prevEvents.last().removeClass('event--width1').addClass('event--width2');
+							prevEvents.last().next().removeClass('event--width1').addClass('event--width2');
 						}
 					}
 					else if (blankSpace === 3 && eventCount > 4) {

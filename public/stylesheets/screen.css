@@ -336,16 +336,23 @@ a {
   .event__mainImage img {
     width: 100%; }
 
-.event--imp2.event--width1 .event__mainImage,
-.event--imp3.event--width1 .event__mainImage {
-  padding-bottom: 66.6%;
+.event--imp2 .event__mainImage, .event--imp3 .event__mainImage {
   overflow: hidden;
   position: relative; }
-  .event--imp2.event--width1 .event__mainImage img,
-  .event--imp3.event--width1 .event__mainImage img {
+  .event--imp2 .event__mainImage img, .event--imp3 .event__mainImage img {
     position: absolute;
     top: 0;
     left: 0; }
+.event--imp2.event--width1 .event__mainImage, .event--imp3.event--width1 .event__mainImage {
+  padding-bottom: 66.6%; }
+.event--imp2.event--width2 .event__mainImage, .event--imp3.event--width2 .event__mainImage {
+  padding-bottom: 33.3%; }
+  .event--imp2.event--width2 .event__mainImage img, .event--imp3.event--width2 .event__mainImage img {
+    left: -15px; }
+.event--imp2.event--width3 .event__mainImage, .event--imp3.event--width3 .event__mainImage {
+  padding-bottom: 33.3%; }
+  .event--imp2.event--width3 .event__mainImage img, .event--imp3.event--width3 .event__mainImage img {
+    left: -15px; }
 
 .event__text {
   padding: 0.375em 0 1.125em 0;
