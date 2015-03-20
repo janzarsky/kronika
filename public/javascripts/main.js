@@ -95,6 +95,19 @@ $(function () {
 		btnRight.on('click', function() { gallery.slide(1); });
 		
 		wrapper.on('click', function() { gallery.scroll(); });
+		
+		gallery.navigateGallery = function(e) {
+			switch (e.keyCode) {
+				case 37:
+					gallery.slide(-1);
+					break;
+				case 39:
+					gallery.slide(1);
+					break;
+			}
+		};
+		
+		window.addEventListener('keydown', gallery.navigateGallery, true);
 	});
 	
 	$('.header').removeClass('header--nojs').addClass('header--js');
