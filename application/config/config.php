@@ -359,7 +359,7 @@ $config['proxy_ips'] = '';
 
 
 // Custom configuration
-$config['posts_per_page'] = 20;
+$config['posts_per_page'] = 15;
 
 
 /* End of file config.php */
