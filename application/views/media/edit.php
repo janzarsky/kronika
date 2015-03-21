@@ -41,8 +41,11 @@
 					</tbody>
 				</table>
 				
-				<button type="submit" class="btn btn-primary">Uložit</button>
-				<a class="btn btn-default" href="<?php echo base_url('/edit/' . $event_id); ?>" role="button">Zpět</a>
+				<button type="submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+					Uložit
+				</button>
+				<a class="btn btn-default" href="<?php echo base_url('/edit/' . $event_id); ?>" role="button">Zavřít</a>
 			</div>
 		</form>
 	
@@ -50,11 +53,14 @@
 			<div class="col-md-5">
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="event_url">Přidat</label>
-					<div class="col-sm-8">
+					<div class="col-sm-7">
 						<input type="file" class="form-control edit__file" name="files[]" id="event_file" multiple="multiple">
 					</div>
-					<div class="col-sm-2">
-						<button type="submit" class="btn btn-primary">Nahrát</button>
+					<div class="col-sm-3">
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+							Nahrát
+						</button>
 					</div>
 				</div>
 			</div>

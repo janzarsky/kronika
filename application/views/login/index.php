@@ -20,7 +20,10 @@
 					<label for="password">Heslo</label>
 					<input type="password" class="form-control" id="password" name="password">
 				</div>
-				<button type="submit" class="btn btn-primary">Přihlásit se</button>
+				<button type="submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+					Přihlásit se
+				</button>
 			</form>
 		</div>
 	</div>

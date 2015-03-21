@@ -1,4 +1,7 @@
-<a class="btn btn-primary" href="<?php echo base_url('/users/add'); ?>" role="button">Přidat uživatele</a>
+<a class="btn btn-primary" href="<?php echo base_url('/users/add'); ?>" role="button">
+	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	Přidat uživatele
+</a>
 
 <table class="table table-hover">
 	<thead>
@@ -47,6 +50,7 @@
 				
 				<td>
 					<a href="<?php echo base_url('users/delete/' . $user['id']); ?>">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						Odstranit
 					</a>
 				</td>

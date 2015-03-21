@@ -65,7 +65,10 @@
 	</div>
 	
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Uložit</button>
+		<button type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+			Uložit
+		</button>
 		<a class="btn btn-default" href="<?php echo base_url('/users'); ?>" role="button">Zavřít</a>
 	</div>
 </form>

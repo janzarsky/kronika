@@ -67,6 +67,7 @@
 						<label class="col-sm-2 control-label">Média</label>
 						<div class="col-sm-10">
 							<a class="btn btn-primary" href="<?php echo base_url('/media/' . $event['id']); ?>" role="button">
+								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 								Spravovat média (<?php echo $media_count; ?>)
 							</a>
 						</div>
@@ -99,6 +100,7 @@
 					<?php if ($event['id'] != 0): ?>
 						<div class="col-sm-5">
 							<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								Odstranit
 							</a>
 						</div>
@@ -107,7 +109,10 @@
 				
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-2">
-						<button type="submit" class="btn btn-primary">Uložit</button>
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+							Uložit
+						</button>
 						<a class="btn btn-default" href="<?php echo base_url('/archive'); ?>" role="button">Zavřít</a>
 					</div>
 				</div>

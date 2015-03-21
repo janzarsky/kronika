@@ -1,7 +1,10 @@
 <div class="row">
 	<div class="col-sm-6">
 		<div class="btn-group" role="group">
-			<a class="btn btn-primary" href="<?php echo base_url('/add'); ?>" role="button">Přidat událost</a>
+			<a class="btn btn-primary" href="<?php echo base_url('/add'); ?>" role="button">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+				Přidat událost
+			</a>
 		</div>
 	</div>
 	
@@ -112,6 +115,7 @@
 								</a>
 							<?php else: ?>
 								<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 									Odstranit
 								</a>
 							<?php endif; ?>
