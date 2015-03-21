@@ -29,7 +29,6 @@
 	</div>
 	
 	<script src="<?php echo javascript('jquery.min.js'); ?>"></script>
-	<script src="<?php echo javascript('bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo javascript('main.js'); ?>"></script>
 </body>
 </html>
