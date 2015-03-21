@@ -18,8 +18,8 @@
 									<img src="<?php echo media_image($media['id'], 'thumb'); ?>" height="100">
 								</td>
 								<td>
-									<input type="text" class="form-control" name="text[<?php echo $media['id']; ?>]" 
-										value="<?php echo set_value('text[' .$media['id'] .']', $media['text']); ?>">
+									<textarea class="form-control" name="text[<?php echo $media['id']; ?>]"
+										rows="4"><?php echo set_value('text[' .$media['id'] .']', $media['text']);?></textarea>
 								</td>
 								<td>
 									<label>
