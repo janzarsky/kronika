@@ -426,6 +426,11 @@ a {
     .event__gallery:after {
       clear: both; }
 
+  .event--width1 .event__header {
+    max-height: 112px;
+    max-height: 7rem;
+    overflow: hidden; }
+
   .event--imp1.event--preview {
     padding-left: 15px;
     padding-right: 15px; }

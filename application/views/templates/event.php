@@ -1,5 +1,5 @@
-<section class="event event--preview event--width1 event--imp<?php echo $event['importance']; ?>
-								<?php echo ($event['importance'] == 1) ? 'layoutSeparator' : ''; ?>">
+<section class="event event--preview event--imp<?php echo $event['importance']; ?>
+								<?php echo ($event['importance'] == 1) ? 'layoutSeparator' : 'event--width1'; ?>">
 	<div class="event__widthContainer">
 		<?php if (isset($event['main_image_id'])): ?>
 			<?php if ($event['importance'] == 1): ?>
