@@ -35,6 +35,7 @@
 			
 			<?php if (isset($name)): ?>
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="<?php echo base_url('add'); ?>">Přidat událost</a></li>
 					<li><a href="<?php echo base_url('profile'); ?>"><?php echo $name; ?></a></li>
 					<li><a href="<?php echo base_url('logout'); ?>">Odhlásit se</a></li>
 				</ul>
