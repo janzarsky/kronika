@@ -550,6 +550,10 @@ a {
       float: left;
       width: 8.33333%; } }
 @media only screen and (min-width: 768px) {
+  .event--js.event--detail .event__gallery--singleImage .event__navigation {
+    cursor: auto; }
+  .event--js.event--detail .event__gallery--singleImage .event__navigationArrow {
+    display: none; }
   .event--js.event--detail .event__navigationArrow {
     vertical-align: middle; }
     .event--js.event--detail .event__navigationArrow button {

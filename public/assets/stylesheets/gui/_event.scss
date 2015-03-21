@@ -294,6 +294,14 @@
 			text-align: center;
 			cursor: pointer;
 		}
+		.event__gallery--singleImage {
+			.event__navigation {
+				cursor: auto;
+			}
+			.event__navigationArrow {
+				display: none;
+			}
+		}
 		.event__navigationArrow {
 			vertical-align: middle;
 			

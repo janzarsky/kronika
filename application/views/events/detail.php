@@ -21,7 +21,7 @@
 		</header>
 	</div>
 	
-	<div class="event__gallery">
+	<div class="event__gallery <?php echo (count($event['media']) == 1) ? 'event__gallery--singleImage' : ''; ?>">
 		<div class="event__galleryRow">
 			<div class="event__navigation event__navigation--left">
 				<div class="event__navigationArrow">

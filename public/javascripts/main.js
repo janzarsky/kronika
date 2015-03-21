@@ -97,14 +97,6 @@ $(function () {
 			gallery.scroll();
 		};
 		
-		btnLeft.on('click', function(e) { gallery.slide(-1); e.stopPropagation(); });
-		btnRight.on('click', function(e) { gallery.slide(1); e.stopPropagation(); });
-		
-		navLeft.on('click', function() { gallery.slide(-1); });
-		navRight.on('click', function() { gallery.slide(1); });
-		
-		wrapper.on('click', function() { gallery.scroll(); });
-		
 		gallery.navigateGallery = function(e) {
 			switch (e.keyCode) {
 				case 37:
@@ -116,7 +108,17 @@ $(function () {
 			}
 		};
 		
-		window.addEventListener('keydown', gallery.navigateGallery, true);
+		if (gallery.hasClass('event__gallery--singleImage') === false) {
+			btnLeft.on('click', function(e) { gallery.slide(-1); e.stopPropagation(); });
+			btnRight.on('click', function(e) { gallery.slide(1); e.stopPropagation(); });
+			
+			navLeft.on('click', function() { gallery.slide(-1); });
+			navRight.on('click', function() { gallery.slide(1); });
+			
+			window.addEventListener('keydown', gallery.navigateGallery, true);
+		}
+		
+		wrapper.on('click', function() { gallery.scroll(); });
 	});
 	
 	$('.header').removeClass('header--nojs').addClass('header--js');
