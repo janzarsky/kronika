@@ -211,6 +211,7 @@ class Events_model extends CI_Model {
 			->select('*')
 			->from('media')
 			->where('event_id', $event_id)
+			->order_by('main', 'DESC')
 			->get()->result_array();
 		
 		if (count($media) > 0)
