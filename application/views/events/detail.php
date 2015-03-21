@@ -32,7 +32,7 @@
 			<div class="event__galleryWrapper">
 				<?php $counter = 0; ?>
 				<?php foreach ($event['media'] as $media): ?>
-					<div class="event__image <?php if ($counter == 0) echo 'event__image--active'; ?>">
+					<figure class="event__image <?php if ($counter == 0) echo 'event__image--active'; ?>">
 						<img srcset="<?php echo media_image($media['id'], 1600); ?> 1600w,
 												 <?php echo media_image($media['id'], 1200); ?> 1200w,
 												 <?php echo media_image($media['id'], 960); ?> 960w,
@@ -43,7 +43,13 @@
 										 100vw"
 							src="<?php echo media_image($media['id'], 960); ?>"
 							alt="" />
-					</div>
+						
+						<?php	if(isset($media['text']) && $media['text'] != ''): ?>
+							<figcaption class="event__imageText">
+								<?php echo $media['text']; ?>
+							</figcaption>
+						<?php endif; ?>
+					</figure>
 					
 					<?php $counter++; ?>
 					

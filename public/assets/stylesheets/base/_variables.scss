@@ -21,6 +21,7 @@ $third: saturate(darken($back, 15%), 5%);
 
 $light: desaturate(lighten($back, 17%), 10%);
 $dark: saturate(darken($base, 40%), 40%);
+$darker: desaturate(darken($base, 45%), 30%);
 
 /*
 $event_background: #ffffff;
