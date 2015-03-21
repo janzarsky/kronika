@@ -56,4 +56,13 @@ class Edit_model extends CI_Model {
 			->where('event_id', $event_id)
 			->get()->num_rows();
 	}
+	
+	public function is_url_unique($url, $id) {
+		return ($this->db
+			->select('id')
+			->from('events')
+			->where('url', $url)
+			->where('id !=', $id)
+			->get()->num_rows() == 0);
+	}
 }

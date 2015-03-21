@@ -54,17 +54,13 @@
 					</div>
 				</div>
 				
-				<?php if ($event['id'] != 0): ?>
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="event_url">URL</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="(nepovinné)"
-								value="<?php echo set_value('url', $event['url']); ?>">
-						</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="event_url">URL</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control edit__url" name="url" id="event_url" placeholder="(automaticky)"
+							value="<?php echo set_value('url', $event['url']); ?>">
 					</div>
-				<?php else: ?>
-					<input type="hidden" name="url" id="event_url" value="<?php echo set_value('url', $event['url']); ?>">
-				<?php endif; ?>
+				</div>
 				
 				<?php if ($event['id'] != 0): ?>
 					<div class="form-group">

@@ -3,6 +3,7 @@
 class Edit extends CI_Controller {
 	
 	private $date_precision = false;
+	private $event_id;
 	
 	public function __construct()
 	{
@@ -20,16 +21,22 @@ class Edit extends CI_Controller {
 	{
 		$this->user_model->check_login_with_redirect();
 		
+		$this->event_id = $event_id;
+		
 		if ($event_id != 0)
 			$this->user_model->check_rights_with_redirect($event_id);
 		
 		$this->form_validation->set_rules('title', 'Titulek', 'trim|xss_clean|min_length[3]|max_length[60]|callback_special_chars');
 		$this->form_validation->set_rules('date', 'Datum', 'trim|required|xss_clean|callback_date');
-		$this->form_validation->set_rules('url', 'URL', 'trim|xss_clean|callback_url');
 		$this->form_validation->set_rules('text', 'Text', 'trim|xss_clean|max_length[700]|callback_special_chars');
 		$this->form_validation->set_rules('importance', 'Důležitost', 'required');
 		$this->form_validation->set_rules('publish', '', '');
 		$this->form_validation->set_rules('send_for_approval', '', '');
+		
+		if ($event_id == 0)
+			$this->form_validation->set_rules('url', 'URL', 'trim|xss_clean|callback_url');
+		else
+			$this->form_validation->set_rules('url', 'URL', 'trim|required|xss_clean|callback_url');
 		
 		if ($this->form_validation->run() == false) {
 			$content_data['can_publish'] = $this->user_model->get_permissions()['can_publish'];
@@ -136,6 +143,16 @@ class Edit extends CI_Controller {
 		
 		$str = strtolower($str);
 		
+		if ($str != '')
+			if ($this->edit_model->is_url_unique($str, $this->event_id) == false) {
+				$str .= '-2';
+				
+				if ($this->edit_model->is_url_unique($str, $this->event_id) == false) {
+					$this->form_validation->set_message('url', 'Automatické vytvoření URL selhalo. Zadejte URL manuálně');
+					return false;
+				}
+			}
+		
 		return $str;
 	}
 	
@@ -220,10 +237,11 @@ class Edit extends CI_Controller {
 			'importance' => $this->input->post('importance')
 		);
 		
-		if ($event_id == 0) {
-			$data['url'] = $this->url($this->input->post('title'));
+		if ($event_id == 0)
 			$data['owner'] = $this->user_model->get_id();
-		}
+		
+		if ($this->input->post('url') == NULL || $this->input->post('url') == '')
+			$data['url'] = $this->url($this->input->post('title'));
 		else
 			$data['url'] = $this->input->post('url');
 		
