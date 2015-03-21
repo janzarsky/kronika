@@ -10,8 +10,12 @@ class Archive_model extends CI_Model {
 		$this->db
 			->select('id, title, date, date_precision, url, sent_for_approval, published')
 			->from('events')
-			->where('owner', $user_id)
-			->where('deleted', 0);
+			->where('owner', $user_id);
+			
+		if ($filter == 'deleted')
+			$this->db->where('events.deleted', 1);
+		else
+			$this->db->where('events.deleted', 0);
 		
 		if ($filter === 'drafts')
 			$this->db
@@ -47,8 +51,12 @@ class Archive_model extends CI_Model {
 		$this->db
 			->select('events.id as id, title, date, date_precision, url, sent_for_approval, published, users.name as owner_name')
 			->from('events')
-			->join('users', 'users.id = events.owner')
-			->where('events.deleted', 0);
+			->join('users', 'users.id = events.owner');
+		
+		if ($filter == 'deleted')
+			$this->db->where('events.deleted', 1);
+		else
+			$this->db->where('events.deleted', 0);
 		
 		if ($filter === 'drafts')
 			$this->db

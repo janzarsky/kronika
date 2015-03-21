@@ -19,6 +19,8 @@
 				href="<?php echo base_url('/archive/sent-for-approval'); ?>" role="button">Ke schválení</a>
 			<a class="btn <?php echo ($filter == 'drafts') ? 'btn-primary' : 'btn-default'; ?>"
 				href="<?php echo base_url('/archive/drafts'); ?>" role="button">Návrhy</a>
+			<a class="btn <?php echo ($filter == 'deleted') ? 'btn-primary' : 'btn-default'; ?>"
+				href="<?php echo base_url('/archive/deleted'); ?>" role="button">Odstraněné</a>
 		</div>
 	</div>
 </div>
@@ -67,17 +69,21 @@
 						<?php endif; ?>
 						
 						<?php
-							if ($event['sent_for_approval'])
+							if ($filter == 'deleted')
+								$cell_class = 'danger';
+							else if ($event['sent_for_approval'])
 								$cell_class = 'warning';
 							else if ($event['published'])
 								$cell_class = 'info';
 							else
-								$cell_class = 'danger';
+								$cell_class = 'warning';
 						?>
 						
 						<td class="<?php echo $cell_class; ?>">
 							<?php
-								if ($event['published'])
+								if ($filter == 'deleted')
+									echo 'Odstraněno';
+								else if ($event['published'])
 									echo 'Publikováno';
 								else if ($event['sent_for_approval'])
 									echo 'Odesláno ke schválení';
@@ -100,9 +106,15 @@
 						<?php endif; ?>
 						
 						<td>
-							<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
-								Odstranit
-							</a>
+							<?php if ($filter == 'deleted'): ?>
+								<a href="<?php echo base_url('edit/restore/' . $event['id']); ?>">
+									Obnovit
+								</a>
+							<?php else: ?>
+								<a href="<?php echo base_url('edit/delete/' . $event['id']); ?>">
+									Odstranit
+								</a>
+							<?php endif; ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
