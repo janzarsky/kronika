@@ -116,6 +116,10 @@ a {
 	padding: 2*$line-for-normal 0 $line-for-normal 0;
 	text-align: center;
 	color: $second;
+	
+	a {
+		color: $second;
+	}
 }
 @media only screen and (min-width: 321px) {
 	.header__nav {

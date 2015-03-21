@@ -162,6 +162,8 @@ a {
   padding: 3em 0 1.5em 0;
   text-align: center;
   color: #b3754d; }
+  .footer a {
+    color: #b3754d; }
 
 @media only screen and (min-width: 321px) {
   .header__nav {
